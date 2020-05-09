@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 75164
@@ -54,22 +53,16 @@
                         <i></i>
                         <input type="text" id="verifyCode" name="verifyCode" placeholder="验证码">
                     </div>
-                    <a href="" onclick="changeImage()"> <img id="image" src="${pageContext.request.contextPath}/user/vcode.action"></a>
+                    <a href="" onclick="changeImage()"><img id="image" src="${pageContext.request.contextPath}/user/vcode.action"></a>
                 </div>
 
                 <div class="tips clearfix">
-                    <a onclick="changeImage()"  style="cursor:pointer;" class="register">看不清,换一张图片</a>
+                    <a onclick="changeImage()"  style="cursor:pointer;"  class="register">看不清,换一张图片</a>
                     <a href="javascript:" class="register">立即注册</a>
                     <a href="javascript:" class="forget-pwd">忘记密码？</a>
                 </div>
                 <%-- <button id="btn" type="button" onclick="doFind()">保存</button>--%>
-<%--                session.setpara("username",arraylist)--%>
 
-
-
-                <c:forEach var="i" items="{username}">
-                    <input type="text" value="{i}">
-                </c:forEach>
                 <div class="enter">
                     <input id="btnuser" type="button" onclick="doFind()" value="用户登录">
                     <input id="btnvol" type="button" onclick="doFind()" value="志愿者登录">

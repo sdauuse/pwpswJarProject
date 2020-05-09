@@ -43,6 +43,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     public void verifyUser() throws IOException {
 
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         ArrayList<TUser> list = (ArrayList<TUser>) userService.findUser();

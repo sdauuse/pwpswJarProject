@@ -10,7 +10,6 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.concurrent.locks.Condition;
 
 /**
  * @author miaoyin
@@ -42,7 +41,6 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     @Override
     public TUser getUser(TUser user) {
-
         return this.getHibernateTemplate().get(TUser.class,user.getUserId());
     }
 
@@ -67,24 +65,13 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     //分页查询
     @Override
     public List<TUser> findUserByPage(UserMd user, int firstResult, int maxResults) {
-
-
         return null;
     }
 
     //查询用户总数，可用于分页
     @Override
     public int findUserCount(UserMd user) {
-
-        //1.查询总共的数目 n=100
-        //
-        //第二页 10，10
-        //(page-1)*maxResult  n         (2-1)*10=10  ,10
-        //2、用我们思考的算法来分压  (2-1)
-
         return 0;
     }
-
-
 
 }
