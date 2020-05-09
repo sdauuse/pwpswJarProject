@@ -23,16 +23,16 @@
     	<package name="common" namespace="/" extends="struts-default">
 
 <!--    	     &lt;!&ndash; 全局结果 &ndash;&gt;-->
-<!--    		 <global-results>-->
-<!--    			<result name="success">/jsp/success.jsp</result>-->
-<!--    			<result name="error">/jsp/error.jsp</result>-->
-<!--&lt;!&ndash;    			//全局的input视图&ndash;&gt;-->
-<!--    			<result name="input">/jsp/error.jsp</result>-->
-<!--    		</global-results> -->
-<!--    		-->
-<!--    		<action name="test" class="customerAction" method="test">-->
-<!--    			<result name="test">/test.jsp</result>-->
-<!--    		</action>-->
+    		 <global-results>
+    			<result name="success" type="redirect">/jsps/success.jsp</result>
+    			<result name="error">/jsps/error.jsp</result>
+<!--    			//全局的input视图-->
+    			<result name="input">/jsps/error.jsp</result>
+    		</global-results>
+
+  <!--  		<action name="test" class="customerAction" method="test">
+    			<result name="test">/test.jsp</result>
+    		</action>-->
     		
     	</package>
 

@@ -1,0 +1,23 @@
+#btnuser {
+    width: 35%;
+    background-color: #f45438;
+    color: white;
+    padding: 10px 10px;
+    margin-left: 34px;
+    margin-right: 9px;
+    border: none;
+    /*border-radius: 4px;*/
+    /*cursor: pointer;*/
+}
+
+#btnvol {
+    width: 35%;
+    background-color: #f45438;
+    color: white;
+    padding: 10px 10px;
+    margin-left: 34px;
+    margin-right: 9px;
+    border: none;
+   /* cursor: pointer;*/
+}
+
