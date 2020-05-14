@@ -25,10 +25,12 @@
 		<!-- <property name="hibernate.current_session_context_class">thread</property> -->
 		<!-- 使用spring与hibernate整合类SpringSessionContext  -->
 		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/welfare_people_seeking</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
 
-		<mapping resource="com/pwpew/entity/TUserEntity.hbm.xml"/>
-		<!-- 加载映射文件 -->
+        <mapping resource="com/pwpew/entity/TUser.hbm.xml"/>
+        <!-- 加载映射文件 -->
 
 	</session-factory>
 </hibernate-configuration>
