@@ -9,11 +9,11 @@
 <html>
 <head>
     <title>用户注册页面</title>
-    <link href="css/user_register.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="js/user.register.js"></script>
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/distpicker.data.js"></script>
-    <script src="js/distpicker.js"></script>
+    <link href="${pageContext.request.contextPath}/css/user_register.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/user_vol_register_js/user.register.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.data.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.js"></script>
 </head>
 
 <body>
