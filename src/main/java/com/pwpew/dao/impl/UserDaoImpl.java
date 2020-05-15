@@ -23,7 +23,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     //注入父类的模板对象
     @Autowired
     public void setHT(HibernateTemplate hibernateTemplate) {
-        // 将CustomerDao 中注入进来 的hibernateTemplate给父类的setHibernateTemplate方法传入
+        // 将userDao 中注入进来 的hibernateTemplate给父类的setHibernateTemplate方法传入
         this.setHibernateTemplate(hibernateTemplate);
     }
 
@@ -70,8 +70,9 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     //查询用户总数，可用于分页
     @Override
-    public int findUserCount(UserMd user) {
-        return 0;
+    public Long findUserCount(UserMd user) {
+
+        return 0l;
     }
 
 }

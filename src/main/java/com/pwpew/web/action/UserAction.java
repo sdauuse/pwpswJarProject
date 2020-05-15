@@ -9,24 +9,22 @@ import com.pwpew.utils.FastJsonUtil;
 import com.pwpew.utils.VerifyCode;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * @author miaoyin
  * @date 2020/5/7 - 18:37
- * @commet:
+ * @commet: 用户使用的action
  */
 @Controller("userAction")
+@Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     @Autowired
@@ -80,6 +78,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     }
 
+    /**
+     * 实现验证码的获取
+     * @throws IOException
+     */
     public void vcode() throws IOException {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -93,5 +95,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         //静态方法，将验证码图片输出到前端
         VerifyCode.output(image, response.getOutputStream());
     }
+
+
 
 }

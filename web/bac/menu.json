@@ -14,9 +14,23 @@
 				},
 				{
 					"icon": "icon-log",
+					"menuid": "1_2",
+					"menuname": "通告",
+					"url": "views/notice.html"
+				}
+			]
+		},
+		{
+			"icon": "icon-sys",
+			"menuid": "1",
+			"menuname": "测试",
+			"url": "",
+			"menus": [
+				{
+					"icon": "icon-log",
 					"menuid": "1_1",
-					"menuname": "客户拜访",
-					"url": "views/salevisit.html"
+					"menuname": "test.action",
+					"url": "test.jsp"
 				}
 			]
 		},

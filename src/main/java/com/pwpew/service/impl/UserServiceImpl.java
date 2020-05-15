@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
     public List<TUser> findUser() {
         return  userDao.findUser();
     }
-
     @Override
     public UserMd getUserById(int userid) {
         UserMd user = new UserMd();
@@ -94,7 +93,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int findUserCount(UserMd user) {
-        return 0;
+    public Long findUserCount(UserMd user) {
+        return 0l;
     }
 }

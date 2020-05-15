@@ -8,4 +8,6 @@
     
     <include file="struts/struts-common.xml"></include>
     <include file="struts/struts-user.xml"></include>
+    <include file="struts/struts-notice.xml"></include>
+    <include file="struts/struts-admin.xml"></include>
 </struts>

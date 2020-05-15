@@ -21,5 +21,5 @@ public interface UserService {
     //分页查询用户
     public List<TUser> findUserByPage(UserMd user, int firstResult, int maxResults);
     //查询用户总数，用于分页
-    public int findUserCount(UserMd user);
+    public Long findUserCount(UserMd user);
 }
