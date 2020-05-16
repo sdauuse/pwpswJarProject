@@ -25,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public TAdministrator getAdmin(int id) {
-        return adminDao.getAdmin(id);
+    public TAdministrator getAdminById(int id) {
+        return adminDao.getAdminById(id);
     }
 }

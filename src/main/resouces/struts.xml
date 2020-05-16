@@ -10,4 +10,5 @@
     <include file="struts/struts-user.xml"></include>
     <include file="struts/struts-notice.xml"></include>
     <include file="struts/struts-admin.xml"></include>
+    <include file="struts/struts-message.xml"></include>
 </struts>

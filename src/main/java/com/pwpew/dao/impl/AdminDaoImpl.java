@@ -37,7 +37,7 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
     }
 
     @Override
-    public TAdministrator getAdmin(int id) {
+    public TAdministrator getAdminById(int id) {
         return this.getHibernateTemplate().get(TAdministrator.class,id);
     }
 }

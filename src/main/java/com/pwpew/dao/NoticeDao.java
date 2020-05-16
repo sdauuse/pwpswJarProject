@@ -20,8 +20,8 @@ public interface NoticeDao {
     public void deleteNotice(TNotice notice);
     public void insertNotice(TNotice notice);
 
-    //分页查询用户
+    //分页查询通告
     public List<TNotice> findNoticeByPage(NoticeMd noticeMd, int firstResult, int maxResults);
-    //查询用户总数，用于分页
+    //查询通告总数，用于分页
     public Long findNoticeCount(NoticeMd noticeMd);
 }

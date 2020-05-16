@@ -9,7 +9,7 @@ var _menus;
 $(function(){	
 	
 	$.ajax({
-		url:'../menu.json',
+		url:'menu.json',
 		dataType:'json',
 		contentType:'utf-8',
 		success:function(value){

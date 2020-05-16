@@ -84,14 +84,14 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
             //如果传过来的内容长度大于了512就报错
             if (CommonUtil.getWordCount(notice.getNtsMain()) > 512) {
 
-                String ajaxResult = FastJsonUtil.ajaxResult(false, "通告内容应小于等于256个汉字或512个字符,添加通告失败");
+                String ajaxResult = FastJsonUtil.ajaxResult(false, "通告内容应小于等于256个汉字或512个字符,修改通告失败");
                 FastJsonUtil.write_json(response, ajaxResult);
                 return;
             }
             noticeService.updateNotice(notice);
         } catch (Exception e) {
             e.printStackTrace();
-            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,添加通告失败");
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,修改通告失败");
             FastJsonUtil.write_json(response, ajaxResult);
             return;
         }

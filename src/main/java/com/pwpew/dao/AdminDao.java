@@ -15,5 +15,5 @@ public interface AdminDao {
     //增删改查
     //查询所有管理员
     public List<TAdministrator> findAdmin();
-    public TAdministrator getAdmin(int id);
+    public TAdministrator getAdminById(int id);
 }

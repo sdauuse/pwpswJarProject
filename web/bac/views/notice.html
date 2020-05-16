@@ -103,6 +103,8 @@
                 pageList: [1, 2, 3, 4, 10],
                 pageSize: 10,//初始每页显示记录数
                 rownumbers: true,//是否显示行号
+                striped:true,//是否显示斑马线效果。
+                singleSelect:true, //只能选择一样
                 toolbar: toolbar_v
             });
 
@@ -287,7 +289,7 @@
 <table id="grid"></table>
 
 <!-- 通知信息窗口 -->
-<div id="noticeWindow" class="easyui-window" title="通知信息" style="width:1000px;height:800px"
+<div id="noticeWindow" class="easyui-window" title="通知信息列表" style="width:1000px;height:800px"
      data-options="iconCls:'icon-save',modal:true,closed:true">
     <form id="noticeForm" method="post">
         <input name="ntsId" type="hidden">
