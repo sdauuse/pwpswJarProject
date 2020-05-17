@@ -45,7 +45,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         ArrayList<TUser> list = (ArrayList<TUser>) userService.findUser();
-
+        boolean flag = false;
         //从session重获取验证码
         String vcode = (String) request.getSession().getAttribute("vcode");
 
@@ -56,8 +56,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             // 输出json
             FastJsonUtil.write_json(response, ajaxResult);
             //终止执行
-            return ;
+            return;
         }
+
+
+
 
         //验证码正确后，核对用户名和密码
         for (TUser tUser : list) {
@@ -69,6 +72,21 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 //终止执行
                 return;
             }
+
+            //用于验证用户的用户名是否存在
+            if (tUser.getUsername().equals(user.getUsername())) {
+                flag = true;
+            }
+        }
+
+        //如果用户名不存在，直接向前端进行提示
+        if(flag == false){
+            // 向客户返回成功提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名不存在,请先注册");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
         }
 
         // 向客户返回成功提示
@@ -78,8 +96,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     }
 
+
     /**
      * 实现验证码的获取
+     *
      * @throws IOException
      */
     public void vcode() throws IOException {
@@ -95,7 +115,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         //静态方法，将验证码图片输出到前端
         VerifyCode.output(image, response.getOutputStream());
     }
-
 
 
 }
