@@ -28,7 +28,12 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public TMessage getMessageById(int id) {
-        return messageDao.getMessageById(id);
+
+        TMessage message = messageDao.getMessageById(id);
+        if(message.getUser().getUserPassword()!=null){
+            message.getUser().setUserPassword(null);
+        }
+        return message;
     }
 
     @Override

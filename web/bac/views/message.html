@@ -216,10 +216,11 @@
 
     <form id="messageForm" method="post">
         <input name="msgId" type="hidden">
+        <input name="user.userId" type="hidden">
         <table cellpadding="5">
             <tr>
                 <td>留言用户:</td>
-                <td><input type="text" name="user.userId" readonly></input></td>
+                <td><input type="text" name="user.username" readonly></input></td>
                 <td>留言日期:</td>
                 <td><input id="dd" name="msgDate" class="easyui-datetimebox" readonly></input></td>
             </tr>
