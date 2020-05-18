@@ -1,3 +1,8 @@
+<%@ page import="com.pwpew.service.NoticeService" %>
+<%@ page import="org.aspectj.bridge.MessageWriter" %>
+<%@ page import="com.pwpew.service.impl.NoticeServiceImpl" %>
+<%@ page import="com.pwpew.entity.TNotice" %>
+<%@ page import="com.pwpew.dao.impl.NoticeDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -30,7 +35,7 @@
 </head>
 <body>
 <div id="research">
-    <span id="research1"><img src="${pageContext.request.contextPath}/imgs/index/research_picture.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">这是最新的通告标题</a></span>
+    <span id="research1"><img src="${pageContext.request.contextPath}/imgs/index/research_picture.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/notice/noticeMain.action?ntsId=${latestNotice.ntsId}">${latestNotice.ntsHeadLine}</a></span>
     <span id="research2">
         <form action="" method="post">
           <input type="text" class="input1">&nbsp;<button type="button" class="btn btn-primary">搜索</button>

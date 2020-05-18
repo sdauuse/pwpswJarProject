@@ -20,6 +20,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -159,7 +160,23 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
         this.getHibernateTemplate().save(notice);
     }
 
-    //QBC查询,日期高级查询有问题。
+    //查询最新发布的通告
+    @Override
+    public TNotice findLatestNotice(NoticeMd noticeMd) {
+        //使用hql查询
+        StringBuffer queryString = new StringBuffer();
+        queryString.append("from TNotice t  order by ntsDate desc");
+        //定义List存放参数
+        List<Object> params = new ArrayList<Object>();
+
+        //拼装 查询条件
+        findNoticeCondition(noticeMd, queryString, params);
+        List list = this.getHibernateTemplate().find(queryString.toString(), params.toArray());
+        TNotice tNotice = (TNotice) list.get(0);
+        return tNotice;
+    }
+
+//QBC查询,日期高级查询有问题。
     /*   private void findNoticeCondition(DetachedCriteria detachedCriteria,NoticeMd noticeMd){
 
            if(noticeMd!=null){

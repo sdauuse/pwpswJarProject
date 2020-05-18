@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,34 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
     @Override
     public NoticeMd getModel() {
         return noticeMd;
+    }
+
+
+    public String noticeList(){
+        int page = noticeMd.getPage();
+        int rows = noticeMd.getRows();
+
+        int firestResult = (page-1)*rows;
+
+        List<TNotice> list = noticeService.findNoticeByPage(noticeMd,firestResult,rows);
+        int noticeCount = Math.toIntExact(noticeService.findNoticeCount(noticeMd));
+
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("list",list);
+        request.setAttribute("page",page);
+        request.setAttribute("noticeCount",noticeCount);
+        return "noticeSuccess";
+    }
+
+    public String noticeMain(){
+        int ntsId = noticeMd.getNtsId();
+        int page = noticeMd.getPage();
+        TNotice notice = noticeService.getNotice(ntsId);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("notice",notice);
+        request.setAttribute("page",page);
+        return "noticeMain";
     }
 
     /**
@@ -156,5 +185,12 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
 
         String jsonString = FastJsonUtil.ajaxResult(true,"删除成功");
         FastJsonUtil.write_json(response,jsonString);
+    }
+
+    public String latestNotice(){
+        TNotice latestNotice = noticeService.findLatestNotice(noticeMd);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("latestNotice",latestNotice);
+        return "latestNotice";
     }
 }

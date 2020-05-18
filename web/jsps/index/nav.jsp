@@ -64,7 +64,7 @@
 <body>
 <div id="nav">
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
+		<li><a href="${pageContext.request.contextPath}/notice/latestNotice.action">首页</a></li>
 		<li><a href="#">寻亲登记</a>
 			<div class="nav1">
 				<ul>
@@ -87,7 +87,7 @@
 				</ul>
 			</div>
 		</li>
-		<li><a href="${pageContext.request.contextPath}/jsps/notice/notice_list.jsp">网站通告</a></li>
+		<li><a href="${pageContext.request.contextPath}/notice/noticeList.action?page=1&rows=10">网站通告</a></li>
 	</ul>
 </div>
 </body>

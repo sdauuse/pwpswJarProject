@@ -85,4 +85,9 @@ public class NoticeServiceImpl implements NoticeService {
     public Long findNoticeCount(NoticeMd noticeMd) {
         return noticeDao.findNoticeCount(noticeMd);
     }
+
+    @Override
+    public TNotice findLatestNotice(NoticeMd noticeMd) {
+        return noticeDao.findLatestNotice(noticeMd);
+    }
 }
