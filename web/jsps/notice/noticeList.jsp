@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="com.pwpew.service.NoticeService" %>
 <%@ page import="com.pwpew.service.impl.NoticeServiceImpl" %>
 <%@ page import="com.pwpew.modeldriven.NoticeMd" %>
@@ -74,6 +75,8 @@
     int pagenum=0;
     request.setAttribute("maxPage",noticeCount/10+1);
 %>
+
+
 <jsp:include page="/jsps/index/picture_nav.jsp"/>
 
 <div id="notice_list">

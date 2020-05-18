@@ -4,6 +4,7 @@
 <%@ page import="com.pwpew.entity.TNotice" %>
 <%@ page import="com.pwpew.dao.impl.NoticeDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>搜索栏</title>
@@ -34,6 +35,7 @@
     </style>
 </head>
 <body>
+<s:action name="latestNotice" namespace="/notice"/>
 <div id="research">
     <span id="research1"><img src="${pageContext.request.contextPath}/imgs/index/research_picture.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/notice/noticeMain.action?ntsId=${latestNotice.ntsId}">${latestNotice.ntsHeadLine}</a></span>
     <span id="research2">
