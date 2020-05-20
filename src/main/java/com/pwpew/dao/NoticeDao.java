@@ -24,4 +24,6 @@ public interface NoticeDao {
     public List<TNotice> findNoticeByPage(NoticeMd noticeMd, int firstResult, int maxResults);
     //查询通告总数，用于分页
     public Long findNoticeCount(NoticeMd noticeMd);
+    //查询最新的通告
+    public TNotice findLatestNotice(NoticeMd noticeMd);
 }

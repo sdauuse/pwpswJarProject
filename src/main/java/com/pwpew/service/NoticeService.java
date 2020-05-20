@@ -24,4 +24,6 @@ public interface NoticeService {
     public List<TNotice> findNoticeByPage(NoticeMd noticeMd, int firstResult, int maxResults);
     //查询用户总数，用于分页
     public Long findNoticeCount(NoticeMd noticeMd);
+    //查询最新发布的通告
+    public TNotice findLatestNotice(NoticeMd noticeMd);
 }

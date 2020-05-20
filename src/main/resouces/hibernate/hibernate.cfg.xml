@@ -33,6 +33,8 @@
         <mapping resource="com/pwpew/entity/TNotice.hbm.xml"/>
         <mapping resource="com/pwpew/entity/TAdministrator.hbm.xml"/>
         <mapping resource="com/pwpew/entity/TMessage.hbm.xml"/>
+        <mapping class="com.pwpew.entity.TPost"/>
+        <mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
 
 
     </session-factory>

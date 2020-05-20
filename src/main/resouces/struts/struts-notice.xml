@@ -12,7 +12,10 @@
    -->
 
         <action name="*"  class="noticeAction" method="{1}">
+            <result name="noticeSuccess">/jsps/notice/noticeList.jsp</result>
+            <result name="noticeMain">/jsps/notice/notice.jsp</result>
             <!-- <result name.="success">/jsp/success.jsp</result>-->
+            <!--<result name="latestNotice">/index.jsp</result>-->
         </action>
     </package>
 </struts>
