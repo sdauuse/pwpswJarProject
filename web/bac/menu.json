@@ -3,7 +3,7 @@
 		{
 			"icon": "icon-sys",
 			"menuid": "1",
-			"menuname": "客户管理",
+			"menuname": "后台管理",
 			"url": "",
 			"menus": [
 				{
@@ -17,6 +17,12 @@
 					"menuid": "1_2",
 					"menuname": "通告",
 					"url": "views/notice.html"
+				},
+				{
+					"icon": "icon-log",
+					"menuid": "1_3",
+					"menuname": "帖子",
+					"url": "views/post.html"
 				}
 			]
 		},

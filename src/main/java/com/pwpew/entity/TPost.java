@@ -1,28 +1,58 @@
 package com.pwpew.entity;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Objects;
+import com.alibaba.fastjson.annotation.JSONField;
 
-@Entity
-@Table(name = "t_post", schema = "welfare_people_seeking")
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * @author miaoyin
+ * @date 2020/5/21 - 15:37
+ * @commet:
+ */
 public class TPost {
+
     private int postId;
     private String postType;
     private String postName;
     private String postGender;
     private Integer postAge;
+    //被寻人失联时间
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Timestamp missingtime;
+
     private String postProvince;
     private String postCity;
     private String postCountry;
     private String postStreet;
     private String postDescribe;
-    private int commentId;
-    private byte effectiveness;
+    private String effectiveness;
+    private String statue;
 
-    @Id
-    @Column(name = "postId", nullable = false)
+    //一个用户可以发表多个帖子,一个帖子只能由一个用户发布
+    private TUser user;
+    //一个帖子有多个评论，一个评论只能发表在一个帖子上
+    private Set<TComment> comments = new HashSet<TComment>();
+
+    public TUser getUser() {
+        return user;
+    }
+
+    public void setUser(TUser user) {
+        this.user = user;
+    }
+
+    public Set<TComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<TComment> comments) {
+        this.comments = comments;
+    }
+
+
     public int getPostId() {
         return postId;
     }
@@ -31,8 +61,6 @@ public class TPost {
         this.postId = postId;
     }
 
-    @Basic
-    @Column(name = "postType", nullable = false, length = 16)
     public String getPostType() {
         return postType;
     }
@@ -41,8 +69,6 @@ public class TPost {
         this.postType = postType;
     }
 
-    @Basic
-    @Column(name = "postName", nullable = true, length = 32)
     public String getPostName() {
         return postName;
     }
@@ -51,8 +77,6 @@ public class TPost {
         this.postName = postName;
     }
 
-    @Basic
-    @Column(name = "postGender", nullable = true, length = 4)
     public String getPostGender() {
         return postGender;
     }
@@ -61,8 +85,6 @@ public class TPost {
         this.postGender = postGender;
     }
 
-    @Basic
-    @Column(name = "postAge", nullable = true)
     public Integer getPostAge() {
         return postAge;
     }
@@ -71,8 +93,6 @@ public class TPost {
         this.postAge = postAge;
     }
 
-    @Basic
-    @Column(name = "missingtime", nullable = true)
     public Timestamp getMissingtime() {
         return missingtime;
     }
@@ -81,8 +101,6 @@ public class TPost {
         this.missingtime = missingtime;
     }
 
-    @Basic
-    @Column(name = "postProvince", nullable = true, length = 32)
     public String getPostProvince() {
         return postProvince;
     }
@@ -91,8 +109,6 @@ public class TPost {
         this.postProvince = postProvince;
     }
 
-    @Basic
-    @Column(name = "postCity", nullable = true, length = 32)
     public String getPostCity() {
         return postCity;
     }
@@ -101,8 +117,6 @@ public class TPost {
         this.postCity = postCity;
     }
 
-    @Basic
-    @Column(name = "postCountry", nullable = true, length = 32)
     public String getPostCountry() {
         return postCountry;
     }
@@ -111,8 +125,6 @@ public class TPost {
         this.postCountry = postCountry;
     }
 
-    @Basic
-    @Column(name = "postStreet", nullable = true, length = 32)
     public String getPostStreet() {
         return postStreet;
     }
@@ -121,8 +133,6 @@ public class TPost {
         this.postStreet = postStreet;
     }
 
-    @Basic
-    @Column(name = "postDescribe", nullable = true, length = 128)
     public String getPostDescribe() {
         return postDescribe;
     }
@@ -131,24 +141,20 @@ public class TPost {
         this.postDescribe = postDescribe;
     }
 
-    @Basic
-    @Column(name = "commentId", nullable = false)
-    public int getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
-    }
-
-    @Basic
-    @Column(name = "effectiveness", nullable = false)
-    public byte getEffectiveness() {
+    public String getEffectiveness() {
         return effectiveness;
     }
 
-    public void setEffectiveness(byte effectiveness) {
+    public void setEffectiveness(String effectiveness) {
         this.effectiveness = effectiveness;
+    }
+
+    public String getStatue() {
+        return statue;
+    }
+
+    public void setStatue(String statue) {
+        this.statue = statue;
     }
 
     @Override
@@ -157,7 +163,6 @@ public class TPost {
         if (o == null || getClass() != o.getClass()) return false;
         TPost tPost = (TPost) o;
         return postId == tPost.postId &&
-                commentId == tPost.commentId &&
                 effectiveness == tPost.effectiveness &&
                 Objects.equals(postType, tPost.postType) &&
                 Objects.equals(postName, tPost.postName) &&
@@ -168,11 +173,12 @@ public class TPost {
                 Objects.equals(postCity, tPost.postCity) &&
                 Objects.equals(postCountry, tPost.postCountry) &&
                 Objects.equals(postStreet, tPost.postStreet) &&
-                Objects.equals(postDescribe, tPost.postDescribe);
+                Objects.equals(postDescribe, tPost.postDescribe) &&
+                Objects.equals(statue, tPost.statue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, postType, postName, postGender, postAge, missingtime, postProvince, postCity, postCountry, postStreet, postDescribe, commentId, effectiveness);
+        return Objects.hash(postId, postType, postName, postGender, postAge, missingtime, postProvince, postCity, postCountry, postStreet, postDescribe, effectiveness, statue);
     }
 }

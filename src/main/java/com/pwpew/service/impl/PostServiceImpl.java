@@ -1,0 +1,73 @@
+package com.pwpew.service.impl;
+
+import com.pwpew.dao.PostDao;
+import com.pwpew.entity.TPost;
+import com.pwpew.modeldriven.PostMd;
+import com.pwpew.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author miaoyin
+ * @date 2020/5/21 - 14:31
+ * @commet:
+ */
+@Service("postService")
+public class PostServiceImpl implements PostService {
+
+    @Autowired
+    private PostDao postDao;
+
+    @Override
+    public List<TPost> findPostList() {
+        return null;
+    }
+
+    @Override
+    public TPost getPostById(int postId) {
+        TPost post = postDao.getPostById(postId);
+        post.getUser().setUserPassword(null);
+        return post;
+    }
+
+    @Override
+    public void insertPost(TPost post) {
+
+    }
+
+    @Override
+    public void deletePost(TPost post) {
+
+        postDao.deletePost(post);
+    }
+
+    @Override
+    public void updatePost(TPost post) {
+
+        postDao.updatePost(post);
+    }
+
+    @Override
+    public List<TPost> findPostByPage(PostMd postMd, int firstResult, int maxResults) {
+        List<TPost> list = postDao.findPostByPage(postMd, firstResult, maxResults);
+
+        for (TPost post:list) {
+            post.getUser().setUserPassword(null);
+        }
+
+        return  list;
+    }
+
+    @Override
+    public Long findPostCount(PostMd postMd) {
+        return postDao.findPostCount(postMd);
+    }
+
+    @Override
+    public void updateStatueAndEff(PostMd postMd) {
+
+        postDao.updateStatueAndEff(postMd);
+    }
+}

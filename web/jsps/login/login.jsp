@@ -116,7 +116,7 @@
                     //alert(data.message);
                     window.location.replace("${pageContext.request.contextPath}/jsps/success.jsp");
                     //2.使用href来跳转
-                    //window.location.href = "http://www.baidu.com";
+                    //window.location.href = "${pageContext.request.contextPath}/jsps/success.jsp";
                 }
             }
         });

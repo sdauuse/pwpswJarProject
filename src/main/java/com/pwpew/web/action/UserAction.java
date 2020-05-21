@@ -38,6 +38,14 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return user;
     }
 
+    public String  list(){
+
+        TUser user = userService.getUserById(1);
+
+        ServletActionContext.getRequest().setAttribute("username",user.getUsername());
+
+        return "ok";
+    }
 
     public void verifyUser() throws IOException {
 

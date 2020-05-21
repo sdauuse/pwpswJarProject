@@ -61,7 +61,10 @@ public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
         //先进行查询再删除
         message = this.getHibernateTemplate().get(TMessage.class, message.getMsgId());
 
-        this.getHibernateTemplate().delete(message);
+        if(message != null){
+            this.getHibernateTemplate().delete(message);
+        }
+
     }
 
     @Override

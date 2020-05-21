@@ -27,10 +27,10 @@ public class UserServiceImpl implements UserService {
         return  userDao.findUser();
     }
     @Override
-    public UserMd getUserById(int userid) {
+    public TUser getUserById(int userid) {
         UserMd user = new UserMd();
         user.setUserId(userid);
-        return (UserMd) userDao.getUser(user);
+        return userDao.getUser(user);
     }
     @Override
     public void updateUser(int userid, UserMd user) {

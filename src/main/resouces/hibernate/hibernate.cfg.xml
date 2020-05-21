@@ -28,14 +28,16 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/welfare_people_seeking</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
-        <!-- 加载映射文件 -->
+		<!-- 加载映射文件 -->
         <mapping resource="com/pwpew/entity/TUser.hbm.xml"/>
         <mapping resource="com/pwpew/entity/TNotice.hbm.xml"/>
         <mapping resource="com/pwpew/entity/TAdministrator.hbm.xml"/>
         <mapping resource="com/pwpew/entity/TMessage.hbm.xml"/>
-        <mapping class="com.pwpew.entity.TPost"/>
-        <mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
+		<mapping resource="com/pwpew/entity/TComment.hbm.xml"/>
+		<mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
+		<mapping resource="com/pwpew/entity/TDatadict.hbm.xml"/>
+		<mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
 
 
-    </session-factory>
+	</session-factory>
 </hibernate-configuration>

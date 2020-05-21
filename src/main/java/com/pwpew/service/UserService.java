@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface UserService {
     public List<TUser> findUser();
-    public UserMd getUserById(int userid);
+    public TUser getUserById(int userid);
     public void updateUser(int userid,UserMd user);
     public void deleteUserById(int userid);
     public void insertUser(UserMd user) throws InvocationTargetException, IllegalAccessException;

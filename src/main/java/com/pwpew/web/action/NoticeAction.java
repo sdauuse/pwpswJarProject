@@ -187,6 +187,8 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
         FastJsonUtil.write_json(response,jsonString);
     }
 
+
+
     public String latestNotice(){
         TNotice latestNotice = noticeService.findLatestNotice(noticeMd);
         HttpServletRequest request = ServletActionContext.getRequest();
