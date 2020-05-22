@@ -49,6 +49,13 @@
             <column name="userId" not-null="true"></column>
         </many-to-one>
 
+        <set name="comments" table="t_comment"  fetch="select" cascade="delete">
+            <key>
+                <column name="postId" not-null="true"></column>
+            </key>
+            <one-to-many class="com.pwpew.entity.TComment" />
+        </set>
+
         <!--<set name="comments" inverse="true" fetch="select" cascade="delete">
             <key>
                 <column name="commentId"></column>

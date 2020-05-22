@@ -34,15 +34,16 @@ public class TPost {
     //一个用户可以发表多个帖子,一个帖子只能由一个用户发布
     private TUser user;
 
-    /* //一个帖子有多个评论，一个评论只能发表在一个帖子上
-     private Set<TComment> comments = new HashSet<TComment>();
+    //一个帖子有多个评论，一个评论只能发表在一个帖子上
+    private Set<TComment> comments = new HashSet<TComment>();
+
     public Set<TComment> getComments() {
         return comments;
     }
 
-     public void setComments(Set<TComment> comments) {
-         this.comments = comments;
-     }*/
+    public void setComments(Set<TComment> comments) {
+        this.comments = comments;
+    }
 
     public TUser getUser() {
         return user;
