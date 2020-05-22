@@ -17,6 +17,24 @@ public class TUser {
     private String userCity;
     private String userPhone;
     private String email;
+    private String userPicture;
+    private String userNickname;
+
+    public String getUserPicture() {
+        return userPicture;
+    }
+
+    public void setUserPicture(String userPicture) {
+        this.userPicture = userPicture;
+    }
+
+    public String getUserNickname() {
+        return userNickname;
+    }
+
+    public void setUserNickname(String userNickname) {
+        this.userNickname = userNickname;
+    }
 
     public int getUserId() {
         return userId;

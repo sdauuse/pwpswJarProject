@@ -49,11 +49,11 @@
             <column name="userId" not-null="true"></column>
         </many-to-one>
 
-        <set name="comments" inverse="true" fetch="select" cascade="delete">
+        <!--<set name="comments" inverse="true" fetch="select" cascade="delete">
             <key>
                 <column name="commentId"></column>
             </key>
             <one-to-many class="com.pwpew.entity.TComment"/>
-        </set>
+        </set>-->
     </class>
 </hibernate-mapping>

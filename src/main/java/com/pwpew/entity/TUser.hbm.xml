@@ -32,5 +32,11 @@
         <property name="email">
             <column name="email" sql-type="varchar(32)" length="32" />
         </property>
+        <property name="userPicture">
+            <column name="userPicture" sql-type="varchar(48)" length="48" />
+        </property>
+        <property name="userNickname">
+            <column name="userNickname" sql-type="varchar(48)" length="48" />
+        </property>
     </class>
 </hibernate-mapping>

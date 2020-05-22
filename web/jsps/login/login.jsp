@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>登录页</title>
+    <title>登录页面</title>
 
     <link href="${pageContext.request.contextPath}/css/base.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/login/login.css" rel="stylesheet">
@@ -22,6 +22,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bac/static/uimaker/js/jquery.min.js"></script>
     <%-- <meta http-equiv="Access-Control-Allow-Origin" content="*">--%>
 </head>
 
@@ -88,7 +89,7 @@
 
 </body>
 </html>
-<script type="text/javascript" src="../../bac/static/uimaker/js/jquery.min.js"></script>
+
 <script type="text/javascript">
 
     //用户登录ajax请求
@@ -122,7 +123,7 @@
         });
     }
 
-    //志愿者登录
+    //管理员登录
     function doFind2() {
         $.ajax({
             cache: false,

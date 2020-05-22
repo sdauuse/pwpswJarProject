@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isNotEmpty(tUser.getUsername()) && StringUtils.isNotEmpty(tUser.getUserPassword())
                 && StringUtils.isNotEmpty(tUser.getUserGender()) && StringUtils.isNotEmpty(tUser.getUserCity())
                 && StringUtils.isNotEmpty(tUser.getUserProvince()) && StringUtils.isNotEmpty(tUser.getUserPhone())
-                && tUser.getUserAge() >= 0) {
+                && tUser.getUserAge() >= 0 && StringUtils.isNotEmpty(tUser.getUserNickname()) ) {
 
             userDao.insertUser(tUser);
         } else {
