@@ -52,7 +52,7 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
 
-        queryString.append("from TNotice t  where 1=1 ");
+        queryString.append("from TNotice t  where 1=1 order by ntsDate desc ");
         //定义List存放参数
         List<Object> params = new ArrayList<Object>();
 
@@ -173,6 +173,34 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
         //拼装 查询条件
         findNoticeCondition(noticeMd, queryString, params);
         List list = this.getHibernateTemplate().find(queryString.toString(), params.toArray());
+        TNotice tNotice = (TNotice) list.get(0);
+        return tNotice;
+    }
+
+    //查询上一条通告
+    @Override
+    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId) {
+        //使用hql查询
+        StringBuffer queryString = new StringBuffer();
+        queryString.append("from TNotice t where t.ntsId > ?  order by ntsId");
+        List list = this.getHibernateTemplate().find(queryString.toString(), ntsId);
+        if(list.size()==0){
+            return null;
+        }
+        TNotice tNotice = (TNotice) list.get(0);
+        return tNotice;
+    }
+
+    //查询下一条通告
+    @Override
+    public TNotice findNextNotice(NoticeMd noticeMd,int ntsId) {
+        //使用hql查询
+        StringBuffer queryString = new StringBuffer();
+        queryString.append("from TNotice t where t.ntsId < ?  order by ntsDate desc");
+        List list = this.getHibernateTemplate().find(queryString.toString(), ntsId);
+        if(list.size()==0){
+            return null;
+        }
         TNotice tNotice = (TNotice) list.get(0);
         return tNotice;
     }

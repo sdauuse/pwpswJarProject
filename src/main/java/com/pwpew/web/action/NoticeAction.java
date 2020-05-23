@@ -42,6 +42,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
     }
 
 
+    /*获取通告列表信息并跳转到通告列表界面*/
     public String noticeList(){
         int page = noticeMd.getPage();
         int rows = noticeMd.getRows();
@@ -59,15 +60,54 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
         return "noticeSuccess";
     }
 
+    /*获取通告内容并跳转到通告内容界面*/
     public String noticeMain(){
         int ntsId = noticeMd.getNtsId();
         int page = noticeMd.getPage();
         TNotice notice = noticeService.getNotice(ntsId);
+
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("notice",notice);
         request.setAttribute("page",page);
         return "noticeMain";
     }
+
+    /*获取上一条通告内容并跳转到通告内容界面*/
+    public String Lastnotice(){
+        int page = noticeMd.getPage();
+        if(noticeService.findLastNotice(noticeMd,noticeMd.getNtsId())==null){
+            TNotice notice1 = noticeService.getNotice(noticeMd.getNtsId());
+            HttpServletRequest request = ServletActionContext.getRequest();
+            request.setAttribute("notice",notice1);
+            request.setAttribute("page",page);
+            return "Lastnotice";
+
+        }
+        TNotice notice = noticeService.findLastNotice(noticeMd,noticeMd.getNtsId());
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("notice",notice);
+        request.setAttribute("page",page);
+        return "Lastnotice";
+    }
+
+    /*获取下一条通告内容并跳转到通告内容界面*/
+    public String Nextnotice(){
+        int page = noticeMd.getPage();
+        if(noticeService.findNextNotice(noticeMd,noticeMd.getNtsId())==null){
+            TNotice notice1 = noticeService.getNotice(noticeMd.getNtsId());
+            HttpServletRequest request = ServletActionContext.getRequest();
+            request.setAttribute("notice",notice1);
+            request.setAttribute("page",page);
+            return "Nextnotice";
+
+        }
+        TNotice notice = noticeService.findNextNotice(noticeMd,noticeMd.getNtsId());
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("notice",notice);
+        request.setAttribute("page",page);
+        return "Nextnotice";
+    }
+
 
     /**
      * easyui查询通告

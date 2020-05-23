@@ -16,6 +16,8 @@ public class NoticeMd extends TNotice {
     private int rows;
     private Timestamp ntsDate_end;
 
+
+
     public Timestamp getNtsDate_end() {
         return ntsDate_end;
     }
