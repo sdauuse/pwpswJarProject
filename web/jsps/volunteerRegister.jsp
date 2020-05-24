@@ -25,7 +25,7 @@
 
     <div class="vol_center">
         <div class="vol_form"><%--定义表单--%>
-            <form action="#" method="get" id="form">
+            <form action="${pageContext.request.contextPath}/volunteer/volunteerRegister.action" method="post" id="form">
                 <table>
                     <tr>
                         <td class="td_left"><label for="volname">志愿者姓名</label></td>
@@ -57,9 +57,9 @@
                     </tr>
                     <tr data-toggle="distpicker">
                         <td class="td_left"><label>省份</label></td>
-                        <td class="td_right "><select id="province1" name="userProvince"></select></td>
+                        <td class="td_right "><select id="province1" name="volProvince"></select></td>
                         <td class="td_left"><label>城市</label></td>
-                        <td class="td_right"><select id="city1" name="userCity"></select></td>
+                        <td class="td_right"><select id="city1" name="volCity"></select></td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="voldetailAddr">详细地址</label></td>
@@ -85,7 +85,7 @@
                     <tr>
                         <td class="td_left"><label for="volQQ">QQ号</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="volQQ" id="volQQ" placeholder="请输入QQ号">
+                            <input type="text" name="volQq" id="volQQ" placeholder="请输入QQ号">
                             <span id="s_volQQ" class="error"></span>
                         </td>
                     </tr>
@@ -112,7 +112,7 @@
     <%--end中间浮动结束--%>
 
     <div class="vol_right">
-        <p id="have_account">已有账号 <a href="#">立即登录</a></p>
+        <p id="have_account">已有账号 <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">立即登录</a></p>
     </div>
     <%--end右浮动结束--%>
 </div>
