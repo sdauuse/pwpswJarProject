@@ -70,4 +70,9 @@ public class PostServiceImpl implements PostService {
 
         postDao.updateStatueAndEff(postMd);
     }
+
+    @Override
+    public List<TPost> getPostByPostType(String postType, int maxResults, int firstResult) {
+        return postDao.getPostByPostType(postType,maxResults,firstResult);
+    }
 }

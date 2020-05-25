@@ -10,7 +10,7 @@
        采用 struts2 和spring整合方案1，action由spring来管理，在class上指定spring容器中action的bean id
          -->
         <action name="*" class="postAction" method="{1}">
-
+            <result name="showPostOfIndex">/jsps/index/mainContent.jsp</result>
         </action>
     </package>
 </struts>

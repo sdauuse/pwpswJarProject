@@ -30,6 +30,7 @@ public class TPost {
     private String postDescribe;
     private String effectiveness;
     private String statue;
+    private String postPicture;
 
     //一个用户可以发表多个帖子,一个帖子只能由一个用户发布
     private TUser user;
@@ -156,6 +157,14 @@ public class TPost {
 
     public void setStatue(String statue) {
         this.statue = statue;
+    }
+
+    public String getPostPicture() {
+        return postPicture;
+    }
+
+    public void setPostPicture(String postPicture) {
+        this.postPicture = postPicture;
     }
 
     @Override

@@ -27,4 +27,7 @@ public interface PostService {
 
     //修改帖子状态，相当于是否删除帖子, status 0为删除，1为正常
     public void updateStatueAndEff(PostMd postMd);
+
+    //获取特定类型的帖子,maxResults是查询数目，firstResult是查询起始索引，从0开始
+    public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult);
 }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -72,12 +74,12 @@
         .content-right ul li {
             list-style-type: none;
         }
-
     </style>
 
 </head>
 
 <body>
+<s:action name="showPostOfIndex" namespace="/post"/>
 
 <script>
     <!--
@@ -110,23 +112,17 @@
         <%--家寻宝贝左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">家寻宝贝左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">家寻宝贝左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList1}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--家寻宝贝右边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">家寻宝贝右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">家寻宝贝右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">家寻宝贝右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList2}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -136,23 +132,17 @@
         <%--家寻宝贝左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">宝贝寻家左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">宝贝寻家左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList3}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--家寻宝贝右边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">家寻宝贝右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">宝贝寻家右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">宝贝寻家右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList4}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -162,23 +152,17 @@
         <%--流浪乞丐左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">流浪乞丐左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">流浪乞丐左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList5}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--流浪乞丐左边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">流浪乞丐右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">流浪乞丐右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">流浪乞丐右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList6}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -188,23 +172,17 @@
         <%--活动报告左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">活动报告左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">活动报告左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList7}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--活动报告右边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">活动报告右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">活动报告右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">活动报告右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList8}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -214,23 +192,17 @@
         <%--打拐政策左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">打拐政策左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">打拐政策左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList9}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--打拐政策右边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">打拐政策右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">打拐政策右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">打拐政策右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList10}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -240,23 +212,17 @@
         <%--志愿者指南左边内容--%>
         <div class="content-left">
             <ul>
-                <li><a href="#" class="li-top">志愿者指南左边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">志愿者指南左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南左边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList11}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
         <%--打志愿者指南右边内容--%>
         <div class="content-right">
             <ul>
-                <li><a href="#" class="li-top">志愿者指南右边内容</a>&nbsp;<span>2020-05-02</span></li>
-                <li><a href="#">志愿者指南右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
-                <li><a href="#">志愿者指南右边内容</a>&nbsp;<span class="li_right">2020-05-02</span></li>
+                <c:forEach items="${postList12}" var="i">
+                    <li><a href="#">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
