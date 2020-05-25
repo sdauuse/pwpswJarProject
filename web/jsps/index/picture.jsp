@@ -56,8 +56,8 @@
     </div>
 
     <div id="login_register">
-        <a href="#">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">注册</a>
+        <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/jsps/user_register.jsp">注册</a>
     </div>
 </div>
 </body>
