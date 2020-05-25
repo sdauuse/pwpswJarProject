@@ -121,7 +121,7 @@ function checkVolIdCard() {
     var ai;
     var sum=0;
     for(var i=0;i<18;i++){
-        if(volIdCard.charAt(i)=="x"){
+        if(volIdCard.charAt(i)=="x"||volIdCard.charAt(i)=="X"){
             ai=10;
         }else{
             ai=parseInt(volIdCard.charAt(i));

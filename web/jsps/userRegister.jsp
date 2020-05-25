@@ -25,13 +25,20 @@
 
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="#" method="get" id="form">
+            <form action="${pageContext.request.contextPath}/user/userRegister.action" method="post" id="form">
                 <table>
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="username" id="username" placeholder="请输入用户名">
                             <span id="s_username" class="error"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left"><label for="userNickname">昵称</label></td>
+                        <td class="td_right" colspan="3">
+                            <input type="text" name="userNickname" id="userNickname" placeholder="请输入昵称">
+                            <span id="s_userNickname" class="error"></span>
                         </td>
                     </tr>
                     <tr>
@@ -100,7 +107,7 @@
     <%--end中间浮动结束--%>
 
     <div class="rg_right">
-        <p id="have_account">已有账号 <a href="#">立即登录</a></p>
+        <p id="have_account">已有账号 <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">立即登录</a></p>
     </div>
     <%--end右浮动结束--%>
 </div>

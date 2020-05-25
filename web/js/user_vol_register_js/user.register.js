@@ -1,10 +1,11 @@
 window.onload = function () {
     document.getElementById("form").onsubmit = function () {
         //调用用户校验方法  checkUsername():
-        return checkUsername() && checkUserPassword() && checkUserAge() && checkUserPhone() && checkEmail();
+        return checkUsername() && checkUserNickname() && checkUserPassword() && checkUserAge() && checkUserPhone() && checkEmail();
     }
     // 给输入框绑定离焦事件
     document.getElementById("username").onblur = checkUsername;
+    document.getElementById("userNickname").onblur = checkUserNickname;
     document.getElementById("userPassword").onblur = checkUserPassword;
     document.getElementById("userAge").onblur = checkUserAge;
     document.getElementById("userPhone").onblur = checkUserPhone;
@@ -111,6 +112,24 @@ function checkUsername() {
     } else {
         //提示错误
         s_username.innerHTML = "用户名格式有误";
+    }
+    return flag;
+}
+//校验昵称
+function checkUserNickname() {
+    var userNickname = document.getElementById("userNickname").value;
+    //定义正则表达式
+    var reg_userNickname = /^\w{4,12}$/;
+    // 判断是否符合正则表达式的规则
+    var flag = reg_userNickname.test(userNickname);
+    //提示信息
+    var s_userNickname = document.getElementById("s_userNickname");
+    if (flag) {
+        //提示正确
+        s_userNickname.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
+    } else {
+        //提示错误
+        s_userNickname.innerHTML = "用户名格式有误";
     }
     return flag;
 }
