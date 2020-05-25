@@ -44,6 +44,16 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         return post;
     }
 
+    //获取特定类型的帖子
+    public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult){
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from TPost where postType = ? and effectiveness = '1' and statue = '1' order by postId desc").setParameter(0, postType);
+        query.setMaxResults(maxResults);
+        query.setFirstResult(firstResult);
+        List<TPost> list = query.list();
+        return list;
+    }
+
     // 发帖
     public void insertPost(TPost post) {
         session = this.getSessionFactory().getCurrentSession();
