@@ -90,4 +90,14 @@ public class NoticeServiceImpl implements NoticeService {
     public TNotice findLatestNotice(NoticeMd noticeMd) {
         return noticeDao.findLatestNotice(noticeMd);
     }
+
+    @Override
+    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId) {
+        return noticeDao.findLastNotice(noticeMd,ntsId);
+    }
+
+    @Override
+    public TNotice findNextNotice(NoticeMd noticeMd, int ntsId) {
+        return noticeDao.findNextNotice(noticeMd,ntsId);
+    }
 }

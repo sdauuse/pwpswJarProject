@@ -29,7 +29,7 @@
         #notice_list ul li  a:link,a:visited,a:active{
             color: cornflowerblue;
         }
-        #notice_list a:hover{
+        #notice_list ul li  a:hover{
             color: red;
         }
         .span1{

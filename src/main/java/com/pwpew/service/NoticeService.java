@@ -26,4 +26,8 @@ public interface NoticeService {
     public Long findNoticeCount(NoticeMd noticeMd);
     //查询最新发布的通告
     public TNotice findLatestNotice(NoticeMd noticeMd);
+    //查询上一条通告
+    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId);
+    //查询下一条通告
+    public TNotice findNextNotice(NoticeMd noticeMd,int ntsId);
 }
