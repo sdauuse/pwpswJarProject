@@ -11,6 +11,8 @@
          -->
         <action name="*" class="postAction" method="{1}">
             <result name="showPostOfIndex">/jsps/index/mainContent.jsp</result>
+            <result name="postList">jsps/posts/postList.jsp</result>
+            <result name="post">jsps/posts/post.jsp</result>
         </action>
     </package>
 </struts>

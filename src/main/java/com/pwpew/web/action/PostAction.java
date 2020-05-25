@@ -1,5 +1,6 @@
 package com.pwpew.web.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TNotice;
@@ -105,10 +106,25 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         FastJsonUtil.write_json(response,jsonString);
     }
 
+    // 显示帖子
+    public String showPost(int postId) {
+        TPost post = postService.getPostById(postId);
+        ActionContext.getContext().getSession().put("post", post);
+//        TPost post1 = (TPost) ActionContext.getContext().getSession().get("")
 
-    public String showPost() {
+        return "showPost";
+    }
 
-        return SUCCESS;
+    // 显示帖子列表
+    public String showPostList(){
+        List<TPost> postList = postService.findPostList();
+        // 若session中已存在所有帖子集合，则将之删除
+        if(ActionContext.getContext().getSession().containsKey("postList")){
+            ActionContext.getContext().getSession().remove("postList");
+        }
+        ActionContext.getContext().getSession().put("postList", postList);
+        TPost post = (TPost) ActionContext.getContext().getSession().get("postList");
+        return "postList";
     }
 
 
