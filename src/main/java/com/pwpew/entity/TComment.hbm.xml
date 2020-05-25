@@ -14,5 +14,11 @@
         <property name="commentTime">
             <column name="commentTime" sql-type="varchar(32)" length="32"/>
         </property>
+        <property name="postId">
+            <column name="postId" sql-type="int(32)"></column>
+        </property>
+        <many-to-one name="user" class="com.pwpew.entity.TUser">
+            <column name="userId"></column>
+        </many-to-one>
     </class>
 </hibernate-mapping>

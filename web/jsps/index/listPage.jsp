@@ -68,7 +68,7 @@
         <div id="con_nav2_4" style="display: none" class="nav_list">
             <c:forEach items="${informationList4}" var="i">
                 <div class="course">
-                    <a href="#"><img src="/upload/${i.postPicture}" alt="HTML"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
                     <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
@@ -79,7 +79,7 @@
         <div id="con_nav2_5" style="display: none" class="nav_list">
             <c:forEach items="${informationList5}" var="i">
                 <div class="course">
-                    <a href="#"><img src="/upload/${i.postPicture}" alt="HTML"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
                     <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>

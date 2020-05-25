@@ -11,6 +11,26 @@ public class TComment {
     private int commentId;
     private String comments;
     private String commentTime;
+    private int postId;
+
+    //一个用户可以有多个评论,一个评论只能由一个用户创建
+    private TUser user;
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public TUser getUser() {
+        return user;
+    }
+
+    public void setUser(TUser user) {
+        this.user = user;
+    }
 
     public int getCommentId() {
         return commentId;

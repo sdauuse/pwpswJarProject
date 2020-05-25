@@ -12,7 +12,7 @@
        请求add.action，*匹配了add，{1}表示第一个匹配串
    -->
         <action name="*"  class="userAction" method="{1}">
-            <result name="userLogin">/jsps/login/login.jsp</result>
+           <!-- <result name="success">/jsp/success.jsp</result>-->
 
             <!--<result name="ok">welcome.jsp</result>-->
         </action>

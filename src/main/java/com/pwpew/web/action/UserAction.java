@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -167,10 +166,4 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             return;
         }
     }
-    //    用户注册方法
-    public String userRegister() throws InvocationTargetException, IllegalAccessException {
-        userService.insertUser(userMd);
-        return "userLogin";
-    }
-
 }

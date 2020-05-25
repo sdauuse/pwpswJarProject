@@ -16,12 +16,34 @@ public class UserMd extends TUser {
     //验证码
     private String verifyCode;
 
+    // easyUi分页参数
+    private int page;
+    private int rows;
+
     //客户端上传的图片，只要此属性有值说明客户端上传图片成功
     private File picture;
     //获取原始文件名称,命名规则：页面上file的名称+FileName
     private String pictureFileName;
     //获取原始文件类型，命名规则：页面上file的名称+ContentType
     private String pictureContentType;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+
 
     public File getPicture() {
         return picture;
