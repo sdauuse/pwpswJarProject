@@ -34,6 +34,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
     public void list() {
+
         //获取页码
         int page = postMd.getPage();
         //获取每页显示多少数据

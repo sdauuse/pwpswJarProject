@@ -5,6 +5,7 @@ import java.io.File;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TUser;
+import com.pwpew.modeldriven.PostMd;
 import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
@@ -129,7 +130,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
 
     public void submitpicture() {
-
         try {
             // 判断是否上传成功
             // 上传成功的图片，文件默认在tomcat的临时目录 中
