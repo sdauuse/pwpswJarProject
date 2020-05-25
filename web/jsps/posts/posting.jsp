@@ -15,7 +15,7 @@
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
 <div id="postListPage">
     <div class="postList">
-        <form action="#" method="post">
+        <form action="${pageContext.request.contextPath}/post/posting.action" method="post">
             <table align="center">
                 <tr>
                     <td>寻亲类型：</td>
@@ -60,9 +60,6 @@
         </form>
     </div>
 </div>
-
-
-
 
 
 <jsp:include page="/jsps/index/footer.jsp"/><%--页脚--%>

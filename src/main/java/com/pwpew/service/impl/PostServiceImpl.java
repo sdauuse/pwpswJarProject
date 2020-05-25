@@ -1,6 +1,7 @@
 package com.pwpew.service.impl;
 
 import com.pwpew.dao.PostDao;
+import com.pwpew.dao.impl.PostDaoImpl;
 import com.pwpew.entity.TPost;
 import com.pwpew.modeldriven.PostMd;
 import com.pwpew.service.PostService;
@@ -22,7 +23,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<TPost> findPostList() {
-        return null;
+        return postDao.findPostList();
     }
 
     @Override
@@ -35,6 +36,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public void insertPost(TPost post) {
 
+        postDao.insertPost(post);
     }
 
     @Override

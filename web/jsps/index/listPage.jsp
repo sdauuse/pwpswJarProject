@@ -1,5 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,8 +17,6 @@
     </script>
 </head>
 <body>
-<s:action name="showWantedInformationOfIndex" namespace="/post"/>
-
 <div class="course_list">
     <div class="course_nav">
         <a id="nav2_1" onmousemove="setTab('nav2_',1,5)" class="selected" href="#">家寻宝贝</a>
@@ -33,62 +29,142 @@
     <div class="course_container">
         <!-- 家寻宝贝内容 -->
         <div  id="con_nav2_1" class="nav_list">
-            <c:forEach items="${informationList1}" var="i">
-                <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
-                    <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
-                    <span class="number">323</span>
-                </div>
-            </c:forEach>
+            <div class="course">
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course">
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course">
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course">
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
         </div>
         <!-- 宝贝寻家内容 -->
         <div id="con_nav2_2" style="display: none" class="nav_list">
-            <c:forEach items="${informationList2}" var="i">
-                <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
-                    <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
-                    <span class="number">323</span>
-                </div>
-            </c:forEach>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people2.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people2.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people2.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people2.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
         </div>
         <!--流浪乞讨内容 -->
         <div id="con_nav2_3" style="display: none" class="nav_list">
-            <c:forEach items="${informationList3}" var="i">
-                <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
-                    <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
-                    <span class="number">323</span>
-                </div>
-            </c:forEach>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people3.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people3.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people3.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people3.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
         </div>
         <!--海外寻人内容 -->
         <div id="con_nav2_4" style="display: none" class="nav_list">
-            <c:forEach items="${informationList4}" var="i">
-                <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
-                    <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
-                    <span class="number">323</span>
-                </div>
-            </c:forEach>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
         </div>
         <!--其他寻人内容 -->
         <div id="con_nav2_5" style="display: none" class="nav_list">
-            <c:forEach items="${informationList5}" var="i">
-                <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
-                    <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
-                    <span class="number">323</span>
-                </div>
-            </c:forEach>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/wanted.png" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/wanted.png" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/wanted.png" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
+            <div class="course" >
+                <a href="#"><img src="${pageContext.request.contextPath}/imgs/index/wanted.png" alt="HTML"></a>
+                <span class="course_title"><a href="#">章北海 辽宁省 走失</a></span>
+                <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
+                <span class="number">323</span>
+            </div>
         </div>
 
         <div class="clear"></div>
-    </div>
-</div>
+    </div><!-- end<div class="course_container"> -->
+</div><!-- end<div class="course_list"> -->
 </body>
 </html>

@@ -8,6 +8,7 @@ import com.pwpew.entity.TPost;
 import com.pwpew.modeldriven.PostMd;
 import com.pwpew.service.PostService;
 import com.pwpew.utils.FastJsonUtil;
+import javafx.print.PageRange;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,39 +108,62 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
     // 显示帖子
-    public String showPost(int postId) {
-        TPost post = postService.getPostById(postId);
-        ActionContext.getContext().getSession().put("post", post);
-//        TPost post1 = (TPost) ActionContext.getContext().getSession().get("")
+    public String showPost() {
 
+        TPost post = postService.getPostById(postMd.getPostId());
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("post", post);
+        request.setAttribute("comments",post.getComments());
         return "showPost";
     }
 
     // 显示帖子列表
     public String showPostList(){
-        List<TPost> postList = postService.findPostList();
-        // 若session中已存在所有帖子集合，则将之删除
-        if(ActionContext.getContext().getSession().containsKey("postList")){
-            ActionContext.getContext().getSession().remove("postList");
+        postMd.setStatue("1");
+        int page = postMd.getPage();
+        int rows = 1;
+
+        Long count = postService.findPostCount(postMd);
+        int i=0;
+        if(count%rows!=0){
+            i++;
         }
-        ActionContext.getContext().getSession().put("postList", postList);
-        TPost post = (TPost) ActionContext.getContext().getSession().get("postList");
+
+        Long totalPage = count/rows+i;
+
+        if(page<1){
+            page = 1;
+        }
+        if(page>totalPage){
+            page = page - 1;
+        }
+        int firstResult = (page-1)*rows;
+
+        List<TPost> postList = postService.findPostByPage(postMd,firstResult,rows);
+
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("postList",postList);
+        request.setAttribute("page",page);
+        request.setAttribute("count",count);
+        request.setAttribute("totalPage",totalPage);
+
         return "postList";
     }
 
-    //在首页显示寻人帖子
+
     public String showPostOfIndex(){
-        List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 6, 0);
+        List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 0, 6);
         List<TPost> postList2 = postService.getPostByPostType("家寻宝贝", 6, 6);
-        List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 6, 0);
+        List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 0, 6);
         List<TPost> postList4 = postService.getPostByPostType("宝贝寻家", 6, 6);
-        List<TPost> postList5 = postService.getPostByPostType("流浪乞丐", 6, 0);
+        List<TPost> postList5 = postService.getPostByPostType("流浪乞丐", 0, 6);
         List<TPost> postList6 = postService.getPostByPostType("流浪乞丐", 6, 6);
-        List<TPost> postList7 = postService.getPostByPostType("活动报告", 6, 0);
+        List<TPost> postList7 = postService.getPostByPostType("活动报告", 0, 6);
         List<TPost> postList8 = postService.getPostByPostType("活动报告", 6, 6);
-        List<TPost> postList9 = postService.getPostByPostType("打拐政策", 6, 0);
+        List<TPost> postList9 = postService.getPostByPostType("打拐政策", 0, 6);
         List<TPost> postList10 = postService.getPostByPostType("打拐政策", 6, 6);
-        List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 6, 0);
+        List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 0, 6);
         List<TPost> postList12 = postService.getPostByPostType("志愿者指南", 6, 6);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("postList1",postList1);
@@ -157,19 +181,20 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         return "showPostOfIndex";
     }
 
-    //在首页显示寻人信息
-    public String showWantedInformationOfIndex(){
-        List<TPost> informationList1 = postService.getPostByPostType("家寻宝贝", 4, 0);
-        List<TPost> informationList2 = postService.getPostByPostType("宝贝寻家", 4, 0);
-        List<TPost> informationList3 = postService.getPostByPostType("流浪乞丐", 4, 0);
-        List<TPost> informationList4 = postService.getPostByPostType("海外寻人", 4, 0);
-        List<TPost> informationList5 = postService.getPostByPostType("其他寻人", 4, 0);
-        HttpServletRequest request = ServletActionContext.getRequest();
-        request.setAttribute("informationList1",informationList1);
-        request.setAttribute("informationList2",informationList2);
-        request.setAttribute("informationList3",informationList3);
-        request.setAttribute("informationList4",informationList4);
-        request.setAttribute("informationList5",informationList5);
-        return "wantedInformation";
+    // 发帖
+    public String posting(){
+        postMd.setStatue("1");
+
+        TPost post = new TPost();
+        // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
+        BeanUtils.copyProperties(postMd,post);
+
+        postService.insertPost(post);
+        return "posting";
+    }
+    // 评论
+    public String replyPost(){
+
+        return "replyPost";
     }
 }

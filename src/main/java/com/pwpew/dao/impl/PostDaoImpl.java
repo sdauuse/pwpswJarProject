@@ -32,7 +32,8 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public List<TPost> findPostList() {
         List<TPost> list = new ArrayList<TPost>();
         session = this.getSessionFactory().getCurrentSession();
-        list = session.createQuery("from TPost").list();
+//        list = session.createQuery("from TPost p, TUser u where p.userId = u.userId").list();
+        list = session.createQuery("from Tpost p inner join fetch TUser u where p.statue=1").list();
         return list;
     }
 
@@ -119,7 +120,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
-        queryString.append("select count(*) from TPost t where 1=1");
+        queryString.append("select count(*) from TPost t where t.statue=1");
 
         //定义List存放参数
         List<Object> params = new ArrayList<Object>();

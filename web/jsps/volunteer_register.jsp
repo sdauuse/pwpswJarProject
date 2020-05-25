@@ -25,24 +25,24 @@
 
     <div class="vol_center">
         <div class="vol_form"><%--定义表单--%>
-            <form action="${pageContext.request.contextPath}/volunteer/volunteerRegister.action" method="post" id="form">
+            <form action="#" method="get" id="form">
                 <table>
                     <tr>
-                        <td class="td_left"><label for="volname"><span class="requirement">*</span>志愿者姓名</label></td>
+                        <td class="td_left"><label for="volname">志愿者姓名</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="volname" id="volname" placeholder="请输入姓名">
                             <span id="s_volname" class="error"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="volIdCard"><span class="requirement">*</span>身份证号码</label></td>
+                        <td class="td_left"><label for="volIdCard">身份证号码</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="volIdCard" id="volIdCard" placeholder="请输入身份证号">
                             <span id="s_volIdCard" class="error"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="volPhone"><span class="requirement">*</span>手机号码</label></td>
+                        <td class="td_left"><label for="volPhone">手机号码</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="volPhone" id="volPhone" placeholder="请输入手机号码">
                             <span id="s_volPhone" class="error"></span>
@@ -57,12 +57,12 @@
                     </tr>
                     <tr data-toggle="distpicker">
                         <td class="td_left"><label>省份</label></td>
-                        <td class="td_right "><select id="province1" name="volProvince"></select></td>
+                        <td class="td_right "><select id="province1" name="userProvince"></select></td>
                         <td class="td_left"><label>城市</label></td>
-                        <td class="td_right"><select id="city1" name="volCity"></select></td>
+                        <td class="td_right"><select id="city1" name="userCity"></select></td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="voldetailAddr"><span class="requirement">*</span>详细地址</label></td>
+                        <td class="td_left"><label for="voldetailAddr">详细地址</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="voldetailAddr" id="voldetailAddr" placeholder="请输入详细地址">
                             <span id="s_voldetailAddr" class="error"></span>
@@ -76,21 +76,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="volEmail"><span class="requirement">*</span>电子邮件</label></td>
+                        <td class="td_left"><label for="volEmail">电子邮件</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="volEmail" id="volEmail" placeholder="请输入电子邮件">
                             <span id="s_volEmail" class="error"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="volQQ"><span class="requirement">*</span>QQ号</label></td>
+                        <td class="td_left"><label for="volQQ">QQ号</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="volQq" id="volQQ" placeholder="请输入QQ号">
+                            <input type="text" name="volQQ" id="volQQ" placeholder="请输入QQ号">
                             <span id="s_volQQ" class="error"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="check_code"><span class="requirement">*</span>验证码</label></td>
+                        <td class="td_left"><label for="check_code">验证码</label></td>
                         <td class="td_right" colspan="4">
                             <div class="code">
                                 <input type="text" value="" placeholder="请输入验证码（不区分大小写）" id="check_code" class="input-val">
@@ -112,7 +112,7 @@
     <%--end中间浮动结束--%>
 
     <div class="vol_right">
-        <p id="have_account">已有账号 <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">立即登录</a></p>
+        <p id="have_account">已有账号 <a href="#">立即登录</a></p>
     </div>
     <%--end右浮动结束--%>
 </div>
