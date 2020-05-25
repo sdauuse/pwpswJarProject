@@ -24,4 +24,7 @@ public interface PostDao {
     public void updateStatueAndEff(PostMd postMd);
 
     public void replyPost(int postId);
+
+    //获取特定类型的帖子
+    public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult);
 }

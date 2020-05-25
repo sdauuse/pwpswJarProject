@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -125,5 +126,35 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         ActionContext.getContext().getSession().put("postList", postList);
         TPost post = (TPost) ActionContext.getContext().getSession().get("postList");
         return "postList";
+    }
+
+
+    public String showPostOfIndex(){
+        List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 0, 6);
+        List<TPost> postList2 = postService.getPostByPostType("家寻宝贝", 6, 6);
+        List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 0, 6);
+        List<TPost> postList4 = postService.getPostByPostType("宝贝寻家", 6, 6);
+        List<TPost> postList5 = postService.getPostByPostType("流浪乞丐", 0, 6);
+        List<TPost> postList6 = postService.getPostByPostType("流浪乞丐", 6, 6);
+        List<TPost> postList7 = postService.getPostByPostType("活动报告", 0, 6);
+        List<TPost> postList8 = postService.getPostByPostType("活动报告", 6, 6);
+        List<TPost> postList9 = postService.getPostByPostType("打拐政策", 0, 6);
+        List<TPost> postList10 = postService.getPostByPostType("打拐政策", 6, 6);
+        List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 0, 6);
+        List<TPost> postList12 = postService.getPostByPostType("志愿者指南", 6, 6);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("postList1",postList1);
+        request.setAttribute("postList2",postList2);
+        request.setAttribute("postList3",postList3);
+        request.setAttribute("postList4",postList4);
+        request.setAttribute("postList5",postList5);
+        request.setAttribute("postList6",postList6);
+        request.setAttribute("postList7",postList7);
+        request.setAttribute("postList8",postList8);
+        request.setAttribute("postList9",postList9);
+        request.setAttribute("postList10",postList10);
+        request.setAttribute("postList11",postList11);
+        request.setAttribute("postList12",postList12);
+        return "showPostOfIndex";
     }
 }
