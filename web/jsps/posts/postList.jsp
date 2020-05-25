@@ -25,11 +25,10 @@
             <input id="postSelect" type="text" required="required" placeholder="请输入要查找的关键词">
             <input class="label" type="submit" value="全站搜索">
         </form>
+        <div style="padding: 4px;">
+            <a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp" style="display:inline-block;font-family: helvetica;font-weight: 700;line-height: 22px;font-size: 18px;color: rgba(0, 0, 0, 0.56);font-family: helvetica;">发&nbsp;&nbsp;帖</a>
+        </div>
     </span>
-    <div style="text-align: right;">
-       <a href="posting.jsp" style="font-size: 1.25em;color: #6b5152;font-family: helvetica;">发帖</a>
-    </div>
-    <br><br>
 
     <div class="postList">
         <c:forEach items="${postList}" var="i">

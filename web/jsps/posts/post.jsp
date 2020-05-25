@@ -28,7 +28,16 @@
 
         <%--帖子详情    --%>
         <div class="postDetail">
-            <%--${post.commentId}--%>todo
+            寻人类型：${post.postType}<br>
+            失踪者姓名：${post.postName}<br>
+            失踪者性别：${post.postGender}<br>
+            失踪者年龄：${post.postAge}<br>
+            失踪时间：${post.missingtime}<br>
+            失踪省份：${post.postProvince}<br>
+            失踪城市：${post.postCity}<br>
+            失踪乡镇：${post.postCountry}<br>
+            失踪街道：${post.postStreet}<br>
+            详情描述：${post.postDescribe}
             <br><br>
             <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${post.missingtime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>

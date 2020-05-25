@@ -109,7 +109,6 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     // 显示帖子
     public String showPost() {
-
         TPost post = postService.getPostById(postMd.getPostId());
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("post", post);
@@ -121,7 +120,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     public String showPostList(){
         postMd.setStatue("1");
         int page = postMd.getPage();
-        int rows = 1;
+        int rows = 10;
 
         Long count = postService.findPostCount(postMd);
         int i=0;
