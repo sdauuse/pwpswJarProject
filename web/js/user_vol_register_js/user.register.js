@@ -1,7 +1,7 @@
 window.onload = function () {
     document.getElementById("form").onsubmit = function () {
         //调用用户校验方法  checkUsername():
-        return checkUsername() && checkUserNickname() && checkUserPassword() && checkUserAge() && checkUserPhone() && checkEmail();
+        return checkUsername() && checkUserNickname() && checkUserPassword() && checkUserAge() && checkUserPhone();
     }
     // 给输入框绑定离焦事件
     document.getElementById("username").onblur = checkUsername;
@@ -9,7 +9,7 @@ window.onload = function () {
     document.getElementById("userPassword").onblur = checkUserPassword;
     document.getElementById("userAge").onblur = checkUserAge;
     document.getElementById("userPhone").onblur = checkUserPhone;
-    document.getElementById("email").onblur = checkEmail;
+    // document.getElementById("email").onblur = checkEmail;
 
     // start验证码功能
     $(function () {
@@ -196,21 +196,21 @@ function checkUserPhone() {
 }
 
 //校验email
-function checkEmail() {
-    var email = document.getElementById("email").value;
-    //定义正则表达式
-    var reg_email = /^\w{1,20}\@\w{1,10}\.\w{1,10}$/;
-    // 判断是否符合正则表达式的规则
-    var flag = reg_email.test(email);
-    //提示信息
-    var s_email = document.getElementById("s_email");
-    if (flag) {
-        //提示正确s
-        s_email.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
-    } else {
-        //提示错误
-        s_email.innerHTML = "email格式有误";
-    }
-    return flag;
-}
+// function checkEmail() {
+//     var email = document.getElementById("email").value;
+//     //定义正则表达式
+//     var reg_email = /^\w{1,20}\@\w{1,10}\.\w{1,10}$/;
+//     // 判断是否符合正则表达式的规则
+//     var flag = reg_email.test(email);
+//     //提示信息
+//     var s_email = document.getElementById("s_email");
+//     if (flag) {
+//         //提示正确s
+//         s_email.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
+//     } else {
+//         //提示错误
+//         s_email.innerHTML = "email格式有误";
+//     }
+//     return flag;
+// }
 

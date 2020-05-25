@@ -1,13 +1,13 @@
 window.onload = function () {
     document.getElementById("form").onsubmit = function () {
-        return checkVolname() && checkVolIdCard() && checkVolPhone() && checkVoldetailAddr() && checkVolProfession() && checkVolEmail() && checkVolQQ();
+        return checkVolname() && checkVolIdCard() && checkVolPhone() && checkVoldetailAddr() && checkVolEmail() && checkVolQQ();
     }
     // 给输入框绑定离焦事件
     document.getElementById("volname").onblur = checkVolname;
     document.getElementById("volIdCard").onblur = checkVolIdCard;
     document.getElementById("volPhone").onblur = checkVolPhone;
     document.getElementById("voldetailAddr").onblur = checkVoldetailAddr;
-    document.getElementById("volProfession").onblur = checkVolProfession;
+    // document.getElementById("volProfession").onblur = checkVolProfession;
     document.getElementById("volEmail").onblur = checkVolEmail;
     document.getElementById("volQQ").onblur = checkVolQQ;
 
@@ -184,21 +184,21 @@ function checkVoldetailAddr() {
 //校验城市
 
 //校验职业
-function checkVolProfession() {
-    var volProfession = document.getElementById("volProfession").value;
-    var flag = false;
-    //提示信息
-    var s_volProfession = document.getElementById("s_volProfession");
-    if (volProfession==""||volProfession==null||volProfession=='undefined') {
-        //提示错误
-        s_volProfession.innerHTML = "职业不能为空";
-    } else {
-        //提示正确
-        s_volProfession.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
-        flag=true;
-    }
-    return flag;
-}
+// function checkVolProfession() {
+//     var volProfession = document.getElementById("volProfession").value;
+//     var flag = false;
+//     //提示信息
+//     var s_volProfession = document.getElementById("s_volProfession");
+//     if (volProfession==""||volProfession==null||volProfession=='undefined') {
+//         //提示错误
+//         s_volProfession.innerHTML = "职业不能为空";
+//     } else {
+//         //提示正确
+//         s_volProfession.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
+//         flag=true;
+//     }
+//     return flag;
+// }
 //校验email
 function checkVolEmail() {
     var volEmail = document.getElementById("volEmail").value;
