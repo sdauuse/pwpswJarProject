@@ -77,7 +77,7 @@
 			</div>
 		</li>
 		<li><a href="#">志愿者登记</a></li>
-		<li><a href="#">论坛</a></li>
+		<li><a href="${pageContext.request.contextPath}/post/showPostList.action?page=1">论坛</a></li>
 		<li><a href="#">我的</a>
 			<div class="nav1">
 				<ul>

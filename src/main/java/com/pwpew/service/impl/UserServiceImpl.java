@@ -96,4 +96,9 @@ public class UserServiceImpl implements UserService {
     public Long findUserCount(UserMd user) {
         return 0l;
     }
+
+    @Override
+    public TUser findUserByPostId(int postId) {
+        return userDao.findUserByPostId(postId);
+    }
 }

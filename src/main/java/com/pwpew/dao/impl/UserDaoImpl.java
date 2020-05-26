@@ -1,8 +1,11 @@
 package com.pwpew.dao.impl;
 
 import com.pwpew.dao.UserDao;
+import com.pwpew.entity.TPost;
 import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.UserMd;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -73,6 +76,15 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     public Long findUserCount(UserMd user) {
 
         return 0l;
+    }
+
+    public TUser findUserByPostId(int postId){
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from TPost where postId = ?").setParameter(0, postId);
+        List<TPost> list = query.list();
+        TPost post = list.get(0);
+        TUser user = post.getUser();
+        return user;
     }
 
 }

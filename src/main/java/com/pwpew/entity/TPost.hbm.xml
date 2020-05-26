@@ -48,7 +48,7 @@
             <column name="postPicture" sql-type="varchar(48)" />
         </property>
 
-        <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="join">
+        <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="join" >
             <column name="userId" not-null="true"></column>
         </many-to-one>
 
