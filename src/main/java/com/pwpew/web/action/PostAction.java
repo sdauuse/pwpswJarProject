@@ -5,8 +5,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TNotice;
 import com.pwpew.entity.TPost;
+import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.PostMd;
 import com.pwpew.service.PostService;
+import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
 import javafx.print.PageRange;
 import org.apache.struts2.ServletActionContext;
@@ -27,6 +29,9 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private UserService userService;
 
     private PostMd postMd = new PostMd();
 
@@ -194,6 +199,17 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         request.setAttribute("informationList4",informationList4);
         request.setAttribute("informationList5",informationList5);
         return "wantedInformation";
+    }
+
+
+    //显示丢失人的详细信息
+    public String showDetailedInformation(){
+        int postId = postMd.getPostId();
+        TPost post = postService.getPostById(postId);
+        TUser user = userService.findUserByPostId(postId);
+        ServletActionContext.getRequest().setAttribute("post",post);
+        ServletActionContext.getRequest().setAttribute("user",user);
+        return "detailedInformation";
     }
 
     // 发帖

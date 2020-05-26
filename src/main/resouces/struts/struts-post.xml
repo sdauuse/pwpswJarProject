@@ -12,6 +12,7 @@
         <action name="*" class="postAction" method="{1}">
             <result name="showPostOfIndex">/jsps/index/mainContent.jsp</result>
             <result name="wantedInformation">/jsps/index/listPage.jsp</result>
+            <result name="detailedInformation">/jsps/posts/postDetailedInformation.jsp</result>
             <result name="postList">/jsps/posts/postList.jsp</result>
             <result name="showPost">/jsps/posts/post.jsp</result>
             <result name="posting">/jsps/posts/postList.jsp</result>

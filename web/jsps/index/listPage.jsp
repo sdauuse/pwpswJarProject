@@ -1,3 +1,4 @@
+<%@ page import="com.alibaba.fastjson.JSON" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -35,8 +36,8 @@
         <div  id="con_nav2_1" class="nav_list">
             <c:forEach items="${informationList1}" var="i">
                 <div class="course">
-                    <a href="#"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
+                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -46,8 +47,8 @@
         <div id="con_nav2_2" style="display: none" class="nav_list">
             <c:forEach items="${informationList2}" var="i">
                 <div class="course">
-                    <a href="#"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
+                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -57,8 +58,8 @@
         <div id="con_nav2_3" style="display: none" class="nav_list">
             <c:forEach items="${informationList3}" var="i">
                 <div class="course">
-                    <a href="#"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
+                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -68,8 +69,8 @@
         <div id="con_nav2_4" style="display: none" class="nav_list">
             <c:forEach items="${informationList4}" var="i">
                 <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
+                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -79,8 +80,8 @@
         <div id="con_nav2_5" style="display: none" class="nav_list">
             <c:forEach items="${informationList5}" var="i">
                 <div class="course">
-                    <a href="#"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="#">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
+                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
