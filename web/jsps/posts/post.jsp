@@ -40,7 +40,7 @@
             详情描述：${post.postDescribe}
             <br><br>
             <div class="time">失踪时间&nbsp;&nbsp;&nbsp;&nbsp;${post.missingtime}</div>
-            <div class="reply"><a href="#replyPoint?userId=${post.user.userId}">回复</a></div>
+            <div class="reply"><a href="#replyPoint">回复</a></div>
         </div>
         <div class="clear"></div>
     </div>
@@ -52,7 +52,7 @@
                 用户：${i.user.username}
             </h4>
             <div class="postDetail">
-                回复${post.user.username}：<br>
+                <%--回复${post.user.username}：<br>--%>
                 ${i.comments}
                 <br><br>
                 <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
