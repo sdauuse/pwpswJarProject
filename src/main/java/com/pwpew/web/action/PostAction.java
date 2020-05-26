@@ -3,9 +3,11 @@ package com.pwpew.web.action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.pwpew.entity.TComment;
 import com.pwpew.entity.TNotice;
 import com.pwpew.entity.TPost;
 import com.pwpew.entity.TUser;
+import com.pwpew.modeldriven.CommentMd;
 import com.pwpew.modeldriven.PostMd;
 import com.pwpew.service.PostService;
 import com.pwpew.service.UserService;
@@ -34,10 +36,15 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     private UserService userService;
 
     private PostMd postMd = new PostMd();
+    private CommentMd commentMd = new CommentMd();
 
     @Override
     public PostMd getModel() {
         return postMd;
+    }
+
+    public CommentMd getCommentMd() {
+        return commentMd;
     }
 
     public void list() {
@@ -145,7 +152,6 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
         List<TPost> postList = postService.findPostByPage(postMd,firstResult,rows);
 
-
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("postList",postList);
         request.setAttribute("page",page);
@@ -223,9 +229,5 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         postService.insertPost(post);
         return "posting";
     }
-    // 评论
-    public String replyPost(){
 
-        return "replyPost";
-    }
 }

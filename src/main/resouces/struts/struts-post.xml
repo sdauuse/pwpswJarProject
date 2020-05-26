@@ -16,8 +16,6 @@
             <result name="postList">/jsps/posts/postList.jsp</result>
             <result name="showPost">/jsps/posts/post.jsp</result>
             <result name="posting">/jsps/posts/postList.jsp</result>
-            <result name="replyPost">/jsps/posts/post.jsp</result>
-
         </action>
     </package>
 </struts>
