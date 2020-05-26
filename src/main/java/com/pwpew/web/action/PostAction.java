@@ -180,6 +180,22 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         return "showPostOfIndex";
     }
 
+    //在首页显示帖子的详细信息
+    public String showWantedInformationOfIndex(){
+        List<TPost> informationList1 = postService.getPostByPostType("家寻宝贝", 4, 0);
+        List<TPost> informationList2 = postService.getPostByPostType("宝贝寻家", 4, 0);
+        List<TPost> informationList3 = postService.getPostByPostType("流浪乞讨", 4, 0);
+        List<TPost> informationList4 = postService.getPostByPostType("海外寻人", 4, 0);
+        List<TPost> informationList5 = postService.getPostByPostType("其他寻人", 4, 0);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("informationList1",informationList1);
+        request.setAttribute("informationList2",informationList2);
+        request.setAttribute("informationList3",informationList3);
+        request.setAttribute("informationList4",informationList4);
+        request.setAttribute("informationList5",informationList5);
+        return "wantedInformation";
+    }
+
     // 发帖
     public String posting(){
         postMd.setStatue("1");
