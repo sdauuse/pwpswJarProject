@@ -13,6 +13,8 @@
             <result name="showPostOfIndex">/jsps/index/mainContent.jsp</result>
             <result name="postList">jsps/posts/postList.jsp</result>
             <result name="post">jsps/posts/post.jsp</result>
+            <result name="findPostListByUserId">/jsps/pc/postinfo.jsp</result>
+            <result name="findPostListByUserIdError">/jsps/login/login.jsp</result>
         </action>
     </package>
 </struts>

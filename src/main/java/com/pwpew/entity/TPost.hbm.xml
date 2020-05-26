@@ -45,7 +45,7 @@
             <column name="statue" sql-type="varchar(1)" not-null="true"/>
         </property>
         <property name="postPicture">
-            <column name="postPicture" sql-type="varchar(48)" not-null="true"/>
+            <column name="postPicture" sql-type="varchar(48)" />
         </property>
 
         <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="join">

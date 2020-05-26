@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     public PostMd getModel() {
         return postMd;
     }
+
 
     public void list() {
 
@@ -58,7 +61,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         FastJsonUtil.write_json(response, jsonString);
     }
 
-    public void findPostById(){
+    public void findPostById() {
 
         TPost post = postService.getPostById(postMd.getPostId());
 
@@ -70,7 +73,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
 
-    public void editsubmit(){
+    public void editsubmit() {
         HttpServletResponse response = ServletActionContext.getResponse();
         try {
 
@@ -88,7 +91,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         FastJsonUtil.write_json(response, ajaxResult);
     }
 
-    public void deletePost(){
+    public void deletePost() {
         HttpServletResponse response = ServletActionContext.getResponse();
         try {
             TPost post = new TPost();
@@ -96,15 +99,15 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
             BeanUtils.copyProperties(postMd, post);
 
             postService.deletePost(post);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             String ajaxResult = FastJsonUtil.ajaxResult(false, "删除失败");
             FastJsonUtil.write_json(response, ajaxResult);
             return;
         }
 
-        String jsonString = FastJsonUtil.ajaxResult(true,"删除成功");
-        FastJsonUtil.write_json(response,jsonString);
+        String jsonString = FastJsonUtil.ajaxResult(true, "删除成功");
+        FastJsonUtil.write_json(response, jsonString);
     }
 
     // 显示帖子
@@ -117,10 +120,10 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
     // 显示帖子列表
-    public String showPostList(){
+    public String showPostList() {
         List<TPost> postList = postService.findPostList();
         // 若session中已存在所有帖子集合，则将之删除
-        if(ActionContext.getContext().getSession().containsKey("postList")){
+        if (ActionContext.getContext().getSession().containsKey("postList")) {
             ActionContext.getContext().getSession().remove("postList");
         }
         ActionContext.getContext().getSession().put("postList", postList);
@@ -129,7 +132,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
 
-    public String showPostOfIndex(){
+    public String showPostOfIndex() {
         List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 0, 6);
         List<TPost> postList2 = postService.getPostByPostType("家寻宝贝", 6, 6);
         List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 0, 6);
@@ -143,18 +146,74 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 0, 6);
         List<TPost> postList12 = postService.getPostByPostType("志愿者指南", 6, 6);
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setAttribute("postList1",postList1);
-        request.setAttribute("postList2",postList2);
-        request.setAttribute("postList3",postList3);
-        request.setAttribute("postList4",postList4);
-        request.setAttribute("postList5",postList5);
-        request.setAttribute("postList6",postList6);
-        request.setAttribute("postList7",postList7);
-        request.setAttribute("postList8",postList8);
-        request.setAttribute("postList9",postList9);
-        request.setAttribute("postList10",postList10);
-        request.setAttribute("postList11",postList11);
-        request.setAttribute("postList12",postList12);
+        request.setAttribute("postList1", postList1);
+        request.setAttribute("postList2", postList2);
+        request.setAttribute("postList3", postList3);
+        request.setAttribute("postList4", postList4);
+        request.setAttribute("postList5", postList5);
+        request.setAttribute("postList6", postList6);
+        request.setAttribute("postList7", postList7);
+        request.setAttribute("postList8", postList8);
+        request.setAttribute("postList9", postList9);
+        request.setAttribute("postList10", postList10);
+        request.setAttribute("postList11", postList11);
+        request.setAttribute("postList12", postList12);
         return "showPostOfIndex";
+    }
+
+    public void deletePostById() {
+        HttpServletResponse response = ServletActionContext.getResponse();
+        try {
+            TPost post = new TPost();
+            // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
+            post.setPostId(postMd.getPostId());
+
+            postService.deletePost(post);
+        } catch (Exception e) {
+            e.printStackTrace();
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "删除失败");
+            FastJsonUtil.write_json(response, ajaxResult);
+            return;
+        }
+
+        String jsonString = FastJsonUtil.ajaxResult(true, "删除成功");
+        FastJsonUtil.write_json(response, jsonString);
+    }
+
+
+    public String findPostListByUserId() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+
+        if (postMd.getUser().getUserId() >= 1) {
+
+            //查询没有被封禁的帖子
+            postMd.setStatue("1");
+            int page = postMd.getPage();
+            int rows = 1;
+            Long count = postService.findPostCount(postMd);
+            //page<1 就赋值为1
+            page = (page < 1) ? 1 : page;
+            request.setAttribute("page", page);
+
+            int firstResult = (page - 1) * rows;
+            Long totalPage = count / rows;
+
+
+            List<TPost> list = postService.findPostByPage(postMd, firstResult, rows);
+
+
+            request.setAttribute("list", list);
+            request.setAttribute("totalPage", totalPage);
+            return "findPostListByUserId";
+        }
+
+        request.setAttribute("msg", "请先登录");
+        return "findPostListByUserIdError";
+    }
+
+    public void updatepost() {
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String jsonString = FastJsonUtil.ajaxResult(true, "修改成功");
+        FastJsonUtil.write_json(response, jsonString);
     }
 }

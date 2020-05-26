@@ -39,6 +39,8 @@
     <div class="lg-zone">
         <div class="lg-box">
             <div class="lg-label">用户登录</div>
+            <font style="margin-left: 34px;" color="red">${msg}</font>
+            <br>
             <!--用jquery实现页面提交-->
             <form id="loginForm" method="post">
                 <div class="lg-username input-item clearfix">
