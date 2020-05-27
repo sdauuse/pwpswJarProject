@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import org.apache.commons.io.FileUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
@@ -35,6 +36,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     @Autowired
     private UserService userService;
+
 
     //模型驱动对象
     private UserMd userMd = new UserMd();
@@ -129,7 +131,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
-    public void submitpicture() {
+    public String submitpicture() {
 
         try {
             // 判断是否上传成功
@@ -142,7 +144,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
             if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
                 // 服务器图片存储路径
-                String filePath = "F:\\develop\\upload\\";
+                String filePath = "D:\\develop\\upload\\";
                 // 扩展名，从原始名称中截取
                 String fileName_extension = pictureFileName.substring(pictureFileName.lastIndexOf("."));
 
@@ -159,13 +161,23 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
             }
-
-            userService.insertUser(userMd);
+            TUser user=new TUser();
+            user.setUserId(userMd.getUserId());
+            user.setUsername(userMd.getUsername());
+            user.setUserNickname(userMd.getUserNickname());
+            user.setUserGender(userMd.getUserGender());
+            user.setUserAge(userMd.getUserAge());
+            user.setUserPhone(userMd.getUserPhone());
+            user.setUserProvince(userMd.getUserProvince());
+            user.setUserCity(userMd.getUserCity());
+            user.setUserPicture(userMd.getUserPicture());
+            user.setEmail(userMd.getEmail());
+            userService.updateUserOfAccount(user);
         } catch (Exception e) {
             e.printStackTrace();
 
-            return;
         }
+        return "userUpdateSuccess";
     }
     //    用户注册方法
     public String userRegister() throws InvocationTargetException, IllegalAccessException {
