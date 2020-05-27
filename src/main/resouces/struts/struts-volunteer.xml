@@ -13,7 +13,6 @@
    -->
         <action name="*"  class="VolunteerAction" method="{1}">
              <result name="volRegisterSuccess">/jsps/success.jsp</result>
-
         </action>
     </package>
 
