@@ -81,7 +81,7 @@
 		<li><a href="#">我的</a>
 			<div class="nav1">
 				<ul>
-					<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=1">帖子信息</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}">帖子信息</a></li>
 					<%--<li><a href="${pageContext.request.contextPath}/jsps/pc/postinfo.jsp?userId=${userId}">帖子信息</a></li>--%>
 					<li><a href="#">账号管理</a></li>
 					<li><a href="#">系统信息</a></li>

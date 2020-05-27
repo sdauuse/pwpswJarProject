@@ -5,7 +5,6 @@ import java.io.File;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TUser;
-import com.pwpew.modeldriven.PostMd;
 import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
@@ -19,6 +18,7 @@ import org.apache.commons.io.FileUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,6 +81,12 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 String ajaxResult = FastJsonUtil.ajaxResult(true, "登录成功！");
                 // 输出json
                 FastJsonUtil.write_json(response, ajaxResult);
+
+                //将用户名id和用户名放入session域中
+                HttpSession session = request.getSession();
+
+                session.setAttribute("username",tUser.getUsername());
+                session.setAttribute("userid", tUser.getUserId());
                 //终止执行
                 return;
             }

@@ -19,15 +19,22 @@
     <title>个人发布的帖子</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.css">
-   <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.css">--%>
+    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.css">--%>
 
+
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/bac/ui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bac/ui/themes/icon.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/locale/easyui-lang-zh_CN.js"></script>
 
     <%--<script type="text/javascript"
             src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 
-    <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.data.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.data2.js"></script>
     <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.js"></script>
     <%--<script src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>--%>
     <style>
@@ -55,7 +62,7 @@
             color: #000000;
         }
 
-        td {
+        .td {
             text-align: right;
             font-family: '微软雅黑';
             width: 140px;
@@ -65,7 +72,7 @@
             color: #000000;
         }
 
-        input {
+        .input {
             display: block;
             line-height: 1.42857143;
             background-color: #fff;
@@ -80,7 +87,7 @@
 
         }
 
-        select {
+        .select {
             display: block;
             line-height: 1.42857143;
             background-color: #fff;
@@ -122,6 +129,13 @@
             font-size: 18px;
             color: #000000;
         }
+
+        /* #newDate{
+             width: 317px;
+             height: 32px;
+             font-size: 18px;
+             color: #000000;
+         }*/
     </style>
 
     <script type="text/javascript">
@@ -136,6 +150,9 @@
                     dataType: 'json',//预期服务端返回json
                     success: function (result) {//形参result内容是deleteNotice.action响应的结果，是json对象
                         //提示操作结果
+                        var result = eval('(' + data + ')');  // change the JSON string to javascript object
+                        //提示操作结果
+                        $.messager.alert('提示', result.message);
                         alert(result.message);
                         //如果删除成功刷新 列表
 
@@ -151,6 +168,30 @@
         }
 
 
+        function formsubmit() {
+            //设置form的action属性
+
+
+            var r = confirm("确认要修改吗？")
+            if (r == true) {
+                $('#postForm').attr("action", '${pageContext.request.contextPath}/post/updatepost.action');
+                $('#postForm').form('submit', {
+                    success: function (data) {
+                        /*var result = eval('(' + data + ')');*/  // change the JSON string to javascript object
+                        //提示操作结果
+                        alert(data.message)
+                        /*$.messager.alert('提示',result.message);*/
+                        //如果删除成功刷新 列表
+                        if (data.success) {
+                            //刷新
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        }
+
+
         function edit() {
             var r = confirm("确认要修改吗？")
             if (r == true) {
@@ -158,9 +199,9 @@
                 $.ajax({
                     cache: false,
                     type: "POST",
-                    enctype: "multipart/form-data",
                     async: false,
-                    url: "${pageContext.request.contextPath}/post/updatepost.action", //把表单数据发送到ajax.jsp
+                    enctype: "multipart/form-data",
+                    url: "${pageContext.request.contextPath}/post/updatepost.action", //把表单数据发送到updatepost
                     data: $('#postForm').serialize(),
                     //要发送的是ajaxFrm表单中的数据
                     /*  error: function (request) {
@@ -169,13 +210,18 @@
                     success: function (data) {
                         //var result = JSON.stringify(data);
                         //提示操作结果
-                        if (data.success == false) {
-                            alert(data.message);
+                        alert(data.message);
+
+                        if (result.success) {
+                            //刷新
+                            window.location.reload();
                         }
                     }
                 });
             }
         }
+
+
     </script>
 </head>
 
@@ -193,7 +239,7 @@
         <!--***controlHtml***-->
         <!--ctrlInfo_default78cf113437858a63aad2a2b7d_纵向flex_db4f496ad0d53935bdd21a8f544df34d_ctrlInfo-->
         <div class="col-12"
-             style="height: 10px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
+             style="height: 8px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
              candrop="ecp-flex-vertical" id="ecpflexvertical_2271"
              xdeer-flex-vertical="ecp-flex-vertical_f8018871c625a6daecd0654e78af5b8f"
              data-option="{'id':'ecpflexvertical_2271','height':'200px','paddingLeft':'0px','paddingRight':'0px','paddingTop':'0px','paddingBottom':'0px','marginleft':'0px','marginRight':'0px','marginBottom':'0px','marginTop':'0px','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','border-bottom-width':'0px'}"
@@ -204,51 +250,54 @@
         </div>
         <h2 id="h2">个人帖子中心</h2>
         <c:forEach items="${list}" var="list">
+            <%--<form id="postForm" action="${pageContext.request.contextPath}/post/updatepost.action" method="post" enctype="multipart/form-data">--%>
             <form id="postForm" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="postId" value="${list.postId}">
+                <input type="hidden" name="page" value="${page}">
+                <input type="hidden" name="user.userId" value="${list.user.userId}">
+                <input type="hidden" name="postId" class="input" value="${list.postId}">
                 <table style="margin: auto;border-collapse:separate; border-spacing:0px 11px;">
                     <tr>
-                        <td>失联人姓名：</td>
-                        <td><input type="text" name="postName" value="${list.postName}"></td>
-                        <td>性别：</td>
-                        <td><select>
+                        <td class="td">失联人姓名：</td>
+                        <td class="td"><input class="input" type="text" name="postName" value="${list.postName}" required pattern="[a-zA-Z\u4E00-\u9FA5]{1,20}" title="请输入合法的中文或英文姓名"></td>
+                        <td class="td">性别：</td>
+                        <td class="td"><select class="select" name="postGender" required>
 
-                            <option value="男" name="postGender"
+                            <option value="男"
                                     <c:if test="${list.postGender eq '男'}">selected</c:if> >男
                             </option>
-                            <option value="女" name="postGender"
+                            <option value="女"
                                     <c:if test="${list.postGender eq '女'}">selected</c:if> >女
                             </option>
                         </select>
                         </td>
-                        <td>年龄：</td>
-                        <td><input type="text" name="postAge" value="${list.postAge}"></td>
+                        <td class="td">年龄：</td>
+                        <td class="td"><input class="input" type="text" required name="postAge" value="${list.postAge}" pattern="^(?:[1-9][0-9]?|1[01][0-9]|120)$" title="年龄应在1-120之间"></td>
                     </tr>
 
                     <tr>
-                        <td>失联省市：</td>
-                        <td><input type="text" readonly value="${list.postProvince}"></td>
-                        <td>失联城市：</td>
-                        <td><input type="text" readonly value="${list.postCity}"></td>
-                        <td>失联区县：</td>
-                        <td><input readonly type="text" value="${list.postCountry}"></td>
+                        <td class="td">失联省市：</td>
+                        <td class="td"><input class="input" type="text" readonly value="${list.postProvince}"></td>
+                        <td class="td">失联城市：</td>
+                        <td class="td"><input class="input" type="text" readonly value="${list.postCity}"></td>
+                        <td class="td">失联区县：</td>
+                        <td class="td"><input class="input" readonly type="text" value="${list.postCountry}"></td>
                     </tr>
 
                     <tr data-toggle="distpicker">
 
-                        <td>修改失联省市：</td>
-                        <td><select id="province1" name="postProvince">
+                        <td class="td">修改失联省市：</td>
+                        <td class="td"><select class="select" id="province1" name="postProvince">
                             <option></option>
                         </select></td>
-                        <td>新失联城市：</td>
-                        <td>
-                            <select id="city1" name="postCity">
+                        <td class="td">新失联城市：</td>
+                        <td class="td">
+                            <select class="select" id="city1" name="postCity">
                                 <option></option>
                             </select>
                         </td>
-                        <td>新失联区县：</td>
-                        <td>
-                            <select id="district1" name="postCountry">
+                        <td class="td">新失联区县：</td>
+                        <td class="td">
+                            <select class="select" id="district1" name="postCountry">
                                 <option></option>
                             </select>
                         </td>
@@ -256,67 +305,79 @@
 
                     <tr>
 
-                        <td>失联街道：</td>
-                        <td><input type="text" name="postStreet" value="${list.postStreet}"></td>
-                        <td>帖子类型：</td>
-                        <td>
-                            <select>
-                                <option value="家寻宝贝" name="postType"
+                        <td class="td">失联街道：</td>
+                        <td class="td"><input class="input" type="text" name="postStreet" value="${list.postStreet}">
+                        </td>
+                        <td class="td">帖子类型：</td>
+                        <td class="td">
+                            <select class="select" name="postType" required>
+                                <option value="家寻宝贝"
                                         <c:if test="${list.postType eq '家寻宝贝'}">selected</c:if>>家寻宝贝
                                 </option>
-                                <option value="宝贝寻家" name="postType"
+                                <option value="宝贝寻家"
                                         <c:if test="${list.postType eq '宝贝寻家'}">selected</c:if>>宝贝寻家
                                 </option>
-                                <option value="流浪乞讨" name="postType"
+                                <option value="流浪乞讨"
                                         <c:if test="${list.postType eq '流浪乞讨'}">selected</c:if>>流浪乞讨
                                 </option>
-                                <option value="游子寻家" name="postType"
+                                <option value="游子寻家"
                                         <c:if test="${list.postType eq '游子寻家'}">selected</c:if>>游子寻家
                                 </option>
-                                <option value="其他寻人" name="postType"
+                                <option value="其他寻人"
                                         <c:if test="${list.postType eq '其他寻人'}">selected</c:if>>其他寻人
                                 </option>
                             </select>
                         </td>
-                        <td>失联时间：</td>
-                        <td><input type="text" readonly value="${list.missingtime}"></td>
+                        <td class="td">失联时间：</td>
+                        <td class="td"><input class="input" type="text" readonly value="${list.missingtime}"></td>
                     </tr>
 
+
                     <tr>
-                        <td>具体描述：</td>
-                        <td><textarea name="postDescribe" rows=5
-                                      placeholder="内容长度应小于256个汉字或者512个字母">${list.postDescribe}</textarea></td>
-                        <td>图片：</td>
-                        <td>
+                        <td class="td">具体描述：</td>
+                        <td class="td"><textarea name="postDescribe" rows=5
+                                                 placeholder="内容长度应小于256个汉字或者512个字母">${list.postDescribe}</textarea>
+                        </td>
+                        <td class="td">图片：</td>
+                        <td class="td">
                             <img
                                     <c:if test="${list.postPicture == null}">src="/upload/1ad395bf-9468-4b46-bf72-8c39bb763591.png"</c:if>
                                     <c:if test="${list.postPicture != null}">src="/upload/${list.postPicture}"</c:if>
                                     width="317px" height="230px">
                         </td>
 
-                        <td>
+                        <td class="td">
                             <div>修改失联时间：</div>
                             <div>上传新图片：</div>
                         </td>
-                        <td>
+                        <td class="td">
+                            <input id="newDate" style="width: 317px;height: 32px" class="easyui-datetimebox"
+                                   name="missingtime">
 
-                            <div><input type="datetime-local" name="missingtime"></div>
-                            <input id="img" type="file" name="picture">
+                            <input class="input" id="img" type="file" name="picture">
                         </td>
                     </tr>
 
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><input id="btn_delete" type="button" value="删除" onclick="del(${list.postId})">
-                            <input id="btn_update" onclick="edit()" type="button" value="修改"></td>
+                        <td class="td"></td>
+                        <td class="td"></td>
+                        <td class="td"></td>
+                        <td class="td"></td>
+                        <td class="td"></td>
+                        <td class="td">
+                            <font color="red">${msg}</font>
+                            <input class="btn-default" id="btn_delete" type="button" value="删除"
+                                   onclick="del(${list.postId})">
+                            <%--<a onclick="formsubmit()">修改</a>--%>
+                                <%-- <button  onclick="formsubmit()" value="修改"></button>--%>
+                                <%--<input class="btn-default" id="btn_update" onclick="formsubmit()" type="button" value="修改">--%>
+                                <input class="btn-default" id="btn_update" onclick="formsubmit()" type="submit" value="修改">
+                        </td>
+
+
                     </tr>
 
                 </table>
-
 
             </form>
         </c:forEach>
@@ -325,19 +386,20 @@
              com="pagination" id="pagination_8554" xdeer-com="com_e7ec62f7b57d613ee4a950b215a25418"
              dom-data-type="pagination" dom-data-version="4" false="pagination" style="">
             <ul class="pagination" style="margin:0px;" data-option="{}">
-                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=1&page=1"
-                       aria-label="Previous"><span aria-hidden="true"> 上一页 </span></a>
+                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=1"
+                       aria-label="Previous"><span aria-hidden="true" style="font-size: 16px"> 上一页 </span></a>
                     <%-- <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page-1}" aria-label="Previous"><span aria-hidden="true"> 上一页 </span></a>--%>
                 </li>
                 <li class="active"><a herf="#">${page}</a></li>
-                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=1&page=2"
-                       aria-label="Next"><span aria-hidden="true"> 下一页 </span></a></li>
+                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=2"
+                       aria-label="Next"><span aria-hidden="true" style="font-size: 16px"> 下一页 </span></a></li>
                 <%--<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page+1}" aria-label="Next"><span aria-hidden="true"> 下一页 </span></a></li>--%>
-                <li><span>共有${totalPage}页</span></li>
+                <li><span style="font-size: 16px">共有${totalPage}页</span></li>
             </ul>
         </nav>
         <!--***controlHtml***-->
     </div>
+
 </div>
 
 
