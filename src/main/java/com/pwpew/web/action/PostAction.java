@@ -9,6 +9,7 @@ import com.pwpew.entity.TPost;
 import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.CommentMd;
 import com.pwpew.modeldriven.PostMd;
+import com.pwpew.service.CommentService;
 import com.pwpew.service.PostService;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
@@ -31,6 +32,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     @Autowired
     private PostService postService;
+    private CommentService commentService;
 
     @Autowired
     private UserService userService;
@@ -121,10 +123,33 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     // 显示帖子
     public String showPost() {
+//        int page = commentMd.getPage();
+//        int rows = 5;
+//
+//        Long count = commentService.findCommentCount(commentMd);
+//        int i=0;
+//        if(count%rows!=0){
+//            i++;
+//        }
+//
+//        Long totalPage = count/rows+i;
+//
+//        if(page<1){
+//            page = 1;
+//        }
+//        if(page>totalPage){
+//            page = page - 1;
+//        }
+
         TPost post = postService.getPostById(postMd.getPostId());
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("post", post);
         request.setAttribute("comments",post.getComments());
+
+//        request.setAttribute("page",page);
+//        request.setAttribute("count",count);
+//        request.setAttribute("totalPage",totalPage);
+
         return "showPost";
     }
 
