@@ -52,12 +52,15 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
 
-        queryString.append("from TNotice t  where 1=1 order by ntsDate desc ");
+        queryString.append("from TNotice t  where 1=1 ");
         //定义List存放参数
         List<Object> params = new ArrayList<Object>();
 
         //拼装 查询条件
         findNoticeCondition(noticeMd, queryString, params);
+
+        //进行排序拼接
+        queryString.append("order by ntsDate desc");
 
         Query query = session.createQuery(queryString.toString());
 
@@ -67,6 +70,7 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
             query.setParameter(i, params.get(i));
         }
         //设置分页参数
+
         query.setFirstResult(firstResult);
         query.setMaxResults(maxResults);
         //直接使用原始的query对象查询

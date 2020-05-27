@@ -30,6 +30,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="/jsps/index/picture_nav.jsp"/>
 <div class="rg_layout">
     <div class="rg_left">
         <p id="user_register">账号管理</p>

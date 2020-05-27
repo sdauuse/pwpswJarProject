@@ -9,9 +9,11 @@
         <!-- 通配符 方式
        采用 struts2 和spring整合方案1，action由spring来管理，在class上指定spring容器中action的bean id
        请求add.action，*匹配了add，{1}表示第一个匹配串
+
    -->
 
         <action name="*"  class="noticeAction" method="{1}">
+
             <result name="noticeSuccess">/jsps/notice/noticeList.jsp</result>
             <result name="noticeMain">/jsps/notice/notice.jsp</result>
             <result name="Lastnotice">/jsps/notice/notice.jsp</result>
@@ -19,5 +21,7 @@
             <!-- <result name.="success">/jsp/success.jsp</result>-->
             <!--<result name="latestNotice">/index.jsp</result>-->
         </action>
+
+
     </package>
 </struts>

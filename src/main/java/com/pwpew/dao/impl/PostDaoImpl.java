@@ -78,6 +78,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public void updatePost(TPost post) {
 
         //更新的时候要注意数据丢失的情况
+        this.getHibernateTemplate().clear();
         this.getHibernateTemplate().update(post);
     }
 
