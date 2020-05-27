@@ -45,16 +45,16 @@
             <column name="statue" sql-type="varchar(1)" not-null="true"/>
         </property>
         <property name="postPicture">
-            <column name="postPicture" sql-type="varchar(48)" />
+            <column name="postPicture" sql-type="varchar(48)" not-null="true"/>
         </property>
 
         <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="join" >
-            <column name="userId" ></column>
+            <column name="userId" not-null="true"></column>
         </many-to-one>
 
-        <set name="comments" table="t_comment"  fetch="select" cascade="delete" inverse="true">
+        <set name="comments" table="t_comment"  fetch="select" cascade="delete">
             <key>
-                <column name="postId" ></column>
+                <column name="postId" not-null="true"></column>
             </key>
             <one-to-many class="com.pwpew.entity.TComment" />
         </set>

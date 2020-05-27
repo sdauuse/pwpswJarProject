@@ -12,6 +12,33 @@
 <head>
     <title>帖子</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/posts/post.css">
+    <script>
+        function CurentTime() {
+            var now = new Date();
+            var year = now.getFullYear();       //年
+            var month = now.getMonth() + 1;     //月
+            var day = now.getDate();            //日
+            var hh = now.getHours();            //时
+            var mm = now.getMinutes();          //分
+            var ss = now.getSeconds();           //秒
+            var clock = year + "-";
+            if(month < 10)
+                clock += "0";
+            clock += month + "-";
+            if(day < 10)
+                clock += "0";
+            clock += day + " ";
+            if(hh < 10)
+                clock += "0";
+            clock += hh + ":";
+            if (mm < 10) clock += '0';
+            clock += mm + ":";
+            if (ss < 10) clock += '0';
+            clock += ss;
+
+            document.getElementById("commentTime").value=clock;
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
@@ -66,8 +93,9 @@
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="${pageContext.request.contextPath}/comment/insertComment.action" method="post">
-            <input type="hidden" name="postId" value="${post.postId}">
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action?userId=${userId}" method="post">
+            <input type="hidden" id="postId" name="postId" value="${post.postId}">
+            <input type="hidden" id="commentTime" name="commentTime" value="">
             <textarea id="messages" name="comments" required="required" placeholder="请在这儿输入回复吧 =_="></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
             <div id="postSubmit">

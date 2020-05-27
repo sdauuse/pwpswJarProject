@@ -33,19 +33,15 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
     }
 
     public String insertComment(){
-
-        Calendar calendar= Calendar.getInstance();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-
         TComment comment = new TComment();
-        comment.setPostId(commentMd.getPostId());
-        comment.setCommentTime(dateFormat.format(calendar.getTime()));
+//        Calendar calendar= Calendar.getInstance();
+//        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+//        comment.setCommentTime(dateFormat.format(calendar.getTime()));
 
         // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
         BeanUtils.copyProperties(commentMd, comment);
 
         commentService.insertComment(comment);
-
         return "insertComment";
     }
 

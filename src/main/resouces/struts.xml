@@ -14,5 +14,4 @@
     <include file="struts/struts-post.xml"></include>
     <include file="struts/struts-datadict.xml"></include>
     <include file="struts/struts-comment.xml"></include>
-    <include file="struts/struts-volunteer.xml"></include>
 </struts>

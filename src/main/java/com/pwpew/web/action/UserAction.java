@@ -18,10 +18,8 @@ import org.apache.commons.io.FileUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -82,12 +80,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 String ajaxResult = FastJsonUtil.ajaxResult(true, "登录成功！");
                 // 输出json
                 FastJsonUtil.write_json(response, ajaxResult);
-
-                //将用户名id和用户名放入session域中
-                HttpSession session = request.getSession();
-
-                session.setAttribute("username",tUser.getUsername());
-                session.setAttribute("userid", tUser.getUserId());
                 //终止执行
                 return;
             }
@@ -137,6 +129,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
 
     public void submitpicture() {
+
         try {
             // 判断是否上传成功
             // 上传成功的图片，文件默认在tomcat的临时目录 中
@@ -173,10 +166,4 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             return;
         }
     }
-    //    用户注册方法
-    public String userRegister() throws InvocationTargetException, IllegalAccessException {
-        userService.insertUser(userMd);
-        return "userLogin";
-    }
-
 }
