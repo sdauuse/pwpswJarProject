@@ -75,12 +75,12 @@
     <c:forEach items="${comments}" var="i">
         <div class="post">
             <h4 class="poster">
-                <%--<img src="img/deadpool.jpg" ><br><br>--%>
+                    <%--<img src="img/deadpool.jpg" ><br><br>--%>
                 用户：${i.user.username}
             </h4>
             <div class="postDetail">
-                <%--回复${post.user.username}：<br>--%>
-                ${i.comments}
+                    <%--回复${post.user.username}：<br>--%>
+                    ${i.comments}
                 <br><br>
                 <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>

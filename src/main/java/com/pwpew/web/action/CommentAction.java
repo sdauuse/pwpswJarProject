@@ -33,6 +33,7 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
     }
 
     public String insertComment(){
+
         TComment comment = new TComment();
 //        Calendar calendar= Calendar.getInstance();
 //        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
