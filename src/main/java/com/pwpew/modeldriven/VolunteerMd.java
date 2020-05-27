@@ -9,8 +9,28 @@ import com.pwpew.entity.TVolunteer;
  */
 public class VolunteerMd extends TVolunteer {
 
+    // easyUi分页参数
+    private int page;
+    private int rows;
+
     //验证码
     private String verifyCode;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
 
     public String getVerifyCode() {
         return verifyCode;

@@ -29,11 +29,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public VolunteerMd getVolunteerById(int volId) {
-        VolunteerMd volunteer = new VolunteerMd();
-        volunteer.setVolId(volId);
-        volunteerDao.getVolunteer(volunteer);
-        return null;
+    public TVolunteer getVolunteerById(int volId) {
+        return volunteerDao.getVolunteer(volId);
     }
 
     @Override
@@ -60,10 +57,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public void deleteVolunteerById(int volId) {
-//        这里使用实体类
-        TVolunteer volunteer=new TVolunteer();
-        volunteer.setVolId(volId);
+    public void deleteVolunteer(TVolunteer volunteer) {
+
         volunteerDao.deleteVolunteer(volunteer);
     }
 
@@ -93,11 +88,11 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public List<TVolunteer> findVolunteerByPage(VolunteerMd volunteer, int firstResult, int maxResults) {
-        return null;
+        return volunteerDao.findUserByPage(volunteer,firstResult,maxResults);
     }
 
     @Override
     public Long findVolunteerCount(VolunteerMd volunteer) {
-        return null;
+        return volunteerDao.findUserCount(volunteer);
     }
 }

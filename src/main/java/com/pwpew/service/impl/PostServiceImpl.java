@@ -29,7 +29,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public TPost getPostById(int postId) {
         TPost post = postDao.getPostById(postId);
-        post.getUser().setUserPassword(null);
+        /*post.getUser().setUserPassword(null);*/
         return post;
     }
 
