@@ -10,6 +10,7 @@ import com.pwpew.modeldriven.CommentMd;
 import com.pwpew.modeldriven.PostMd;
 import com.pwpew.service.PostService;
 import com.pwpew.service.UserService;
+import com.pwpew.utils.CommonUtil;
 import com.pwpew.utils.FastJsonUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -329,6 +330,12 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
             newpost.setStatue(oldPost.getStatue());
             newpost.setEffectiveness(oldPost.getEffectiveness());
             newpost.setUser(oldPost.getUser());
+
+            if(CommonUtil.getWordCount(postMd.getPostDescribe())>512){
+
+                request.setAttribute("msg","修改失败,详细描述应该在256汉字或者512字符以内");
+                return "updatepost";
+            }
 
             if(StringUtils.isEmpty(postMd.getPostPicture())){
                 newpost.setPostPicture(oldPost.getPostPicture());
