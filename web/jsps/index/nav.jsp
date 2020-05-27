@@ -81,7 +81,6 @@
 		<li><a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp">我的</a>
 		</li>
 		<li><a href="${pageContext.request.contextPath}/notice/noticeList.action?page=1&rows=10">网站通告</a></li>
-        <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}">帖子信息</a></li>
 	</ul>
 </div>
 </body>

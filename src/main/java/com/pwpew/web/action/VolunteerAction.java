@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
  * @date 2020/5/24 - 18:37
  * @commet: 志愿者使用的action
  */
-@Controller("VolunteerAction")
+@Controller("volunteerAction")
 @Scope("prototype")
 public class VolunteerAction extends ActionSupport implements ModelDriven<VolunteerMd> {
     @Autowired
@@ -23,6 +23,10 @@ public class VolunteerAction extends ActionSupport implements ModelDriven<Volunt
 
     //模型驱动对象
     private VolunteerMd volunteer = new VolunteerMd();
+    @Override
+    public VolunteerMd getModel() {
+        return volunteer;
+    }
 
     //    用户注册方法
     public String volunteerRegister() throws InvocationTargetException, IllegalAccessException {
@@ -30,8 +34,5 @@ public class VolunteerAction extends ActionSupport implements ModelDriven<Volunt
         return "volRegisterSuccess";
     }
 
-    @Override
-    public VolunteerMd getModel() {
-        return volunteer;
-    }
+
 }

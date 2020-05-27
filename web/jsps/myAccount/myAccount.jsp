@@ -49,7 +49,7 @@
         <div id="div1">我的账号</div>
     </div>
     <div id="accountFunction">
-        <a href="#">我的帖子</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}">我的帖子</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="${pageContext.request.contextPath}/jsps/myAccount/accountManager.jsp">账号管理</a>
     </div>
 </div>
