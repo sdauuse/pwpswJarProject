@@ -48,11 +48,11 @@
             <column name="postPicture" sql-type="varchar(48)" not-null="true"/>
         </property>
 
-        <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="join" >
+        <many-to-one name="user" class="com.pwpew.entity.TUser"  fetch="join" >
             <column name="userId" not-null="true"></column>
         </many-to-one>
 
-        <set name="comments" table="t_comment"  fetch="select" cascade="delete">
+        <set name="comments" table="t_comment"  fetch="select" cascade="delete" inverse="true">
             <key>
                 <column name="postId" not-null="true"></column>
             </key>

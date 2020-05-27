@@ -12,6 +12,7 @@
 <head>
     <title>帖子</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/posts/post.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
     <script>
         function CurentTime() {
             var now = new Date();
@@ -36,7 +37,7 @@
             if (ss < 10) clock += '0';
             clock += ss;
 
-            document.getElementById("commentTime").value=clock;
+          $('#commentTime').innerHTML=clock;
         }
     </script>
 </head>
@@ -82,6 +83,7 @@
                     <%--回复${post.user.username}：<br>--%>
                     ${i.comments}
                 <br><br>
+                        <input type="datetime-local" >
                 <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>
             </div>
@@ -93,10 +95,10 @@
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="${pageContext.request.contextPath}/comment/insertComment.action?userId=${userId}" method="post">
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1" method="post">
             <input type="hidden" id="postId" name="postId" value="${post.postId}">
-            <input type="hidden" id="commentTime" name="commentTime" value="">
-            <textarea id="messages" name="comments" required="required" placeholder="请在这儿输入回复吧 =_="></textarea>
+            <%--<input type="text" id="commentTime" name="commentTime" >--%>
+            <textarea id="comments" name="comments" required="required" placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
             <div id="postSubmit">
                 <input type="submit" value="提交"/>

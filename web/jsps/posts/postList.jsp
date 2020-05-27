@@ -41,9 +41,8 @@
                     </a>
                 </h4>
                 <div class="postText">
-                    ${i.postProvince}
-                    ${i.postDescribe}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    失踪地区：&nbsp;&nbsp;&nbsp;&nbsp;${i.postProvince}
+                    <%--${i.postDescribe}--%>
                 </div>
                 <div class="poster">版主：
                     <a href="#">
@@ -55,11 +54,14 @@
             </div>
         </c:forEach>
 
-            <a href="${pageContext.request.contextPath}/post/showPostList.action?page=${page-1}"><span>上一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>${page}</span>
-            <a href="${pageContext.request.contextPath}/post/showPostList.action?page=${page+1}"><span>下一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>共有${count}条数据</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>共有${totalPage}页</span>
+        <a href="${pageContext.request.contextPath}/post/showPostList.action?page=${page-1}"><span>上一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>第${page}页</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/post/showPostList.action?page=${page+1}"><span>下一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <span>总计${count}条数据</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>共${totalPage}页</span>
+
+
 
     </div>
 </div>

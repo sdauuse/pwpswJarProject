@@ -25,17 +25,24 @@
 
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="#" method="get" id="form">
+            <form action="${pageContext.request.contextPath}/user/userRegister.action" method="post" id="form">
                 <table>
                     <tr>
-                        <td class="td_left"><label for="username">用户名</label></td>
+                        <td class="td_left"><label for="username"><span class="requirement">*</span>用户名</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="username" id="username" placeholder="请输入用户名">
                             <span id="s_username" class="error"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="userPassword">密码</label></td>
+                        <td class="td_left"><label for="userNickname"><span class="requirement">*</span>昵称</label></td>
+                        <td class="td_right" colspan="3">
+                            <input type="text" name="userNickname" id="userNickname" placeholder="请输入昵称">
+                            <span id="s_userNickname" class="error"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left"><label for="userPassword"><span class="requirement">*</span>密码</label></td>
                         <td class="td_right" colspan="3">
                             <input type="password" name="userPassword" id="userPassword" placeholder="密码长度大于等于6位">
                             <span id="s_userPassword" class="error"></span>
@@ -50,7 +57,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="userAge">年龄</label></td>
+                        <td class="td_left"><label for="userAge"><span class="requirement">*</span>年龄</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="userAge" id="userAge" placeholder="请输入年龄">
                             <span id="s_userAge" class="error"></span>
@@ -63,7 +70,7 @@
                         <td class="td_right"><select id="city1" name="userCity"></select></td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="userPhone">电话号码</label></td>
+                        <td class="td_left"><label for="userPhone"><span class="requirement">*</span>电话号码</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="userPhone" id="userPhone" placeholder="请输入电话号码">
                             <span id="s_userPhone" class="error"></span>
@@ -77,7 +84,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="check_code">验证码</label></td>
+                        <td class="td_left"><label for="check_code"><span class="requirement">*</span>验证码</label></td>
                         <td class="td_right" colspan="4">
                             <div class="code">
                                 <input type="text" value="" placeholder="请输入验证码（不区分大小写）" id="check_code"
@@ -100,7 +107,7 @@
     <%--end中间浮动结束--%>
 
     <div class="rg_right">
-        <p id="have_account">已有账号 <a href="#">立即登录</a></p>
+        <p id="have_account">已有账号 <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">立即登录</a></p>
     </div>
     <%--end右浮动结束--%>
 </div>
