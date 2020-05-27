@@ -23,7 +23,7 @@
         <%--发帖人信息--%>
         <h4 class="poster">
             <%--<img src="img/deadpool.jpg" ><br><br>--%>
-            用户：${post.user.username}
+            版主：${post.user.username}
         </h4>
 
         <%--帖子详情    --%>
@@ -39,23 +39,20 @@
             失踪街道：${post.postStreet}<br>
             详情描述：${post.postDescribe}
             <br><br>
-            <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${post.missingtime}</div>
+            <div class="time">失踪时间&nbsp;&nbsp;&nbsp;&nbsp;${post.missingtime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
         </div>
         <div class="clear"></div>
     </div>
 
-        <%--评论信息request.setAttribute("post", post);
-        request.setAttribute("comments",post.getComments());--%>
     <c:forEach items="${comments}" var="i">
-
         <div class="post">
             <h4 class="poster">
                 <%--<img src="img/deadpool.jpg" ><br><br>--%>
-                回复：<a href="#">${i.user.username}</a>
+                用户：${i.user.username}
             </h4>
             <div class="postDetail">
-                回复${post.user.username}：<br>
+                <%--回复${post.user.username}：<br>--%>
                 ${i.comments}
                 <br><br>
                 <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
@@ -69,7 +66,8 @@
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="replyPost" method="post">
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action" method="post">
+            <input type="hidden" name="postId" value="${post.postId}">
             <textarea id="messages" name="comments" required="required" placeholder="请在这儿输入回复吧 =_="></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
             <div id="postSubmit">
