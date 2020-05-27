@@ -119,4 +119,19 @@ table {
     border: 1px solid #ddd;
     cursor: pointer;
 }
+
+.fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.fileinput-button input{
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+}
 /*end验证码样式*/
