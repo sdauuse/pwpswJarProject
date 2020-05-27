@@ -49,6 +49,9 @@ table{
     border-radius: 5px;
     padding-left: 10px;
 }
+.requirement{
+    color: red;
+}
 .man{
     margin-right: 50px;
 }
