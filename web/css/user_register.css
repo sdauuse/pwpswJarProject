@@ -48,13 +48,16 @@ table {
     margin-right: 0px;
     column-span: 3;
 }
-#username, #userPassword, #userAge, #userPhone, #userPhone, #email {
+#username,#userNickname,#userPassword, #userAge, #userPhone, #userPhone, #email {
     width: 300px;
     height: 50px;
     border: 1px solid gray;
     /*设置边框圆角*/
     border-radius: 5px;
     padding-left: 10px;
+}
+.requirement{
+    color: red;
 }
 .man {
     margin-right: 50px;
