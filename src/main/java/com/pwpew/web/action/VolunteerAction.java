@@ -2,7 +2,6 @@ package com.pwpew.web.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.pwpew.entity.TPost;
 import com.pwpew.entity.TVolunteer;
 import com.pwpew.modeldriven.VolunteerMd;
 import com.pwpew.service.VolunteerService;

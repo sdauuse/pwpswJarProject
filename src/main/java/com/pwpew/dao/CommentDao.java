@@ -1,6 +1,7 @@
 package com.pwpew.dao;
 
 import com.pwpew.entity.TComment;
+import com.pwpew.modeldriven.CommentMd;
 
 /**
  * @author miaoyin
@@ -9,4 +10,5 @@ import com.pwpew.entity.TComment;
  */
 public interface CommentDao {
     public void insertComment(TComment comment);
+    public Long findCommentCount(CommentMd commentMd);// 分页查询
 }

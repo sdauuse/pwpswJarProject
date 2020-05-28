@@ -39,8 +39,6 @@
     <div class="lg-zone">
         <div class="lg-box">
             <div class="lg-label">用户登录</div>
-            <font style="margin-left: 34px;" color="red">${msg}</font>
-            <br>
             <!--用jquery实现页面提交-->
             <form id="loginForm" method="post">
                 <div class="lg-username input-item clearfix">
@@ -117,7 +115,7 @@
                 if (data.success == true) {
                     //1.利用http的重定向来跳转
                     //alert(data.message);
-                    window.location.replace("${pageContext.request.contextPath}/index.jsp");
+                    window.location.replace("${pageContext.request.contextPath}/jsps/success.jsp");
                     //2.使用href来跳转
                     //window.location.href = "${pageContext.request.contextPath}/jsps/success.jsp";
                 }

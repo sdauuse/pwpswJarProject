@@ -160,7 +160,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
             noticeService.updateNotice(notice);
         } catch (Exception e) {
             e.printStackTrace();
-            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,修改通告失败，所有字段均为必填字段！");
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,修改通告失败");
             FastJsonUtil.write_json(response, ajaxResult);
             return;
         }

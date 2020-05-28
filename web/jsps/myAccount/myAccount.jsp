@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>我的账号</title>
     <style type="text/css">
         #myAccount #line #div1{
             color: white;
@@ -50,7 +50,7 @@
     </div>
     <div id="accountFunction">
         <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}">我的帖子</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/jsps/myAccount/accountManager.jsp">账号管理</a>
+        <a href="${pageContext.request.contextPath}/jsps/myAccount/accountManager.jsp">个人信息修改</a>
     </div>
 </div>
 </body>

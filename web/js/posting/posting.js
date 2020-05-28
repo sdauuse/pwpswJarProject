@@ -1,14 +1,12 @@
 window.onload = function () {
     document.getElementById("form").onsubmit = function () {
         //调用用户校验方法  checkUsername():
-        return checkUsername() && checkUserNickname() && checkUserAge() && checkUserPhone() && checkEmail();
+        return checkPostName() && checkPostAge() && checkMissingtime() ;
     }
     // 给输入框绑定离焦事件
-    document.getElementById("username").onblur = checkUsername;
-    document.getElementById("userNickname").onblur = checkUserNickname;
-    document.getElementById("userAge").onblur = checkUserAge;
-    document.getElementById("userPhone").onblur = checkUserPhone;
-    document.getElementById("email").onblur = checkEmail;
+    document.getElementById("postName").onblur = checkPostName;
+    document.getElementById("postAge").onblur = checkPostAge;
+    document.getElementById("missingtime").onblur = checkMissingtime;
 
     // start验证码功能
     $(function () {
@@ -96,106 +94,77 @@ var strPath=window.document.location.pathname;
 var pos=strFullPath.indexOf(strPath);
 var prePath=strFullPath.substring(0,pos);
 var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
-//校验用户名
-function checkUsername() {
-    var username = document.getElementById("username").value;
+
+//校验帖子名
+function checkPostName() {
+    var postName = document.getElementById("postName").value;
     //定义正则表达式
-    var reg_username = /^\w{4,12}$/;
+    var reg_postName = /^[\u4E00-\u9FA5\w]{1,20}$/;
     // 判断是否符合正则表达式的规则
-    var flag = reg_username.test(username);
+    var flag = reg_postName.test(postName);
     //提示信息
-    var s_username = document.getElementById("s_username");
+    var s_postName = document.getElementById("s_postName");
     if (flag) {
         //提示正确
-        s_username.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
+        s_postName.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_username.innerHTML = "用户名格式有误";
+        s_postName.innerHTML = "名称长度在1-20";
     }
     return flag;
 }
-
-
-
-
-//校验昵称
-function checkUserNickname() {
-    var userNickname = document.getElementById("userNickname").value;
-    //定义正则表达式
-    var reg_userNickname = /^[\u4E00-\u9FA5\w]{1,12}$/;
-    // 判断是否符合正则表达式的规则
-    var flag = reg_userNickname.test(userNickname);
-    //提示信息
-    var s_userNickname = document.getElementById("s_userNickname");
-    if (flag) {
-        //提示正确
-        s_userNickname.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
-    } else {
-        //提示错误
-        s_userNickname.innerHTML = "昵称格式有误";
-    }
-    return flag;
-}
-
 
 //校验年龄
-function checkUserAge() {
-    var userAge = document.getElementById("userAge").value;
+function checkPostAge() {
+    var postAge = document.getElementById("postAge").value;
     var flag = 0;
-    if (userAge >= 10 && userAge <= 100) {
+    if (postAge >= 0 && postAge <= 120) {
         flag = 1;
     }
     //提示信息
-    var s_userAge = document.getElementById("s_userAge");
+    var s_postAge = document.getElementById("s_postAge");
     if (flag == 1) {
         //提示正确
-        s_userAge.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
+        s_postAge.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
     } else {
         //提示错误
-        s_userAge.innerHTML = "年龄在10-100";
+        s_postAge.innerHTML = "年龄在0-120";
     }
     return flag;
 }
 
-//校验省份
-
-//校验城市
-
-//校验电话号码
-function checkUserPhone() {
-    var userPhone = document.getElementById("userPhone").value;
-    //定义正则表达式
-    var reg_userPhone = /^1[3456789]\d{9}$/;
-    // 判断是否符合正则表达式的规则
-    var flag = reg_userPhone.test(userPhone);
-    //提示信息
-    var s_userPhone = document.getElementById("s_userPhone");
+//校验失踪时间
+function checkMissingtime() {
+    var missingtime = document.getElementById("missingtime").value;
+    //年月日格式
+    var result = missingtime.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+    if (result == null) return false;
+    var d = new Date(result[1], result[3] - 1, result[4]);
+    var flag=d.getFullYear() == result[1] && d.getMonth() + 1 == result[3] && d.getDate() == result[4];
+    var s_missingtime = document.getElementById("s_missingtime");
     if (flag) {
         //提示正确
-        s_userPhone.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
+        s_missingtime.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_userPhone.innerHTML = "电话号码格式有误";
+        s_missingtime.innerHTML = "日期名格式有误";
     }
-    return flag;
-}
+    return
 
-//校验email
-function checkEmail() {
-    var email = document.getElementById("email").value;
-    //定义正则表达式
-    var reg_email = /^\w{1,20}\@\w{1,10}\.\w{1,10}$/;
-    // 判断是否符合正则表达式的规则
-    var flag = reg_email.test(email);
-    //提示信息
-    var s_email = document.getElementById("s_email");
-    if (flag) {
-        //提示正确s
-        s_email.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
-    } else {
-        //提示错误
-        s_email.innerHTML = "email格式有误";
-    }
-    return flag;
+    // var missingtime = document.getElementById("missingtime").value;
+    // //定义正则表达式
+    // var reg_missingtime = /^\d{4}-([1-9]|(1[0-2]))-[ ]$/;
+    // // 判断是否符合正则表达式的规则
+    // var flag = reg_missingtime.test(missingtime);
+    // //提示信息
+    // var s_missingtime = document.getElementById("s_missingtime");
+    // if (flag) {
+    //     //提示正确
+    //     s_missingtime.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
+    // } else {
+    //     //提示错误
+    //     s_missingtime.innerHTML = "日期名格式有误";
+    // }
+    // return flag;
 }
 
