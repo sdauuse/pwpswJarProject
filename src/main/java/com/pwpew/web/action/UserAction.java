@@ -19,11 +19,11 @@ import org.apache.commons.io.FileUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author miaoyin
@@ -37,7 +37,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     @Autowired
     private UserService userService;
 
-
     //模型驱动对象
     private UserMd userMd = new UserMd();
 
@@ -46,13 +45,40 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return userMd;
     }
 
-    public String list() {
+    public void list() {
 
-        TUser user = userService.getUserById(1);
+        //获取页码
+        int page = userMd.getPage();
+        //获取每页显示多少数据
+        int rows = userMd.getRows();
 
-        ServletActionContext.getRequest().setAttribute("username", user.getUsername());
+        //计算开始记录下标
+        int firstResult = (page - 1) * rows;
+        //获取数据库中的帖子总数
+        Long total = userService.findUserCount(userMd);
+        //分页查询帖子
+        List<TUser> list = userService.findUserByPage(userMd, firstResult, rows);
+        //将查询的通告进行分装，用于转换成json对象
+        Map<String, Object> datagrid_result = new HashMap<String, Object>();
+        datagrid_result.put("rows", list);
+        datagrid_result.put("total", total);
 
-        return "ok";
+        //转换成json对象
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String jsonString = FastJsonUtil.toJSONString(datagrid_result);
+        FastJsonUtil.write_json(response, jsonString);
+    }
+
+
+    public void findUserById() {
+
+        TUser user = userService.getUserById(userMd.getUserId());
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String jsonString = FastJsonUtil.toJSONString(user);
+        // 使用JsonFormatterAddPrefix工具方法将嵌套的json转成单层结构
+        jsonString = FastJsonUtil.JsonFormatterAddPrefix(jsonString, "", null);
+        FastJsonUtil.write_json(response, jsonString);
     }
 
     public void verifyUser() throws IOException {
@@ -83,6 +109,12 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 String ajaxResult = FastJsonUtil.ajaxResult(true, "登录成功！");
                 // 输出json
                 FastJsonUtil.write_json(response, ajaxResult);
+
+                //将用户名id和用户名放入session域中
+                HttpSession session = request.getSession();
+
+                session.setAttribute("username", tUser.getUsername());
+                session.setAttribute("userid", tUser.getUserId());
                 //终止执行
                 return;
             }
@@ -131,6 +163,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
+    //修改用户信息
     public String submitpicture() {
 
         try {
@@ -160,6 +193,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
+            }else {
+                userMd.setUserPicture(userMd.getUserPicture());
             }
             TUser user=new TUser();
             user.setUserId(userMd.getUserId());
@@ -172,17 +207,30 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             user.setUserCity(userMd.getUserCity());
             user.setUserPicture(userMd.getUserPicture());
             user.setEmail(userMd.getEmail());
-            userService.updateUserOfAccount(user);
+            int i = userService.updateUserOfAccount(user);
+            if(i>0){
+                ServletActionContext.getRequest().setAttribute("msg","保存成功");
+            }else {
+                ServletActionContext.getRequest().setAttribute("msg","保存失败");
+            }
         } catch (Exception e) {
             e.printStackTrace();
 
         }
         return "userUpdateSuccess";
     }
+
+
     //    用户注册方法
     public String userRegister() throws InvocationTargetException, IllegalAccessException {
         userService.insertUser(userMd);
         return "userLogin";
     }
 
+    public String toUpdateAccount(){
+        int userid = (int) ServletActionContext.getRequest().getAttribute("userid");
+        TUser user = userService.getUserById(userid);
+        ServletActionContext.getRequest().setAttribute("user",user);
+        return "toUpdateAccount";
+    }
 }
