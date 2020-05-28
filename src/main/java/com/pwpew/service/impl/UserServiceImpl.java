@@ -103,4 +103,9 @@ public class UserServiceImpl implements UserService {
     public TUser findUserByPostId(int postId) {
         return userDao.findUserByPostId(postId);
     }
+
+    @Override
+    public int updateUserOfAccount(TUser user) {
+        return userDao.updateUserOfAccount(user);
+    }
 }

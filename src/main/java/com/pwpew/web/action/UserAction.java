@@ -193,10 +193,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
-            }else {
+            } else {
                 userMd.setUserPicture(userMd.getUserPicture());
             }
-            TUser user=new TUser();
+            TUser user = new TUser();
             user.setUserId(userMd.getUserId());
             user.setUsername(userMd.getUsername());
             user.setUserNickname(userMd.getUserNickname());
@@ -208,10 +208,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             user.setUserPicture(userMd.getUserPicture());
             user.setEmail(userMd.getEmail());
             int i = userService.updateUserOfAccount(user);
-            if(i>0){
-                ServletActionContext.getRequest().setAttribute("msg","保存成功");
-            }else {
-                ServletActionContext.getRequest().setAttribute("msg","保存失败");
+            if (i > 0) {
+                ServletActionContext.getRequest().setAttribute("msg", "保存成功");
+            } else {
+                ServletActionContext.getRequest().setAttribute("msg", "保存失败");
             }
 
         } catch (Exception e) {
@@ -228,10 +228,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return "userLogin";
     }
 
-    public String toUpdateAccount(){
+    public String toUpdateAccount() {
         int userid = (int) ServletActionContext.getRequest().getAttribute("userid");
         TUser user = userService.getUserById(userid);
-        ServletActionContext.getRequest().setAttribute("user",user);
+        ServletActionContext.getRequest().setAttribute("user", user);
         return "toUpdateAccount";
     }
 }
