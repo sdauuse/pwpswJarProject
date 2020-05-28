@@ -131,6 +131,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
+    //修改用户信息
     public String submitpicture() {
 
         try {

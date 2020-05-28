@@ -33,16 +33,18 @@
             text-align: center;
         }
         img{
+            float: left;
             width: 60px;
             height: 60px;
-            margin-left: 30px;
+            margin-left: 60px;
         }
     </style>
 </head>
 <body>
+<jsp:include page="/jsps/index/picture_nav.jsp"/>
 <div class="rg_layout">
     <div class="rg_left">
-        <p id="user_register">账号管理</p>
+        <p id="user_register">个人信息修改</p>
     </div>
     <%--end左浮动结束--%>
 
@@ -51,13 +53,13 @@
             <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
                 <table>
                     <tr>
-                        <td>
+                        <td colspan="1" class="td1">
                             <img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg"/>
                         </td>
-                        <td class="td1" colspan="2">
+                        <td class="td1" colspan="3">
                             <div align="center">
                                 <span class="btn btn-success fileinput-button">
-                                    <span>上传</span>
+                                    <span>选择新头像</span>
                                     <input type="file" name="picture">
                                 </span>
                             </div>
