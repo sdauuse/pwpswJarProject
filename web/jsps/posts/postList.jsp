@@ -42,7 +42,6 @@
                 </h4>
                 <div class="postText">
                     失踪地区：&nbsp;&nbsp;&nbsp;&nbsp;${i.postProvince}
-                    <%--${i.postDescribe}--%>
                 </div>
                 <div class="poster">版主：
                     <a href="#">
@@ -60,8 +59,6 @@
 
         <span>总计${count}条数据</span>&nbsp;&nbsp;&nbsp;&nbsp;
         <span>共${totalPage}页</span>
-
-
 
     </div>
 </div>
