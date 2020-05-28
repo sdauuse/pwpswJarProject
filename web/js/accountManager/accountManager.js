@@ -122,7 +122,7 @@ function checkUsername() {
 function checkUserNickname() {
     var userNickname = document.getElementById("userNickname").value;
     //定义正则表达式
-    var reg_userNickname = /^\w{4,12}$/;
+    var reg_userNickname = /^[\u4E00-\u9FA5\w]{1,12}$/;
     // 判断是否符合正则表达式的规则
     var flag = reg_userNickname.test(userNickname);
     //提示信息
