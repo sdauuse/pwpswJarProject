@@ -115,7 +115,7 @@
                 if (data.success == true) {
                     //1.利用http的重定向来跳转
                     //alert(data.message);
-                    window.location.replace("${pageContext.request.contextPath}/jsps/success.jsp");
+                    window.location.replace("${pageContext.request.contextPath}/index.jsp");
                     //2.使用href来跳转
                     //window.location.href = "${pageContext.request.contextPath}/jsps/success.jsp";
                 }

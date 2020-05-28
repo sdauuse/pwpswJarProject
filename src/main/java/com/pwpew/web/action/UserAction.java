@@ -228,7 +228,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
     public String toUpdateAccount(){
-        TUser user = userService.getUserById(2);
+        int userid = (int) ServletActionContext.getRequest().getAttribute("userid");
+        TUser user = userService.getUserById(userid);
         ServletActionContext.getRequest().setAttribute("user",user);
         return "toUpdateAccount";
     }
