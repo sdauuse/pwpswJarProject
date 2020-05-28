@@ -92,6 +92,7 @@ table {
     height: 40px;
     background-color: mediumseagreen;
     border-radius: 5px;
+    color: white;
 }
 
 #btn_reset {
