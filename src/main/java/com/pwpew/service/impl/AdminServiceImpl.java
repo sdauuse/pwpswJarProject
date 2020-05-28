@@ -28,4 +28,11 @@ public class AdminServiceImpl implements AdminService {
     public TAdministrator getAdminById(int id) {
         return adminDao.getAdminById(id);
     }
+
+    @Override
+    public void updateAdmin(TAdministrator admin) {
+        adminDao.updateAdmin(admin);
+    }
+
+
 }

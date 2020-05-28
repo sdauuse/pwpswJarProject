@@ -8,4 +8,14 @@ import com.pwpew.entity.TAdministrator;
  * @commet:
  */
 public class AdminMd extends TAdministrator {
+
+    private String verifyCode;
+
+    public String getVerifyCode() {
+        return verifyCode;
+    }
+
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
+    }
 }

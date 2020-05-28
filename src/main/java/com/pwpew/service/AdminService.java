@@ -14,4 +14,5 @@ public interface AdminService {
     //查询所有管理员
     public List<TAdministrator> findAdmin();
     public TAdministrator getAdminById(int id);
+    public void updateAdmin(TAdministrator admin);
 }

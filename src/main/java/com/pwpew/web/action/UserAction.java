@@ -4,8 +4,10 @@ import java.io.File;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.pwpew.entity.TAdministrator;
 import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.UserMd;
+import com.pwpew.service.AdminService;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
 import com.pwpew.utils.VerifyCode;
@@ -36,7 +38,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private AdminService adminService;
 
     //模型驱动对象
     private UserMd userMd = new UserMd();
@@ -233,5 +236,64 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         TUser user = userService.getUserById(userid);
         ServletActionContext.getRequest().setAttribute("user", user);
         return "toUpdateAccount";
+    }
+
+
+    public void verifyAdmin() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        ArrayList<TAdministrator> list = (ArrayList<TAdministrator>) adminService.findAdmin();
+        boolean flag = false;
+        //从session重获取验证码
+        String vcode = (String) request.getSession().getAttribute("vcode");
+
+        //判断验证码是否正确
+        if (vcode.equalsIgnoreCase(userMd.getVerifyCode()) == false) {
+            // 向客户返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "验证码错误！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+
+        //验证码正确后，核对用户名和密码
+        for (TAdministrator admin : list) {
+            if (admin.getAdminName().equals(userMd.getUsername()) && admin.getAdminPassword().equals(userMd.getUserPassword())) {
+                // 向客户返回成功提示
+                String ajaxResult = FastJsonUtil.ajaxResult(true, "登录成功！");
+                // 输出json
+                FastJsonUtil.write_json(response, ajaxResult);
+
+                //将用户名id和用户名放入session域中
+                HttpSession session = request.getSession();
+
+                session.setAttribute("adminName", admin.getAdminName());
+                session.setAttribute("adminId", admin.getAdminId());
+                //终止执行
+                return;
+            }
+
+            //用于验证用户的用户名是否存在
+            if (admin.getAdminName().equals(userMd.getUsername())) {
+                flag = true;
+            }
+        }
+
+        //如果用户名不存在，直接向前端进行提示
+        if (flag == false) {
+            // 向客户返回成功提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "管理员不存在");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+        // 向客户返回成功提示
+        String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名或者密码错误！");
+        // 输出json
+        FastJsonUtil.write_json(response, ajaxResult);
     }
 }

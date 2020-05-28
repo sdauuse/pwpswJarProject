@@ -68,7 +68,7 @@
 
                 <div class="enter">
                     <input id="btnuser" type="button" onclick="doFind()" value="用户登录">
-                    <input id="btnvol" type="button" onclick="doFind()" value="志愿者登录">
+                    <input id="btnvol" type="button" onclick="doFind2()" value="管理员登录">
                     <%--<a href="" id="usera" onclick="doFind()" class="purchaser">用户登录</a>
                     <a href="" onclick="doFind()" class="supplier">志愿者登录</a>--%>
                 </div>
@@ -131,7 +131,7 @@
             cache: false,
             type: "POST",
             async: false,
-            url: "${pageContext.request.contextPath}/user/verifyUser.action", //把表单数据发送到后端
+            url: "${pageContext.request.contextPath}/user/verifyAdmin.action", //把表单数据发送到后端
             data: $('#loginForm').serialize(),
             //要发送的是ajaxFrm表单中的数据
             /*  error: function (request) {
@@ -146,7 +146,7 @@
                 if (data.success == true) {
                     //1.利用http的重定向来跳转
                     alert(data.message);
-                    window.location.replace("${pageContext.request.contextPath}/jsps/success.jsp");
+                    window.location.replace("${pageContext.request.contextPath}/bac/index.jsp");
                     //2.使用href来跳转
                     //window.location.href = "http://www.baidu.com";
                 }

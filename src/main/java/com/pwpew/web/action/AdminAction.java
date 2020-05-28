@@ -3,6 +3,7 @@ package com.pwpew.web.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TAdministrator;
+import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.AdminMd;
 import com.pwpew.service.AdminService;
 import com.pwpew.utils.FastJsonUtil;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ import java.util.List;
  */
 @Controller("adminAction")
 @Scope("prototype")
-public class AdminAction extends ActionSupport implements ModelDriven<TAdministrator> {
+public class AdminAction extends ActionSupport implements ModelDriven<AdminMd> {
 
     @Autowired
     private AdminService adminService;
@@ -29,12 +31,12 @@ public class AdminAction extends ActionSupport implements ModelDriven<TAdministr
     private AdminMd adminMd = new AdminMd();
 
     @Override
-    public TAdministrator getModel() {
+    public AdminMd getModel() {
         return adminMd;
     }
 
 
-    public void findAdminList(){
+    public void findAdminList() {
 
         List<TAdministrator> list = adminService.findAdmin();
 
@@ -43,4 +45,41 @@ public class AdminAction extends ActionSupport implements ModelDriven<TAdministr
         HttpServletResponse response = ServletActionContext.getResponse();
         FastJsonUtil.write_json(response, jsonString);
     }
+
+
+    public String quit() {
+
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        session.removeAttribute("adminName");
+        session.removeAttribute("adminId");
+
+        return SUCCESS;
+    }
+
+    public void updatePassword() {
+        HttpServletResponse response = ServletActionContext.getResponse();
+
+        try {
+            TAdministrator admin = adminService.getAdminById(adminMd.getAdminId());
+            if(adminMd.getAdminPassword()!=null){
+                admin.setAdminPassword(adminMd.getAdminPassword());
+            }else{
+                String ajaxResult = FastJsonUtil.ajaxResult(false, "修改失败");
+                FastJsonUtil.write_json(response, ajaxResult);
+                return;
+            }
+
+            adminService.updateAdmin(admin);
+        }catch (Exception e){
+            e.printStackTrace();
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "修改失败");
+            FastJsonUtil.write_json(response, ajaxResult);
+            return;
+        }
+
+        String ajaxResult = FastJsonUtil.ajaxResult(true, "修改成功");
+        FastJsonUtil.write_json(response, ajaxResult);
+        return;
+    }
+
 }

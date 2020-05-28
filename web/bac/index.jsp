@@ -31,7 +31,7 @@
         background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
     <span style="float:right; padding-right:20px;" class="head">欢迎${adminName }   <a href="#" id="editpass">修改密码</a> <a
-            href="${pageContext.request.contextPath}/admin/bacquit.action" id="loginOut">安全退出</a></span>
+            href="${pageContext.request.contextPath}/admin/quit.action" id="loginOut">安全退出</a></span>
     <span style="padding-left:10px; font-size: 16px; "><img src="images/blocks.gif" width="20" height="20"
                                                             align="absmiddle"/> 公益寻人系统</span>
 </div>
@@ -63,23 +63,28 @@
         background: #fafafa;">
     <div class="easyui-layout" fit="true">
         <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
-            <table cellpadding=3>
-                <tr>
-                    <td>用户名</td>
-                    <td><input id="adminName" type="text" readonly class="txt01" value="${adminName}"/></td>
-                </tr>
-                <tr>
-                    <td>新密码：</td>
-                    <td><input id="txtNewPass" type="password" class="txt01"/></td>
-                </tr>
-                <tr>
-                    <td>确认密码：</td>
-                    <td><input id="txtRePass" type="password" class="txt01"/></td>
-                </tr>
-            </table>
+
+            <form id="adminForm" >
+                <input type="hidden" name="adminId" value="${adminId}">
+                <table cellpadding=3>
+                    <tr>
+                        <td>用户名</td>
+                        <td><input id="adminName" type="text" readonly class="txt01" value="${adminName}"/></td>
+                    </tr>
+                    <tr>
+                        <td>新密码：</td>
+                        <td><input id="txtNewPass" type="password" name="adminPassword" class="txt01"/></td>
+                    </tr>
+                    <tr>
+                        <td>确认密码：</td>
+                        <td><input id="txtRePass" type="password"  class="txt01"/></td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
-            <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">确定</a>
+            <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" onclick="editPassword()"
+               href="javascript:void(0)">确定</a>
             <a id="btnCancel" class="easyui-linkbutton" icon="icon-cancel" href="#">取消</a>
         </div>
     </div>
@@ -101,6 +106,25 @@
 <script>
     function cancelHref() {
         window.location.href = 'index.jsp'
+    }
+
+    function editPassword() {
+        $.ajax({
+            cache: false,
+            type: "POST",
+            async: false,
+            url: "${pageContext.request.contextPath}/admin/updatePassword.action", //把表单数据发送到ajax.jsp
+            data: $('#adminForm').serialize(),
+            //要发送的是ajaxFrm表单中的数据
+            /*  error: function (request) {
+                  alert("发送请求失败！");
+              }*/
+            success: function (data) {
+                //var result = JSON.stringify(data);
+                //提示操作结果
+                alert(data.message);
+            }
+        });
     }
 </script>
 </body>

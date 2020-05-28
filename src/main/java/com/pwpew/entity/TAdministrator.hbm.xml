@@ -18,7 +18,7 @@
             <column name="adminEmail" sql-type="varchar(32)" length="32"/>
         </property>
         <property name="adminStatement">
-            <column name="adminStatement" sql-type="varchar(128)" length="128" not-null="true"/>
+            <column name="adminStatement" sql-type="varchar(128)" length="128" />
         </property>
         <property name="adminSex">
             <column name="adminSex" sql-type="varchar(2)" length="2"/>
