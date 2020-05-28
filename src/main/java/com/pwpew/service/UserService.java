@@ -23,5 +23,4 @@ public interface UserService {
     //查询用户总数，用于分页
     public Long findUserCount(UserMd user);
     public TUser findUserByPostId(int postId);
-    public int updateUserOfAccount(TUser user);
 }

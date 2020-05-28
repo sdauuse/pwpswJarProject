@@ -1,7 +1,5 @@
 package com.pwpew.entity;
 
-
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,16 +10,8 @@ import java.util.Objects;
 public class TComment {
     private int commentId;
     private String comments;
-    private Date commentTime;
+    private String commentTime;
     private int postId;
-
-    public Date getCommentTime() {
-        return commentTime;
-    }
-
-    public void setCommentTime(Date commentTime) {
-        this.commentTime = commentTime;
-    }
 
     //一个用户可以有多个评论,一个评论只能由一个用户创建
     private TUser user;
@@ -58,6 +48,13 @@ public class TComment {
         this.comments = comments;
     }
 
+    public String getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(String commentTime) {
+        this.commentTime = commentTime;
+    }
 
     @Override
     public boolean equals(Object o) {

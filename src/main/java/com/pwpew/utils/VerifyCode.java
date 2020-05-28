@@ -12,13 +12,13 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class VerifyCode {
-	private int w = 70;
-	private int h = 35;
+	private int w = 115;
+	private int h = 40;
  	private Random r = new Random();
  	// {"宋体", "华文楷体", "黑体", "华文新魏", "华文隶书", "微软雅黑", "楷体_GB2312"}
 	private String[] fontNames  = {"宋体", "华文楷体", "黑体", "微软雅黑", "楷体_GB2312"};
 	// 可选字符
-	private String codes  = "23456789abcdefghjkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
+	private String codes  = "23456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
 	// 背景色
 	private Color bgColor  = new Color(255, 255, 255);
 	// 验证码上的文本

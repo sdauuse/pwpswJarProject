@@ -40,6 +40,5 @@
 		<mapping resource="com/pwpew/entity/TVolunteer.hbm.xml"/>
 
 
-
     </session-factory>
 </hibernate-configuration>

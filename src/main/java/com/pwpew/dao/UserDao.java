@@ -24,8 +24,5 @@ public interface UserDao {
     public List<TUser> findUserByPage(UserMd user,int firstResult,int maxResults);
     //查询用户总数，用于分页
     public Long findUserCount(UserMd user);
-    //通过帖子编号查找对应的用户
     public TUser findUserByPostId(int postId);
-    //在账号管理处进行个人信息更新
-    public int updateUserOfAccount(TUser user);
 }
