@@ -13,7 +13,7 @@
    -->
         <action name="*"  class="userAction" method="{1}">
             <result name="userLogin">/jsps/login/login.jsp</result>
-
+            <result name="userUpdateSuccess">/jsps/success.jsp</result>
             <!--<result name="ok">welcome.jsp</result>-->
         </action>
     </package>
