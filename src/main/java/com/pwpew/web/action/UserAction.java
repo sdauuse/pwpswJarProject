@@ -5,7 +5,6 @@ import java.io.File;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TUser;
-import com.pwpew.entity.TVolunteer;
 import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import org.apache.commons.io.FileUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,6 +36,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
     @Autowired
     private UserService userService;
+
 
     //模型驱动对象
     private UserMd userMd = new UserMd();
@@ -69,7 +70,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         FastJsonUtil.write_json(response, jsonString);
     }
 
-    public void findUserById(){
+
+    public void findUserById() {
 
         TUser user = userService.getUserById(userMd.getUserId());
 
@@ -162,7 +164,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
-    public void submitpicture() {
+    public String submitpicture() {
+
         try {
             // 判断是否上传成功
             // 上传成功的图片，文件默认在tomcat的临时目录 中
@@ -174,7 +177,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
             if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
                 // 服务器图片存储路径
-                String filePath = "F:\\develop\\upload\\";
+                String filePath = "D:\\develop\\upload\\";
                 // 扩展名，从原始名称中截取
                 String fileName_extension = pictureFileName.substring(pictureFileName.lastIndexOf("."));
 
@@ -190,15 +193,34 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
+            }else {
+                userMd.setUserPicture(userMd.getUserPicture());
+            }
+            TUser user=new TUser();
+            user.setUserId(userMd.getUserId());
+            user.setUsername(userMd.getUsername());
+            user.setUserNickname(userMd.getUserNickname());
+            user.setUserGender(userMd.getUserGender());
+            user.setUserAge(userMd.getUserAge());
+            user.setUserPhone(userMd.getUserPhone());
+            user.setUserProvince(userMd.getUserProvince());
+            user.setUserCity(userMd.getUserCity());
+            user.setUserPicture(userMd.getUserPicture());
+            user.setEmail(userMd.getEmail());
+            int i = userService.updateUserOfAccount(user);
+            if(i>0){
+                ServletActionContext.getRequest().setAttribute("msg","保存成功");
+            }else {
+                ServletActionContext.getRequest().setAttribute("msg","保存失败");
             }
 
-            userService.insertUser(userMd);
         } catch (Exception e) {
             e.printStackTrace();
 
-            return;
         }
+        return "userUpdateSuccess";
     }
+
 
     //    用户注册方法
     public String userRegister() throws InvocationTargetException, IllegalAccessException {
@@ -206,4 +228,10 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return "userLogin";
     }
 
+    public String toUpdateAccount(){
+        int userid = (int) ServletActionContext.getRequest().getAttribute("userid");
+        TUser user = userService.getUserById(userid);
+        ServletActionContext.getRequest().setAttribute("user",user);
+        return "toUpdateAccount";
+    }
 }
