@@ -27,19 +27,44 @@
             border-radius: 5px;
             padding-left: 10px;
         }
+        .td1{
+            padding-left: 15px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        img{
+            float: left;
+            width: 60px;
+            height: 60px;
+            margin-left: 60px;
+        }
     </style>
 </head>
 <body>
+<jsp:include page="/jsps/index/picture_nav.jsp"/>
 <div class="rg_layout">
     <div class="rg_left">
-        <p id="user_register">账号管理</p>
+        <p id="user_register">个人信息修改</p>
     </div>
     <%--end左浮动结束--%>
 
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="#" method="get" id="form">
+            <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
                 <table>
+                    <tr>
+                        <td colspan="1" class="td1">
+                            <img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg"/>
+                        </td>
+                        <td class="td1" colspan="3">
+                            <div align="center">
+                                <span class="btn btn-success fileinput-button">
+                                    <span>选择新头像</span>
+                                    <input type="file" name="picture">
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
                         <td class="td_right" colspan="3">
@@ -94,6 +119,9 @@
                         <td class="btn_left" align="center" colspan="4" rolspan="2">
                             <input type="submit" name="btn_register" value="保存" id="btn_register" class="btn">
                         </td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="userId" value="2"></td>
                     </tr>
                 </table>
             </form>

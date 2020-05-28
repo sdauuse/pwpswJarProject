@@ -16,6 +16,16 @@ public class PostMd extends TPost {
     private int page;
     private int rows;
 
+    public CommentMd getCommentMd() {
+        return commentMd;
+    }
+
+    public void setCommentMd(CommentMd commentMd) {
+        this.commentMd = commentMd;
+    }
+
+    private CommentMd commentMd;
+
     //扩展的查询条件，起始时间
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Timestamp postDate;
