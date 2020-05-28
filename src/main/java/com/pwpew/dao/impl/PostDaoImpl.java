@@ -78,6 +78,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public void updatePost(TPost post) {
 
         //更新的时候要注意数据丢失的情况
+        this.getHibernateTemplate().clear();
         this.getHibernateTemplate().update(post);
     }
 
@@ -120,7 +121,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
-        queryString.append("select count(*) from TPost t where t.statue=1");
+        queryString.append("select count(*) from TPost t where 1=1");
 
         //定义List存放参数
         List<Object> params = new ArrayList<Object>();
@@ -199,6 +200,11 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
                 queryString.append(" and t.statue = ?");
                 params.add(postMd.getStatue());
             }
+
+            if(StringUtils.isEmpty(postMd.getStatue())){
+                queryString.append(" and t.statue = 1");
+            }
+
         }
     }
 

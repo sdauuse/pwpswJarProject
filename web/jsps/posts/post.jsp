@@ -12,36 +12,6 @@
 <head>
     <title>帖子</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/posts/post.css">
-    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
-    <script>
-        function CurrentTime() {
-            var now = new Date();
-            var year = now.getFullYear();       //年
-            var month = now.getMonth() + 1;     //月
-            var day = now.getDate();            //日
-            var hh = now.getHours();            //时
-            var mm = now.getMinutes();          //分
-            var ss = now.getSeconds();           //秒
-            var clock = year + "-";
-            if(month < 10)
-                clock += "0";
-            clock += month + "-";
-            if(day < 10)
-                clock += "0";
-            clock += day + " ";
-            if(hh < 10)
-                clock += "0";
-            clock += hh + ":";
-            if (mm < 10) clock += '0';
-            clock += mm + ":";
-            if (ss < 10) clock += '0';
-            clock += ss;
-
-            document.getElementById("commentTime").value=clock;
-
-            document.getElementById("comment").submit();
-        }
-    </script>
 </head>
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
@@ -78,12 +48,12 @@
     <c:forEach items="${comments}" var="i">
         <div class="post">
             <h4 class="poster">
-                    <%--<img src="img/deadpool.jpg" ><br><br>--%>
+                <%--<img src="img/deadpool.jpg" ><br><br>--%>
                 用户：${i.user.username}
             </h4>
             <div class="postDetail">
-                    <%--回复${post.user.username}：<br>--%>
-                    ${i.comments}
+                <%--回复${post.user.username}：<br>--%>
+                ${i.comments}
                 <br><br>
                 <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>
@@ -92,28 +62,16 @@
         </div>
     </c:forEach>
 
-        <br><br><br>
-        <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page-1}&postId=${post.postId}"><span>上一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>第${page}页</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page+1}&postId=${post.postId}"><span>下一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <span>总计${count}条评论</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>共${totalPage}页</span>
-        <br><br><br>
-
     <%--回复区域--%>
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1" method="post" id="comment">
-            <input type="hidden" id="postId" name="postId" value="${post.postId}">
-            <input type="hidden" id="commentTime" name="commentTime">
-
-            <textarea id="comments" name="comments" required="required" placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action" method="post">
+            <input type="hidden" name="postId" value="${post.postId}">
+            <textarea id="messages" name="comments" required="required" placeholder="请在这儿输入回复吧 =_="></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
-
             <div id="postSubmit">
-                <input type="button" onclick="CurrentTime()" value="提交"/>
+                <input type="submit" value="提交"/>
             </div>
         </form>
     </div>

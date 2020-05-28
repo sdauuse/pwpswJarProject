@@ -5,6 +5,7 @@ import java.io.File;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pwpew.entity.TUser;
+import com.pwpew.entity.TVolunteer;
 import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.FastJsonUtil;
@@ -16,14 +17,13 @@ import org.springframework.stereotype.Controller;
 
 import org.apache.commons.io.FileUtils;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author miaoyin
@@ -37,7 +37,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     @Autowired
     private UserService userService;
 
-
     //模型驱动对象
     private UserMd userMd = new UserMd();
 
@@ -46,13 +45,39 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return userMd;
     }
 
-    public String list() {
+    public void list() {
 
-        TUser user = userService.getUserById(1);
+        //获取页码
+        int page = userMd.getPage();
+        //获取每页显示多少数据
+        int rows = userMd.getRows();
 
-        ServletActionContext.getRequest().setAttribute("username", user.getUsername());
+        //计算开始记录下标
+        int firstResult = (page - 1) * rows;
+        //获取数据库中的帖子总数
+        Long total = userService.findUserCount(userMd);
+        //分页查询帖子
+        List<TUser> list = userService.findUserByPage(userMd, firstResult, rows);
+        //将查询的通告进行分装，用于转换成json对象
+        Map<String, Object> datagrid_result = new HashMap<String, Object>();
+        datagrid_result.put("rows", list);
+        datagrid_result.put("total", total);
 
-        return "ok";
+        //转换成json对象
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String jsonString = FastJsonUtil.toJSONString(datagrid_result);
+        FastJsonUtil.write_json(response, jsonString);
+    }
+
+    public void findUserById(){
+
+        TUser user = userService.getUserById(userMd.getUserId());
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String jsonString = FastJsonUtil.toJSONString(user);
+        // 使用JsonFormatterAddPrefix工具方法将嵌套的json转成单层结构
+        jsonString = FastJsonUtil.JsonFormatterAddPrefix(jsonString, "", null);
+        FastJsonUtil.write_json(response, jsonString);
     }
 
     public void verifyUser() throws IOException {
@@ -83,6 +108,12 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 String ajaxResult = FastJsonUtil.ajaxResult(true, "登录成功！");
                 // 输出json
                 FastJsonUtil.write_json(response, ajaxResult);
+
+                //将用户名id和用户名放入session域中
+                HttpSession session = request.getSession();
+
+                session.setAttribute("username", tUser.getUsername());
+                session.setAttribute("userid", tUser.getUserId());
                 //终止执行
                 return;
             }
@@ -131,9 +162,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
-    //修改用户信息
-    public String submitpicture() {
-
+    public void submitpicture() {
         try {
             // 判断是否上传成功
             // 上传成功的图片，文件默认在tomcat的临时目录 中
@@ -145,7 +174,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
             if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
                 // 服务器图片存储路径
-                String filePath = "D:\\develop\\upload\\";
+                String filePath = "F:\\develop\\upload\\";
                 // 扩展名，从原始名称中截取
                 String fileName_extension = pictureFileName.substring(pictureFileName.lastIndexOf("."));
 
@@ -161,41 +190,20 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
-            }else {
-                userMd.setUserPicture(userMd.getUserPicture());
             }
-            TUser user=new TUser();
-            user.setUserId(userMd.getUserId());
-            user.setUsername(userMd.getUsername());
-            user.setUserNickname(userMd.getUserNickname());
-            user.setUserGender(userMd.getUserGender());
-            user.setUserAge(userMd.getUserAge());
-            user.setUserPhone(userMd.getUserPhone());
-            user.setUserProvince(userMd.getUserProvince());
-            user.setUserCity(userMd.getUserCity());
-            user.setUserPicture(userMd.getUserPicture());
-            user.setEmail(userMd.getEmail());
-            int i = userService.updateUserOfAccount(user);
-            if(i>0){
-                ServletActionContext.getRequest().setAttribute("msg","保存成功");
-            }else {
-                ServletActionContext.getRequest().setAttribute("msg","保存失败");
-            }
+
+            userService.insertUser(userMd);
         } catch (Exception e) {
             e.printStackTrace();
 
+            return;
         }
-        return "userUpdateSuccess";
     }
+
     //    用户注册方法
     public String userRegister() throws InvocationTargetException, IllegalAccessException {
         userService.insertUser(userMd);
         return "userLogin";
     }
 
-    public String toUpdateAccount(){
-        TUser user = userService.getUserById(2);
-        ServletActionContext.getRequest().setAttribute("user",user);
-        return "toUpdateAccount";
-    }
 }

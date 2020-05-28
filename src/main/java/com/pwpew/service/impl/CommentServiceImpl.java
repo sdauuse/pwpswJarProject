@@ -2,7 +2,6 @@ package com.pwpew.service.impl;
 
 import com.pwpew.dao.CommentDao;
 import com.pwpew.entity.TComment;
-import com.pwpew.modeldriven.CommentMd;
 import com.pwpew.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,5 @@ public class CommentServiceImpl implements CommentService {
 
     public void insertComment(TComment comment){
         commentDao.insertComment(comment);
-    }
-
-    public Long findCommentCount(CommentMd commentMd){
-        return commentDao.findCommentCount(commentMd);
     }
 }
