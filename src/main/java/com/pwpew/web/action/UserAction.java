@@ -177,7 +177,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
             if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
                 // 服务器图片存储路径
-                String filePath = "F:\\develop\\upload\\";
+                String filePath = "D:\\develop\\upload\\";
                 // 扩展名，从原始名称中截取
                 String fileName_extension = pictureFileName.substring(pictureFileName.lastIndexOf("."));
 

@@ -1,5 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -37,19 +35,14 @@
         img{
             width: 60px;
             height: 60px;
-            margin-left: 60px;
+            margin-left: 30px;
         }
     </style>
 </head>
 <body>
-
-<s:action name="toUpdateAccount" namespace="/user"/>
-
-<jsp:include page="/jsps/index/picture_nav.jsp"/>
-
 <div class="rg_layout">
     <div class="rg_left">
-        <p id="user_register">个人信息修改</p>
+        <p id="user_register">账号管理</p>
     </div>
     <%--end左浮动结束--%>
 
@@ -58,13 +51,13 @@
             <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
                 <table>
                     <tr>
-                        <td colspan="1" class="td1">
-                            <img src="/upload/${user.userPicture}"/>
+                        <td>
+                            <img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg"/>
                         </td>
-                        <td class="td1" colspan="3">
+                        <td class="td1" colspan="2">
                             <div align="center">
                                 <span class="btn btn-success fileinput-button">
-                                    <span>选择新头像</span>
+                                    <span>上传</span>
                                     <input type="file" name="picture">
                                 </span>
                             </div>
@@ -73,39 +66,29 @@
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="username" id="username" value="${user.username}">
+                            <input type="text" name="username" id="username">
                             <span id="s_username" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userNickname">昵称</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="userNickname" id="userNickname" value="${user.userNickname}">
+                            <input type="text" name="userNickname" id="userNickname">
                             <span id="s_userNickname" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="man">性别</label></td>
                         <td class="td_right" colspan="3">
-                            <c:choose>
-                                <c:when test="${user.userGender=='男'}">
-                                    <input id="man" type="radio" checked="checked" name="userGender" value="男"/><span
-                                        class="man">男</span><input
-                                        id="woman" type="radio" name="userGender" value="女"/><span>女</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <input id="man" type="radio"name="userGender" value="男"/><span
-                                        class="man">男</span><input
-                                        id="woman" type="radio" checked="checked"  name="userGender" value="女"/><span>女</span>
-                                </c:otherwise>
-                            </c:choose>
-
+                            <input id="man" type="radio" checked="checked" name="userGender" value="男"/><span
+                                class="man">男</span><input
+                                id="woman" type="radio" name="userGender" value="女"/><span>女</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userAge">年龄</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="userAge" id="userAge" value="${user.userAge}">
+                            <input type="text" name="userAge" id="userAge">
                             <span id="s_userAge" class="error"></span>
                         </td>
                     </tr>
@@ -118,14 +101,14 @@
                     <tr>
                         <td class="td_left"><label for="userPhone">电话号码</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="userPhone" id="userPhone" value="${user.userPhone}">
+                            <input type="text" name="userPhone" id="userPhone">
                             <span id="s_userPhone" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="email">Email</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="email" id="email" value="${user.email}">
+                            <input type="text" name="email" id="email">
                             <span id="s_email" class="error"></span>
                         </td>
                     </tr>
@@ -136,14 +119,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" rolspan="2">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" rolspan="2"><center>${msg}</center></td>
-                    </tr>
-                    <tr>
-                        <td><input type="hidden" name="userId" value="${user.userId}"></td>
-                        <td><input type="hidden" name="userPicture" value="${user.userPicture}"></td>
+                        <td><input type="hidden" name="userId" value="2"></td>
                     </tr>
                 </table>
             </form>
@@ -151,5 +127,6 @@
         <%--end定义表单--%>
     </div>
 </div>
+
 </body>
 </html>
