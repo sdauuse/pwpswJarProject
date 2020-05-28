@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -56,8 +57,16 @@
     </div>
 
     <div id="login_register">
-        <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>
+        <c:choose>
+            <c:when test="${empty userid}">
+                <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>
+            </c:when>
+            <c:otherwise>
+                你好！${username}
+            </c:otherwise>
+        </c:choose>
+
     </div>
 </div>
 </body>
