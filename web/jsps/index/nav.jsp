@@ -78,14 +78,7 @@
 		</li>
 		<li><a href="${pageContext.request.contextPath}/jsps/volunteer/volunteerConsult.jsp">志愿者登记</a></li>
 		<li><a href="${pageContext.request.contextPath}/post/showPostList.action?page=1">论坛</a></li>
-		<li><a href="#">我的</a>
-			<div class="nav1">
-				<ul>
-					<li><a href="#">帖子信息</a></li>
-					<li><a href="#">账号管理</a></li>
-					<li><a href="#">系统信息</a></li>
-				</ul>
-			</div>
+		<li><a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp">我的</a>
 		</li>
 		<li><a href="${pageContext.request.contextPath}/notice/noticeList.action?page=1&rows=10">网站通告</a></li>
 	</ul>

@@ -1,7 +1,6 @@
 package com.pwpew.service;
 
 import com.pwpew.entity.TComment;
-import com.pwpew.modeldriven.CommentMd;
 
 /**
  * @author miaoyin
@@ -10,5 +9,5 @@ import com.pwpew.modeldriven.CommentMd;
  */
 public interface CommentService {
     public void insertComment(TComment comment);
-    public Long findCommentCount(CommentMd commentMd);
+
 }
