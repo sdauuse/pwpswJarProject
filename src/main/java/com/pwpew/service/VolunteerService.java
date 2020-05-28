@@ -9,9 +9,9 @@ import java.util.List;
 public interface VolunteerService {
 
     public List<TVolunteer> findVolunteer();
-    public TVolunteer getVolunteerById(int volId);
+    public VolunteerMd getVolunteerById(int volId);
     public void updateVolunteer(int volId, VolunteerMd volunteer);
-    public void deleteVolunteer(TVolunteer volunteer);
+    public void deleteVolunteerById(int volId);
     public void insertVolunteer(VolunteerMd volunteer) throws InvocationTargetException, IllegalAccessException;
 
     //分页查询用户

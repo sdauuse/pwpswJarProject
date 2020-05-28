@@ -24,16 +24,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<TUser> findUser() {
-        return userDao.findUser();
+        return  userDao.findUser();
     }
-
     @Override
     public TUser getUserById(int userid) {
         UserMd user = new UserMd();
         user.setUserId(userid);
         return userDao.getUser(user);
     }
-
     @Override
     public void updateUser(int userid, UserMd user) {
         if (user == null) {
@@ -79,7 +77,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isNotEmpty(tUser.getUsername()) && StringUtils.isNotEmpty(tUser.getUserPassword())
                 && StringUtils.isNotEmpty(tUser.getUserGender()) && StringUtils.isNotEmpty(tUser.getUserCity())
                 && StringUtils.isNotEmpty(tUser.getUserProvince()) && StringUtils.isNotEmpty(tUser.getUserPhone())
-                && tUser.getUserAge() >= 0 && StringUtils.isNotEmpty(tUser.getUserNickname())) {
+                && tUser.getUserAge() >= 0 && StringUtils.isNotEmpty(tUser.getUserNickname()) ) {
 
             userDao.insertUser(tUser);
         } else {
@@ -91,16 +89,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<TUser> findUserByPage(UserMd user, int firstResult, int maxResults) {
-        return userDao.findUserByPage(user, firstResult, maxResults);
+        return null;
     }
 
     @Override
     public Long findUserCount(UserMd user) {
-        return userDao.findUserCount(user);
+        return 0l;
     }
 
     @Override
     public TUser findUserByPostId(int postId) {
         return userDao.findUserByPostId(postId);
+    }
+
+    @Override
+    public int updateUserOfAccount(TUser user) {
+        return userDao.updateUserOfAccount(user);
     }
 }

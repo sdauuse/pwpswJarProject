@@ -20,7 +20,7 @@ public class TPost {
     private String postGender;
     private Integer postAge;
     //被寻人失联时间
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Timestamp missingtime;
 
     private String postProvince;
