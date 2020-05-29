@@ -65,7 +65,7 @@
 <div id="nav">
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-		<li><a href="#">寻亲登记</a>
+		<li><a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp">寻亲登记</a>
 			<div class="nav1">
 				<ul>
 					<li><a href="#">家寻宝贝</a></li>
