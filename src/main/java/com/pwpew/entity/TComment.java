@@ -15,6 +15,9 @@ public class TComment {
     private Date commentTime;
     private int postId;
 
+    //一个用户可以有多个评论,一个评论只能由一个用户创建
+    private TUser user;
+
     public Date getCommentTime() {
         return commentTime;
     }
@@ -22,9 +25,6 @@ public class TComment {
     public void setCommentTime(Date commentTime) {
         this.commentTime = commentTime;
     }
-
-    //一个用户可以有多个评论,一个评论只能由一个用户创建
-    private TUser user;
 
     public int getPostId() {
         return postId;

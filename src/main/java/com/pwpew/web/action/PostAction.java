@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     @Autowired
     private PostService postService;
+    @Autowired
     private CommentService commentService;
 
     @Autowired
@@ -123,32 +125,34 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     // 显示帖子
     public String showPost() {
-//        int page = commentMd.getPage();
-//        int rows = 5;
-//
-//        Long count = commentService.findCommentCount(commentMd);
-//        int i=0;
-//        if(count%rows!=0){
-//            i++;
-//        }
-//
-//        Long totalPage = count/rows+i;
-//
-//        if(page<1){
-//            page = 1;
-//        }
-//        if(page>totalPage){
-//            page = page - 1;
-//        }
+        int page = commentMd.getPage();
+        int rows = 5;
+
+        Long count = commentService.findCommentCount(commentMd);
+        int i=0;
+        if(count%rows!=0){
+            i++;
+        }
+
+        Long totalPage = count/rows+i;
+
+        if(page<1){
+            page = 1;
+        }
+        if(page>totalPage){
+            page = page - 1;
+        }
 
         TPost post = postService.getPostById(postMd.getPostId());
+
         HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpSession session = request.getSession();
+
         request.setAttribute("post", post);
         request.setAttribute("comments",post.getComments());
-
-//        request.setAttribute("page",page);
-//        request.setAttribute("count",count);
-//        request.setAttribute("totalPage",totalPage);
+        request.setAttribute("page",page);
+        request.setAttribute("count",count);
+        request.setAttribute("totalPage",totalPage);
 
         return "showPost";
     }

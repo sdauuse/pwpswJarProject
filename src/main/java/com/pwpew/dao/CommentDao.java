@@ -2,6 +2,9 @@ package com.pwpew.dao;
 
 import com.pwpew.entity.TComment;
 import com.pwpew.modeldriven.CommentMd;
+import com.pwpew.modeldriven.PostMd;
+
+import java.util.List;
 
 /**
  * @author miaoyin
@@ -10,5 +13,6 @@ import com.pwpew.modeldriven.CommentMd;
  */
 public interface CommentDao {
     public void insertComment(TComment comment);
-    public Long findCommentCount(CommentMd commentMd);// 分页查询
+    public Long findCommentCount(CommentMd commentMd);
+    public List<TComment> findCommentByPage(CommentMd commentMd, int firstResult, int maxResults);
 }
