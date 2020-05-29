@@ -141,6 +141,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="td_left"><label for="postPicture">照片</label></td>
+                        <td class="td1" colspan="3">
+                            <div align="center">
+                                <input type="file" name="postPicture" id="postPicture">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="td_left"><label for="postDescribe">详细描述</label></td>
                         <td class="td_right" colspan="3">
                             <%--                            <input type="textarea" name="postDescribe" id="postDescribe" placeholder="详细描述/联系方式">--%>
@@ -160,7 +168,7 @@
                     </tr>
                     <tr>
                         <td class="btn_left" align="center" colspan="4">
-                            <input type="submit" name="btn_posting" value="注册" id="btn_posting" class="btn">
+                            <input type="submit" name="btn_posting" value="提交" id="btn_posting" class="btn">
                             <input type="submit" name="btn_posting" value="重置" id="btn_reset">
                         </td>
                     </tr>
