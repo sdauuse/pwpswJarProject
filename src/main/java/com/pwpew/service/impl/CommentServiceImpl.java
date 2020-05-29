@@ -24,16 +24,14 @@ public class CommentServiceImpl implements CommentService {
         commentDao.insertComment(comment);
     }
 
-    public Long findCommentCount(CommentMd commentMd){
-        return commentDao.findCommentCount(commentMd);
+    public Long findCommentCount(CommentMd commentMd, int postId){
+        return commentDao.findCommentCount(commentMd, postId);
     }
 
-    public List<TComment> findCommentByPage(CommentMd commentMd, int firstResult, int maxResults){
-        List<TComment> list = commentDao.findCommentByPage(commentMd, firstResult, maxResults);
+    public List<TComment> findCommentByPage(int postId, int firstResult, int maxResults){
+        List<TComment> list = commentDao.findCommentByPage(postId, firstResult, maxResults);
 
-        for (TComment comment:list) {
-            comment.getUser().setUserPassword(null);
-        }
+
         return  list;
     }
 }

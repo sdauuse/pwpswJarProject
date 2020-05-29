@@ -36,45 +36,30 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
         session.save(comment);
     }
 
-    public Long findCommentCount(CommentMd commentMd){
+
+    public Long findCommentCount(CommentMd commentMd, int postId){
+        session = this.getSessionFactory().getCurrentSession();
+
         //使用hql查询
-        StringBuffer queryString = new StringBuffer();
-        queryString.append("select count(*) from TComment t");
 
-        //定义List存放参数
-        List<Object> params = new ArrayList<Object>();
+        Query query = session.createQuery("select count(*) from TComment t where t.postId=?");
+        query.setParameter(0, postId);
 
-        //拼装 查询条件
-//        findCommentCondition(commentMd, queryString, params);
+        return (Long)query.list().get(0);
 
-        List list = this.getHibernateTemplate().find(queryString.toString(), params.toArray());
-        Long total = (Long) list.get(0);
-        return total;
+
     }
 
-    public List<TComment> findCommentByPage(CommentMd commentMd, int firstResult, int maxResults) {
+    public List<TComment> findCommentByPage(int postId , int firstResult, int maxResults) {
 
         //如果在这个方法中得到Hibernate的session，通过session执行hql的查询（不使用HibernateTemplate）
-        Session session = this.getSessionFactory().getCurrentSession();
+        session = this.getSessionFactory().getCurrentSession();
 
         //使用hql查询
-        StringBuffer queryString = new StringBuffer();
 
-        queryString.append("from TComment t where 1=1 ");
+        Query query = session.createQuery("from TComment t where t.postId=?");
+        query.setParameter(0, postId);
 
-        //定义List存放参数
-        List<Object> params = new ArrayList<Object>();
-
-        //拼装 查询条件
-//        findPostCondition(postMd, queryString, params);
-
-        Query query = session.createQuery(queryString.toString());
-
-        //参数绑定
-        //遍历params，进行每个参数绑定
-        for (int i = 0; i < params.size(); i++) {
-            query.setParameter(i, params.get(i));
-        }
         //设置分页参数
         query.setFirstResult(firstResult);
         query.setMaxResults(maxResults);

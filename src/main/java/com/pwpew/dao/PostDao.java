@@ -23,8 +23,6 @@ public interface PostDao {
     //修改帖子删除状态和帖子封禁状态，相当于是否删除帖子和是否封禁帖子, status 0为删除，1为正常;Effectiveness 0为封禁，1为正常
     public void updateStatueAndEff(PostMd postMd);
 
-    public void replyPost(int postId);
-
     //获取特定类型的帖子
     public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult);
 }

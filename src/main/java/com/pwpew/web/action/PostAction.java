@@ -128,7 +128,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         int page = commentMd.getPage();
         int rows = 5;
 
-        Long count = commentService.findCommentCount(commentMd);
+        Long count = commentService.findCommentCount(commentMd, postMd.getPostId());
         int i=0;
         if(count%rows!=0){
             i++;
@@ -142,14 +142,14 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         if(page>totalPage){
             page = page - 1;
         }
+        int firstResult = (page-1)*rows;
 
         TPost post = postService.getPostById(postMd.getPostId());
+        List<TComment> comments = commentService.findCommentByPage(postMd.getPostId(), firstResult, rows);
 
         HttpServletRequest request = ServletActionContext.getRequest();
-//        HttpSession session = request.getSession();
-
         request.setAttribute("post", post);
-        request.setAttribute("comments",post.getComments());
+        request.setAttribute("comments",comments);
         request.setAttribute("page",page);
         request.setAttribute("count",count);
         request.setAttribute("totalPage",totalPage);
@@ -179,7 +179,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         }
         int firstResult = (page-1)*rows;
 
-        List<TPost> postList = postService.findPostByPage(postMd,firstResult,rows);
+        List<TPost> postList = postService.findPostByPage(postMd, firstResult, rows);
 
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("postList",postList);

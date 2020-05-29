@@ -13,6 +13,6 @@ import java.util.List;
  */
 public interface CommentDao {
     public void insertComment(TComment comment);
-    public Long findCommentCount(CommentMd commentMd);
-    public List<TComment> findCommentByPage(CommentMd commentMd, int firstResult, int maxResults);
+    public Long findCommentCount(CommentMd commentMd, int postId);
+    public List<TComment> findCommentByPage(int postId, int firstResult, int maxResults);
 }
