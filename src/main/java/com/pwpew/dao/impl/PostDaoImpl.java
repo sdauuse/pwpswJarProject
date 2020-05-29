@@ -202,9 +202,4 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         }
     }
 
-    // 回帖
-    public void replyPost(int postId) {
-        session = this.getSessionFactory().getCurrentSession();
-        // todo
-    }
 }
