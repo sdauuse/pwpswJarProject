@@ -2,7 +2,10 @@ package com.pwpew.dao.impl;
 
 import com.pwpew.dao.CommentDao;
 import com.pwpew.entity.TComment;
+import com.pwpew.entity.TPost;
 import com.pwpew.modeldriven.CommentMd;
+import com.pwpew.modeldriven.PostMd;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -33,20 +36,37 @@ public class CommentDaoImpl extends HibernateDaoSupport implements CommentDao {
         session.save(comment);
     }
 
-    public Long findCommentCount(CommentMd commentMd){
+
+    public Long findCommentCount(CommentMd commentMd, int postId){
+        session = this.getSessionFactory().getCurrentSession();
+
         //使用hql查询
-        StringBuffer queryString = new StringBuffer();
-        queryString.append("select count(*) from TComment t");
 
-        //定义List存放参数
-        List<Object> params = new ArrayList<Object>();
+        Query query = session.createQuery("select count(*) from TComment t where t.postId=?");
+        query.setParameter(0, postId);
 
-        //拼装 查询条件
-//        findCommentCondition(commentMd, queryString, params);
+        return (Long)query.list().get(0);
 
-        List list = this.getHibernateTemplate().find(queryString.toString(), params.toArray());
-        Long total = (Long) list.get(0);
-        return total;
+
+    }
+
+    public List<TComment> findCommentByPage(int postId , int firstResult, int maxResults) {
+
+        //如果在这个方法中得到Hibernate的session，通过session执行hql的查询（不使用HibernateTemplate）
+        session = this.getSessionFactory().getCurrentSession();
+
+        //使用hql查询
+
+        Query query = session.createQuery("from TComment t where t.postId=?");
+        query.setParameter(0, postId);
+
+        //设置分页参数
+        query.setFirstResult(firstResult);
+        query.setMaxResults(maxResults);
+        //直接使用原始的query对象查询
+
+        return query.list();
+
     }
 
 

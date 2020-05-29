@@ -77,12 +77,12 @@
     <%--end左浮动结束--%>
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="${pageContext.request.contextPath}/post/posting.action" method="post" id="form">
+            <form action="${pageContext.request.contextPath}/post/posting.action?user.userId=1" method="post" id="form">
                 <table>
                     <tr>
                         <td class="td_left"><label for="postType"><span class="requirement">*</span>寻亲类型</label></td>
                         <td class="td_right" colspan="3">
-                            <select name="postType" name="postType" id="postType">
+                            <select name="postType" id="postType">
                                 <option value="家寻宝贝">家寻宝贝</option>
                                 <option value="宝贝寻家">宝贝寻家</option>
                                 <option value="流浪乞讨">流浪乞讨</option>
@@ -114,7 +114,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="missingtime"><span class="requirement">*</span>失踪时间</label></td>
+                        <td class="td_left"><label for="missingtime">失踪时间</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="missingtime" id="missingtime" placeholder="yyyy-MM-dd">
                             <span id="s_missingtime" class="error"></span>
@@ -141,6 +141,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="td_left"><label for="postPicture">照片</label></td>
+                        <td class="td1" colspan="3">
+                            <div align="center">
+                                <input type="file" name="postPicture" id="postPicture">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="td_left"><label for="postDescribe">详细描述</label></td>
                         <td class="td_right" colspan="3">
                             <%--                            <input type="textarea" name="postDescribe" id="postDescribe" placeholder="详细描述/联系方式">--%>
@@ -160,7 +168,7 @@
                     </tr>
                     <tr>
                         <td class="btn_left" align="center" colspan="4">
-                            <input type="submit" name="btn_posting" value="注册" id="btn_posting" class="btn">
+                            <input type="submit" name="btn_posting" value="提交" id="btn_posting" class="btn">
                             <input type="submit" name="btn_posting" value="重置" id="btn_reset">
                         </td>
                     </tr>

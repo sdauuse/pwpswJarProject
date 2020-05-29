@@ -26,6 +26,7 @@
             <file>file://$MODULE_DIR$/src/main/resouces/struts/struts-post.xml</file>
             <file>file://$MODULE_DIR$/src/main/resouces/struts/struts-datadict.xml</file>
             <file>file://$MODULE_DIR$/src/main/resouces/struts/struts-comment.xml</file>
+            <file>file://$MODULE_DIR$/src/main/resouces/struts/struts-volunteer.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -42,6 +43,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
           <unit-entry name="hibernate:hibernate.cfg.xml" value="13310a31-b59b-4609-882c-88a1063e1a47" />
           <unit-entry name="sessionFactory" value="11707d0d-962d-4f6e-a0be-d769439a5d3d" />
         </datasource-map>
