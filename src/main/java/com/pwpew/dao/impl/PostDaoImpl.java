@@ -207,4 +207,14 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         session = this.getSessionFactory().getCurrentSession();
         // todo
     }
+
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult){
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from TPost where postName like '%" + nameOrDescribe + "%' or postDescribe like '%" + nameOrDescribe + "%' ");
+        query.setFirstResult(firestResult);
+        query.setMaxResults(maxResult);
+        List<TPost> list = query.list();
+        return list;
+    }
+
 }
