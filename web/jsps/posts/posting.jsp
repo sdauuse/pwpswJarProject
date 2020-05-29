@@ -82,7 +82,7 @@
                     <tr>
                         <td class="td_left"><label for="postType"><span class="requirement">*</span>寻亲类型</label></td>
                         <td class="td_right" colspan="3">
-                            <select name="postType" name="postType" id="postType">
+                            <select name="postType" id="postType">
                                 <option value="家寻宝贝">家寻宝贝</option>
                                 <option value="宝贝寻家">宝贝寻家</option>
                                 <option value="流浪乞讨">流浪乞讨</option>
