@@ -9,7 +9,7 @@
             <column name="msgId" sql-type="int(32)"/>
         </id>
         <property name="msgMain">
-            <column name="msgMain" sql-type="varchar(256)" length="256"/>
+            <column name="msgMain" sql-type="varchar(256)" length="256" not-null="true"/>
         </property>
         <property name="msgDate">
             <column name="msgDate" sql-type="datetime"/>

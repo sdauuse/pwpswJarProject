@@ -36,6 +36,7 @@
 		<mapping resource="com/pwpew/entity/TComment.hbm.xml"/>
 		<mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
 		<mapping resource="com/pwpew/entity/TDatadict.hbm.xml"/>
+		<mapping resource="com/pwpew/entity/TPost.hbm.xml"/>
 		<mapping resource="com/pwpew/entity/TVolunteer.hbm.xml"/>
 
 
