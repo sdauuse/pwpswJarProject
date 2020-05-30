@@ -17,6 +17,10 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * @author QIN
  * @date 2020/5/26 - 19:38
@@ -27,8 +31,12 @@ import java.text.ParseException;
 public class CommentAction extends ActionSupport implements ModelDriven<TComment> {
     @Autowired
     private CommentService commentService;
+
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private UserService userService;
 
     private CommentMd commentMd = new CommentMd();
 
@@ -37,7 +45,7 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
         return commentMd;
     }
 
-    public String insertComment() {
+    public String insertComment() throws ParseException {
 
         TComment comment = new TComment();
 
@@ -50,6 +58,7 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("post",post);
         request.setAttribute("comments", post.getComments());
+
 
         return "insertComment";
     }

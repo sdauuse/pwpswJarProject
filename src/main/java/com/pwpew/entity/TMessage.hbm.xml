@@ -9,23 +9,22 @@
             <column name="msgId" sql-type="int(32)"/>
         </id>
         <property name="msgMain">
-            <column name="msgMain" sql-type="varchar(256)" length="256"/>
+            <column name="msgMain" sql-type="varchar(256)" length="256" not-null="true"/>
         </property>
         <property name="msgDate">
             <column name="msgDate" sql-type="datetime"/>
         </property>
         <property name="msgResTime">
-            <column name="msgResTime" sql-type="datetime" not-null="true"/>
+            <column name="msgResTime" sql-type="datetime"/>
         </property>
         <property name="msgResMain">
-            <column name="msgResMain" sql-type="varchar(256)" length="256" not-null="true"/>
+            <column name="msgResMain" sql-type="varchar(256)" length="256"/>
         </property>
 
 
         <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="select">
             <column name="userId" not-null="true"></column>
         </many-to-one>
-
 
     </class>
 </hibernate-mapping>
