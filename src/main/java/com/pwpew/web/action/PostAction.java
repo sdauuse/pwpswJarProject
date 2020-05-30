@@ -258,5 +258,12 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         postService.insertPost(post);
         return "posting";
     }
+    //查找帖子类型
+    public String showPostClass(){
+        List<TPost> postClass=postService.getPostByPostType(postMd.getPostType(),5,0);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("showPostClass",postClass);
+        return "showPostClass";
+    }
 
 }
