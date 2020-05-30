@@ -13,7 +13,6 @@
    -->
         <action name="*"  class="messageAction" method="{1}">
             <!-- <result name.="success">/jsp/success.jsp</result>-->
-            <result name="leaveMessage">/jsps/message/message.jsp</result>
         </action>
     </package>
 </struts>

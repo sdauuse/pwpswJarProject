@@ -57,7 +57,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void insertMessage(TMessage message) {
-        messageDao.insertMessage(message);
+
     }
 
     @Override

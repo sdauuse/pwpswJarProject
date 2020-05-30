@@ -2,10 +2,8 @@ package com.pwpew.web.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.pwpew.entity.TComment;
 import com.pwpew.entity.TMessage;
 import com.pwpew.entity.TNotice;
-import com.pwpew.entity.TPost;
 import com.pwpew.modeldriven.MessageMd;
 import com.pwpew.service.MessageService;
 import com.pwpew.utils.CommonUtil;
@@ -17,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -122,18 +119,5 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
 
         String jsonString = FastJsonUtil.ajaxResult(true,"删除成功");
         FastJsonUtil.write_json(response,jsonString);
-    }
-
-    public String leaveMessage(){
-        TMessage message = new TMessage();
-
-        // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
-        BeanUtils.copyProperties(messageMd, message);
-
-        messageService.insertMessage(message);
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-
-        return "leaveMessage";
     }
 }

@@ -15,16 +15,17 @@
             <column name="msgDate" sql-type="datetime"/>
         </property>
         <property name="msgResTime">
-            <column name="msgResTime" sql-type="datetime"/>
+            <column name="msgResTime" sql-type="datetime" not-null="true"/>
         </property>
         <property name="msgResMain">
-            <column name="msgResMain" sql-type="varchar(256)" length="256"/>
+            <column name="msgResMain" sql-type="varchar(256)" length="256" not-null="true"/>
         </property>
 
 
         <many-to-one name="user" class="com.pwpew.entity.TUser" fetch="select">
             <column name="userId" not-null="true"></column>
         </many-to-one>
+
 
     </class>
 </hibernate-mapping>

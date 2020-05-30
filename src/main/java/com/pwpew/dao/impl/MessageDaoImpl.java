@@ -27,7 +27,6 @@ import java.util.List;
  */
 @Repository("messageDao")
 public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
-    private Session session = null;
     @Autowired
     public void setHT(HibernateTemplate hibernateTemplate) {
         // 将adminDao 中注入进来 的hibernateTemplate给父类的setHibernateTemplate方法传入
@@ -70,8 +69,7 @@ public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
 
     @Override
     public void insertMessage(TMessage message) {
-        session = this.getSessionFactory().getCurrentSession();
-        session.save(message);
+
     }
 
     private void findNoticeCondition(MessageMd messageMd, StringBuffer queryString, List<Object> params) {
