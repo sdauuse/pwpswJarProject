@@ -49,10 +49,10 @@
     </p>
     <p class="main">谢谢，欢迎您的加入！</p>
 
-    <a href="${pageContext.request.contextPath}/index.jsp" class="vol-link">公益寻人网</a>
+    <a style="color: blue;" href="${pageContext.request.contextPath}/index.jsp" class="vol-link">公益寻人网</a>
 
     <p>注册志愿者之前，请先加qq群1050432052咨询我们</p>
-    <a href="${pageContext.request.contextPath}/jsps/volunteer/volunteerRegister.jsp" class="vol-link">志愿者注册
+    <a style="color: blue;" href="${pageContext.request.contextPath}/jsps/volunteer/volunteerRegister.jsp" class="vol-link">志愿者注册
     </a><br>
     <img width="200px" class="vol-qq" src="${pageContext.request.contextPath}/imgs/user_vol_register_img/volunteerConsult.png" alt="志愿者咨询群">
 
