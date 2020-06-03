@@ -133,7 +133,7 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
         messageService.insertMessage(message);
 
         HttpServletRequest request = ServletActionContext.getRequest();
-
+        request.setAttribute("messageLeft", "留言成功");
         return "leaveMessage";
     }
 }
