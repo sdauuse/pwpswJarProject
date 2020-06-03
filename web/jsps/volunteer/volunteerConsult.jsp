@@ -11,11 +11,13 @@
     <title>志愿者登记说明</title>
     <link href="${pageContext.request.contextPath}/css/volunteerConsult.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body style="text-align:left">
+
+<jsp:include page="/jsps/index/picture_nav.jsp"/>
 <div class="main-content">
     <p class="main" id="main-title">志愿者登记说明</p>
     <p class="main">尊敬的朋友：</p>
-    <p class="main">您好！欢迎光临公益寻人网站！在成为志愿者之前请先阅读下文来了解我们。</p>
+    <p class="main" >您好！欢迎光临公益寻人网站！在成为志愿者之前请先阅读下文来了解我们。</p>
     <p class="main">
         《公益寻人网》是隶属于公益寻人志愿者协会的公益性寻人网站，
         宝贝回家志愿者协会是关爱儿童的各界爱心人士自愿参加的民间志愿者组织，
@@ -47,17 +49,15 @@
     </p>
     <p class="main">谢谢，欢迎您的加入！</p>
 
-    <a href="${pageContext.request.contextPath}/index.jsp" class="vol-link">公益寻人网</a>
+    <a style="color: blue;" href="${pageContext.request.contextPath}/index.jsp" class="vol-link">公益寻人网</a>
 
     <p>注册志愿者之前，请先加qq群1050432052咨询我们</p>
-    <a href="${pageContext.request.contextPath}/jsps/volunteer/volunteerRegister.jsp" class="vol-link">志愿者注册
+    <a style="color: blue;" href="${pageContext.request.contextPath}/jsps/volunteer/volunteerRegister.jsp" class="vol-link">志愿者注册
     </a><br>
-    <img class="vol-qq" src="${pageContext.request.contextPath}/imgs/user_vol_register_img/volunteerConsult.png" alt="志愿者咨询群">
+    <img width="200px" class="vol-qq" src="${pageContext.request.contextPath}/imgs/user_vol_register_img/volunteerConsult.png" alt="志愿者咨询群">
 
 </div>
-
-
-
+<jsp:include page="/jsps/index/footer.jsp"/>
 </body>
 </html>
 
