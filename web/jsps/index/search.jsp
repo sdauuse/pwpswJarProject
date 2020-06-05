@@ -39,8 +39,8 @@
 <div id="research">
     <span id="research1"><img src="${pageContext.request.contextPath}/imgs/index/research_picture.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/notice/noticeMain.action?ntsId=${latestNotice.ntsId}">${latestNotice.ntsHeadLine}</a></span>
     <span id="research2">
-        <form action="" method="post">
-          <input type="text" class="input1">&nbsp;<button type="button" class="btn btn-primary">搜索</button>
+        <form action="${pageContext.request.contextPath}/post/searchPost.action?page=1&rows=10" method="post">
+          <input type="text" class="input1" name="keyword" placeholder="请输入查找的姓名或相关信息">&nbsp;<button type="submit" class="btn btn-primary">搜索</button>
         </form>
       </span>
 </div>

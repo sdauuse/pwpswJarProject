@@ -250,6 +250,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     // 发帖
     public String posting(){
         postMd.setStatue("1");
+        postMd.setEffectiveness("1");
 
         TPost post = new TPost();
         // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
@@ -277,5 +278,24 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         return "showPostClass";
     }
 
+
+    //搜索帖子
+    public String searchPost(){
+        int page = postMd.getPage();
+        int rows = postMd.getRows();
+        String keyword = postMd.getKeyword();
+        int firestResult=(page-1)*rows;
+
+        List<TPost> list = postService.findPostByNameOrDescribe(keyword,firestResult,rows);
+
+        int postCount = Math.toIntExact(postService.findPostCount(postMd));
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("keyword",keyword);
+        request.setAttribute("list",list);
+        request.setAttribute("postCount",postCount);
+        request.setAttribute("page",page);
+
+        return "searchSuccess";
+    }
 
 }

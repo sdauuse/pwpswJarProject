@@ -30,4 +30,9 @@ public interface PostService {
 
     //获取特定类型的帖子,maxResults是查询数目，firstResult是查询起始索引，从0开始
     public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult);
+
+    //根据姓名或描述搜索帖子
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult);
+
+
 }
