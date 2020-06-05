@@ -125,7 +125,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     // 显示帖子
     public String showPost() {
-        int page = commentMd.getPage();
+        int page = postMd.getPage();
         int rows = 5;
 
         Long count = commentService.findCommentCount(commentMd, postMd.getPostId());

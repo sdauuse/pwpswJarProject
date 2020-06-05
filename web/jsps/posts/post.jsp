@@ -105,7 +105,7 @@
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1" method="post" id="comment">
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1&page=${page}" method="post" id="comment">
             <input type="hidden" id="postId" name="postId" value="${post.postId}">
             <input type="hidden" id="commentTime" name="commentTime">
 

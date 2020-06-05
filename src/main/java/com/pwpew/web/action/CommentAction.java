@@ -58,7 +58,7 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("post",post);
         request.setAttribute("comments", post.getComments());
-
+        request.setAttribute("page", commentMd.getPage());
 
         return "insertComment";
     }
