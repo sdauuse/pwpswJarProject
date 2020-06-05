@@ -47,6 +47,11 @@
             margin: 0px;
             padding: 0px;
         }
+        #login_register img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +68,7 @@
                 <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>
             </c:when>
             <c:otherwise>
-                你好！${username}
+                你好！${usernickname}&nbsp;&nbsp;&nbsp;<img src="/upload/${userpicture}">&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/logout.action">注销</a>
             </c:otherwise>
         </c:choose>
 

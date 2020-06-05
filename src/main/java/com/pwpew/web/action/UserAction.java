@@ -115,6 +115,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
                 session.setAttribute("username", tUser.getUsername());
                 session.setAttribute("userid", tUser.getUserId());
+                session.setAttribute("usernickname",tUser.getUserNickname());
+                session.setAttribute("userpicture",tUser.getUserPicture());
                 //终止执行
                 return;
             }
@@ -232,5 +234,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         TUser user = userService.getUserById(userid);
         ServletActionContext.getRequest().setAttribute("user",user);
         return "toUpdateAccount";
+    }
+
+    public String logout(){
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        session.invalidate();
+        return "logoutSuccess";
     }
 }

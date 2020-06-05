@@ -279,4 +279,23 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
     }
 
 
+    //搜索帖子
+    public String searchPost(){
+        int page = postMd.getPage();
+        int rows = postMd.getRows();
+        String keyword = postMd.getKeyword();
+        int firestResult=(page-1)*rows;
+
+        List<TPost> list = postService.findPostByNameOrDescribe(keyword,firestResult,rows);
+
+        int postCount = Math.toIntExact(postService.findPostCount(postMd));
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("keyword",keyword);
+        request.setAttribute("list",list);
+        request.setAttribute("postCount",postCount);
+        request.setAttribute("page",page);
+
+        return "searchSuccess";
+    }
+
 }

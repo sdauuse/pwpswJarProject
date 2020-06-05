@@ -25,4 +25,9 @@ public interface PostDao {
 
     //获取特定类型的帖子
     public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult);
+
+    //根据姓名或描述搜索帖子
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult);
+
+
 }

@@ -26,6 +26,16 @@ public class PostMd extends TPost {
 
     private CommentMd commentMd;
 
+    private String keyword;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
     //扩展的查询条件，起始时间
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Timestamp postDate;

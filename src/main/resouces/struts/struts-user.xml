@@ -15,6 +15,7 @@
             <result name="userLogin">/jsps/login/login.jsp</result>
             <result name="userUpdateSuccess">/jsps/myAccount/accountManager.jsp</result>
             <result name="toUpdateAccount">/jsps/myAccount/accountManager.jsp</result>
+            <result name="logoutSuccess">/jsps/login/login.jsp</result>
             <!--<result name="ok">welcome.jsp</result>-->
         </action>
     </package>

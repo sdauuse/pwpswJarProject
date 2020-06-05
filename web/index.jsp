@@ -5,7 +5,7 @@
 </head>
 <body>
 <jsp:include page="jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
-<jsp:include page="jsps/index/research.jsp"/><%--搜索栏--%>
+<jsp:include page="jsps/index/search.jsp"/><%--搜索栏--%>
 <jsp:include page="jsps/index/Carousel.jsp"/><%--轮播图--%>
 <jsp:include page="jsps/index/mainContent.jsp"/><%--丢失信息--%>
 <jsp:include page="jsps/index/listPage.jsp"/><%--丢失名单--%>
