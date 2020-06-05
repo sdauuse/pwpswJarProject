@@ -140,7 +140,7 @@ function checkMissingtime() {
     var result = missingtime.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
     if (result == null) return false;
     var d = new Date(result[1], result[3] - 1, result[4]);
-    var flag=d.getFullYear() == result[1] && d.getMonth() + 1 == result[3] && d.getDate() == result[4];
+    var flag=(d.getFullYear() == result[1] && d.getMonth() + 1 == result[3] && d.getDate() == result[4] );
     var s_missingtime = document.getElementById("s_missingtime");
     if (flag) {
         //提示正确
