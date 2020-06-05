@@ -162,19 +162,35 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     }
 
     //在账号管理处进行个人信息更新
-    public int updateUserOfAccount(TUser user){
+    public int updateUserOfAccount(TUser user) {
         Session session = this.getSessionFactory().getCurrentSession();
-        Query query = session.createQuery("update TUser set username = ?,userNickname = ?,userGender = ?,userAge = ?,userPhone = ?,userProvince = ?,userCity = ?,userPicture = ?,email = ? where userId ="+user.getUserId());
-        query.setParameter(0,user.getUsername());
-        query.setParameter(1,user.getUserNickname());
-        query.setParameter(2,user.getUserGender());
-        query.setParameter(3,user.getUserAge());
-        query.setParameter(4,user.getUserPhone());
-        query.setParameter(5,user.getUserProvince());
-        query.setParameter(6,user.getUserCity());
-        query.setParameter(7,user.getUserPicture());
-        query.setParameter(8,user.getEmail());
+        Query query = session.createQuery("update TUser set username = ?,userNickname = ?,userGender = ?,userAge = ?,userPhone = ?,userProvince = ?,userCity = ?,userPicture = ?,email = ? where userId =" + user.getUserId());
+        query.setParameter(0, user.getUsername());
+        query.setParameter(1, user.getUserNickname());
+        query.setParameter(2, user.getUserGender());
+        query.setParameter(3, user.getUserAge());
+        query.setParameter(4, user.getUserPhone());
+        query.setParameter(5, user.getUserProvince());
+        query.setParameter(6, user.getUserCity());
+        query.setParameter(7, user.getUserPicture());
+        query.setParameter(8, user.getEmail());
         int i = query.executeUpdate();
         return i;
     }
+
+    @Override
+    public TUser getUserByEmail(String email) {
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from TUser t where t.email=? ");
+        query.setParameter(0, email);
+
+        return (TUser) query.list().get(0);
+    }
+
+    @Override
+    public TUser getUserById(int userId) {
+
+        return this.getHibernateTemplate().get(TUser.class, userId);
+    }
+
 }

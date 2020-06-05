@@ -78,21 +78,28 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
         HttpServletResponse response = ServletActionContext.getResponse();
         TMessage message = new TMessage();
         try {
+
             // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
             BeanUtils.copyProperties(messageMd, message);
 
-            messageService.updateMessage(message);
-
-            if(CommonUtil.getWordCount(message.getMsgResMain())>256){
+            if (CommonUtil.getWordCount(message.getMsgResMain()) > 256) {
                 String ajaxResult = FastJsonUtil.ajaxResult(false, "留言内容应小于等于128个汉字或256个字符,回复留言失败");
                 FastJsonUtil.write_json(response, ajaxResult);
                 return;
             }
 
+            if(StringUtils.isEmpty(message.getMsgResMain()) ){
+                String ajaxResult = FastJsonUtil.ajaxResult(false, "留言内容不能为空");
+                FastJsonUtil.write_json(response, ajaxResult);
+                return;
+            }
+
+
+            messageService.updateMessage(message);
 
         } catch (Exception e) {
             e.printStackTrace();
-            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,内容不允许图标,回复留言失败");
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "参数传输不合法,内容不允许表情,回复留言失败");
             FastJsonUtil.write_json(response, ajaxResult);
             return;
         }
@@ -102,7 +109,7 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
 
     }
 
-    public void deleteMessage(){
+    public void deleteMessage() {
         HttpServletResponse response = ServletActionContext.getResponse();
         try {
             TMessage message = new TMessage();
@@ -110,14 +117,14 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
             BeanUtils.copyProperties(messageMd, message);
 
             messageService.deleteMessage(message);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             String ajaxResult = FastJsonUtil.ajaxResult(false, "删除失败");
             FastJsonUtil.write_json(response, ajaxResult);
             return;
         }
 
-        String jsonString = FastJsonUtil.ajaxResult(true,"删除成功");
-        FastJsonUtil.write_json(response,jsonString);
+        String jsonString = FastJsonUtil.ajaxResult(true, "删除成功");
+        FastJsonUtil.write_json(response, jsonString);
     }
 }

@@ -176,6 +176,7 @@
             if (r == true) {
                 $('#postForm').attr("action", '${pageContext.request.contextPath}/post/updatepost.action');
                 $('#postForm').form('submit', {
+                    type: "POST",
                     success: function (data) {
                         /*var result = eval('(' + data + ')');*/  // change the JSON string to javascript object
                         //提示操作结果
@@ -289,13 +290,13 @@
                         <td class="td"><select class="select" id="province1" name="postProvince">
                             <option></option>
                         </select></td>
-                        <td class="td">新失联城市：</td>
+                        <td class="td">修改失联城市：</td>
                         <td class="td">
                             <select class="select" id="city1" name="postCity">
                                 <option></option>
                             </select>
                         </td>
-                        <td class="td">新失联区县：</td>
+                        <td class="td">修改失联区县：</td>
                         <td class="td">
                             <select class="select" id="district1" name="postCountry">
                                 <option></option>

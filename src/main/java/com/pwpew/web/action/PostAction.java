@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -262,9 +263,19 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
     public String findPostListByUserId() {
         HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
 
 
-        if (postMd.getUser().getUserId() >= 1) {
+        if(session.getAttribute("userid")==null){
+            request.setAttribute("msg", "请先登录");
+            return "findPostListByUserIdError";
+        }
+
+
+        int userid = (int) session.getAttribute("userid");
+
+
+        if (userid >= 1) {
 
             //查询没有被封禁的帖子
             postMd.setStatue("1");

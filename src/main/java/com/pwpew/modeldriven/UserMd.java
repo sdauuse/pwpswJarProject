@@ -16,6 +16,12 @@ public class UserMd extends TUser {
     //验证码
     private String verifyCode;
 
+    //忘记密码的验证码
+    private String randomNumber;
+
+    //新密码
+    private String newPassword;
+
     // easyUi分页参数
     private int page;
     private int rows;
@@ -26,6 +32,14 @@ public class UserMd extends TUser {
     private String pictureFileName;
     //获取原始文件类型，命名规则：页面上file的名称+ContentType
     private String pictureContentType;
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
 
     public int getPage() {
         return page;
@@ -43,7 +57,13 @@ public class UserMd extends TUser {
         this.rows = rows;
     }
 
+    public String getRandomNumber() {
+        return randomNumber;
+    }
 
+    public void setRandomNumber(String randomNumber) {
+        this.randomNumber = randomNumber;
+    }
 
     public File getPicture() {
         return picture;

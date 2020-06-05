@@ -9,9 +9,12 @@ import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.AdminService;
 import com.pwpew.service.UserService;
+import com.pwpew.utils.CommonUtil;
 import com.pwpew.utils.FastJsonUtil;
 import com.pwpew.utils.VerifyCode;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -86,18 +89,42 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
     public void verifyUser() throws IOException {
-
-
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
-        ArrayList<TUser> list = (ArrayList<TUser>) userService.findUser();
+        HttpSession session = request.getSession();
+
+      /*  String nowUsername = (String) session.getAttribute("username");
+        String nowUserId = (String) session.getAttribute("userid");*/
+
+
         boolean flag = false;
-        //从session重获取验证码
+        //从session中获取验证码
         String vcode = (String) request.getSession().getAttribute("vcode");
+
+
+        //判断用户名是否为空
+        if (StringUtils.isEmpty(userMd.getUsername())) {
+            // 向客户端返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名不能为空！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+        //判断密码是否为空
+        if (StringUtils.isEmpty(userMd.getUserPassword())) {
+            // 向客户端返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "密码不能为空！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
 
         //判断验证码是否正确
         if (vcode.equalsIgnoreCase(userMd.getVerifyCode()) == false) {
-            // 向客户返回提示
+            // 向客户端返回提示
             String ajaxResult = FastJsonUtil.ajaxResult(false, "验证码错误！");
             // 输出json
             FastJsonUtil.write_json(response, ajaxResult);
@@ -106,7 +133,28 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         }
 
 
+        if (CommonUtil.getWordCount(userMd.getUsername()) > 32) {
+
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名过长");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+        if (CommonUtil.getWordCount(userMd.getUserPassword()) > 16) {
+
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "密码过长");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
         //验证码正确后，核对用户名和密码
+        ArrayList<TUser> list = (ArrayList<TUser>) userService.findUser();
+
+
         for (TUser tUser : list) {
             if (tUser.getUsername().equals(userMd.getUsername()) && tUser.getUserPassword().equals(userMd.getUserPassword())) {
                 // 向客户返回成功提示
@@ -115,8 +163,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 FastJsonUtil.write_json(response, ajaxResult);
 
                 //将用户名id和用户名放入session域中
-                HttpSession session = request.getSession();
-
                 session.setAttribute("username", tUser.getUsername());
                 session.setAttribute("userid", tUser.getUserId());
                 //终止执行
@@ -132,12 +178,23 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         //如果用户名不存在，直接向前端进行提示
         if (flag == false) {
             // 向客户返回成功提示
-            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名不存在,请先注册");
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名不存在,请先注册！");
             // 输出json
             FastJsonUtil.write_json(response, ajaxResult);
             //终止执行
             return;
         }
+
+
+        /*if(nowUsername.equals(session.getAttribute("username")) && nowUserId.equals(session.getAttribute("userid"))){
+            // 向客户返回成功提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户已经登录，登录失败！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }*/
+
 
         // 向客户返回成功提示
         String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名或者密码错误！");
@@ -199,7 +256,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             } else {
                 userMd.setUserPicture(userMd.getUserPicture());
             }
+
             TUser user = new TUser();
+            // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
+            /*BeanUtils.copyProperties(noticeMd, notice);*/
+
             user.setUserId(userMd.getUserId());
             user.setUsername(userMd.getUsername());
             user.setUserNickname(userMd.getUserNickname());
@@ -242,10 +303,36 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     public void verifyAdmin() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
-        ArrayList<TAdministrator> list = (ArrayList<TAdministrator>) adminService.findAdmin();
+
+        HttpSession session = request.getSession();
+
+        /*String nowAdminName = (String) session.getAttribute("adminName");
+        String nowAdminId = (String) session.getAttribute("adminId");*/
+
+
         boolean flag = false;
         //从session重获取验证码
         String vcode = (String) request.getSession().getAttribute("vcode");
+
+        //判断用户名是否为空
+        if (StringUtils.isEmpty(userMd.getUsername())) {
+            // 向客户端返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名不能为空！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+        //判断密码是否为空
+        if (StringUtils.isEmpty(userMd.getUserPassword())) {
+            // 向客户端返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "密码不能为空！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
 
         //判断验证码是否正确
         if (vcode.equalsIgnoreCase(userMd.getVerifyCode()) == false) {
@@ -257,8 +344,30 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             return;
         }
 
+        if (CommonUtil.getWordCount(userMd.getUsername()) > 32) {
+
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名过长");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+        if (CommonUtil.getWordCount(userMd.getUserPassword()) > 32) {
+
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "密码过长");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }
+
+
+
 
         //验证码正确后，核对用户名和密码
+        ArrayList<TAdministrator> list = (ArrayList<TAdministrator>) adminService.findAdmin();
+
         for (TAdministrator admin : list) {
             if (admin.getAdminName().equals(userMd.getUsername()) && admin.getAdminPassword().equals(userMd.getUserPassword())) {
                 // 向客户返回成功提示
@@ -267,7 +376,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 FastJsonUtil.write_json(response, ajaxResult);
 
                 //将用户名id和用户名放入session域中
-                HttpSession session = request.getSession();
 
                 session.setAttribute("adminName", admin.getAdminName());
                 session.setAttribute("adminId", admin.getAdminId());
@@ -284,16 +392,105 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         //如果用户名不存在，直接向前端进行提示
         if (flag == false) {
             // 向客户返回成功提示
-            String ajaxResult = FastJsonUtil.ajaxResult(false, "管理员不存在");
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "登录失败");
             // 输出json
             FastJsonUtil.write_json(response, ajaxResult);
             //终止执行
             return;
         }
 
+       /* if(nowAdminId.equals(session.getAttribute("adminId")) && nowAdminName.equals(session.getAttribute("adminName"))){
+            // 向客户返回成功提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "用户已经登录，登录失败！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            //终止执行
+            return;
+        }*/
+
         // 向客户返回成功提示
         String ajaxResult = FastJsonUtil.ajaxResult(false, "用户名或者密码错误！");
         // 输出json
         FastJsonUtil.write_json(response, ajaxResult);
+    }
+
+
+    public String modifyPasswordByEmail() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        String vCode = (String) session.getAttribute("vcode");
+
+        if (!vCode.equalsIgnoreCase(userMd.getVerifyCode())) {
+            request.setAttribute("msg", "验证码错误");
+            return "modifyPasswordByEmailError";
+        }
+
+        try {
+            TUser user = userService.getUserByEmail(userMd.getEmail());
+
+            request.setAttribute("nowUser", user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "邮箱不存在");
+            return "modifyPasswordByEmailError";
+        }
+
+
+        try {
+            //产生随机数
+            String randomNumber = CommonUtil.random();
+            session.setAttribute("randomNumber", randomNumber);
+
+            /*CommonUtil.sendMail(userMd.getEmail(), "randomNumber");*/
+            CommonUtil.sendMail(userMd.getEmail(), randomNumber);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "发送邮件失败");
+        }
+
+
+        return "modifyPasswordByEmail";
+    }
+
+    public String modifyPasswordByEmailNext() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        String randomNumber = (String) session.getAttribute("randomNumber");
+
+        if (StringUtils.isEmpty(randomNumber)) {
+
+            request.setAttribute("msg", "请先发送邮件");
+            return "modifyPasswordByEmailError";
+        }
+
+        if (!randomNumber.equals(userMd.getRandomNumber())) {
+            request.setAttribute("msg", "邮箱验证码错误");
+
+            TUser user = userService.getUserById(userMd.getUserId());
+            request.setAttribute("nowUser", user);
+            return "modifyPasswordByEmail";
+        }
+
+        if (!userMd.getNewPassword().equals(userMd.getUserPassword())) {
+
+            request.setAttribute("msg", "两次密码不一致");
+            TUser user = userService.getUserById(userMd.getUserId());
+            request.setAttribute("nowUser", user);
+            return "modifyPasswordByEmail";
+        }
+
+
+        try {
+            userService.updateUserPasswordById(userMd.getUserId(), userMd.getUserPassword());
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "请重新发送邮件");
+            return "modifyPasswordByEmailError";
+        }
+
+        request.setAttribute("msg", "恭喜您，成功修改密码！");
+        return "modifyPasswordByEmailNext";
     }
 }

@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TUser getUserById(int userid) {
-        UserMd user = new UserMd();
+        TUser user = new TUser();
         user.setUserId(userid);
         return userDao.getUser(user);
     }
@@ -107,5 +107,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateUserOfAccount(TUser user) {
         return userDao.updateUserOfAccount(user);
+    }
+
+    @Override
+    public TUser getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
+    }
+
+    @Override
+    public void updateUserPasswordById(int userId, String password) {
+
+        //用id查询用户
+        TUser user = userDao.getUserById(userId);
+        //修改该用户的密码
+        user.setUserPassword(password);
+
+        userDao.updateUser(user);
     }
 }

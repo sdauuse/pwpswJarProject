@@ -37,20 +37,7 @@
 					"url": "views/user.html"
 				}
 			]
-		},
-		{
-			"icon": "icon-sys",
-			"menuid": "1",
-			"menuname": "测试",
-			"url": "",
-			"menus": [
-				{
-					"icon": "icon-log",
-					"menuid": "1_1",
-					"menuname": "test.action",
-					"url": "test.jsp"
-				}
-			]
 		}
+
 	]
 }

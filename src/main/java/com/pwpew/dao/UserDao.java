@@ -27,4 +27,7 @@ public interface UserDao {
     public TUser findUserByPostId(int postId);
 
     public int updateUserOfAccount(TUser user);
+
+    public TUser getUserByEmail(String email);
+    public TUser getUserById(int userId);
 }

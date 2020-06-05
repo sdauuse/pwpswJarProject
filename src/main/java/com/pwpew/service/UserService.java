@@ -24,4 +24,8 @@ public interface UserService {
     public Long findUserCount(UserMd user);
     public TUser findUserByPostId(int postId);
     public int updateUserOfAccount(TUser user);
+
+    public TUser getUserByEmail(String email);
+
+    public void updateUserPasswordById(int userId,String password);
 }

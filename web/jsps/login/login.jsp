@@ -22,7 +22,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/bac/ui/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/bac/static/uimaker/js/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/bac/static/uimaker/js/jquery.min.js"></script>
     <%-- <meta http-equiv="Access-Control-Allow-Origin" content="*">--%>
 </head>
 
@@ -44,25 +45,30 @@
             <!--用jquery实现页面提交-->
             <form id="loginForm" method="post">
                 <div class="lg-username input-item clearfix">
-                    <i></i>
+                    <i><img style="padding:8px;height: 22px;width: 22px;background-color: #FFFFFF"
+                            src="${pageContext.request.contextPath}/imgs/login/user.png"></i>
                     <input type="text" placeholder="账号" id="username" name="username" value="${username}">
                 </div>
                 <div class="lg-password input-item clearfix">
-                    <i></i>
+                    <i><img style="padding:5px;height: 30px;width: 30px;background-color: #FFFFFF"
+                            src="${pageContext.request.contextPath}/imgs/login/password.png"></i>
                     <input type="password" placeholder="请输入密码" id="userPassword" name="userPassword">
                 </div>
                 <div class="lg-check clearfix">
                     <div class="input-item">
-                        <i></i>
+                        <i><img style="padding:5px;height: 30px;width: 30px;background-color: #FFFFFF"
+                                src="${pageContext.request.contextPath}/imgs/login/verifyCode.png"></i>
                         <input type="text" id="verifyCode" name="verifyCode" placeholder="验证码">
                     </div>
-                    <a href="#" onclick="changeImage()"><img id="image" width="115" height="40" src="${pageContext.request.contextPath}/user/vcode.action"></a>
+                    <a href="#" onclick="changeImage()"><img id="image" style="width: 115px;height: 40px"
+                                                             src="${pageContext.request.contextPath}/user/vcode.action"></a>
                 </div>
 
                 <div class="tips clearfix">
-                    <a onclick="changeImage()" id="change"  style="cursor:pointer;" >看不清,换一张图片</a>
+                    <a onclick="changeImage()" id="change" style="cursor:pointer;">看不清,换一张图片</a>
                     <a id="areg" href="javascript:" class="">立即注册</a>
-                    <a id="afor" href="javascript:" class="">忘记密码？</a>
+                    <a id="afor" href="${pageContext.request.contextPath}/jsps/login/forgetPassword.jsp"
+                       class="">忘记密码？</a>
                 </div>
                 <%-- <button id="btn" type="button" onclick="doFind()">保存</button>--%>
 
@@ -109,7 +115,7 @@
             success: function (data) {
                 //var result = JSON.stringify(data);
                 //提示操作结果
-                if (data.success == false){
+                if (data.success == false) {
                     alert(data.message);
                 }
 
@@ -140,12 +146,13 @@
             success: function (data) {
                 //var result = JSON.stringify(data);
                 //提示操作结果
-                alert(data.message);
+                if (data.success == false) {
+                    alert(data.message);
+                }
 
                 //如果后台验证成功，则跳转
                 if (data.success == true) {
                     //1.利用http的重定向来跳转
-                    alert(data.message);
                     window.location.replace("${pageContext.request.contextPath}/bac/index.jsp");
                     //2.使用href来跳转
                     //window.location.href = "http://www.baidu.com";
@@ -156,8 +163,6 @@
 
     function changeImage() {
         var image = document.getElementById("image");
-        image.src = "${pageContext.request.contextPath}/user/vcode.action?a="+ new Date().getTime();
+        image.src = "${pageContext.request.contextPath}/user/vcode.action?a=" + new Date().getTime();
     }
 </script>
-
-

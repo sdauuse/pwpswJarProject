@@ -20,7 +20,7 @@
     margin-right: 9px;
     border: none;
     cursor: pointer;
-   /* cursor: pointer;*/
+    /* cursor: pointer;*/
 }
 
 #areg {
@@ -35,12 +35,15 @@
     margin-left: 10px;
     /* margin-right: 34px*/
 }
+
 #change {
     color: #ec4e00;
     margin-left: 30px;
     margin-right: 40px;
 
 }
+
+
 
 
 
