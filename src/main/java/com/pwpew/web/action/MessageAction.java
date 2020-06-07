@@ -136,4 +136,9 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
         request.setAttribute("messageLeft", "留言成功");
         return "leaveMessage";
     }
+
+    public String messageHistory(){
+
+        return "messageHistory";
+    }
 }

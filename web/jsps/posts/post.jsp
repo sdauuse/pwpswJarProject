@@ -45,7 +45,8 @@
 </head>
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
-
+<h2 style="color: #965454;"><a href="${pageContext.request.contextPath}/post/accusation.action?postId=${post.postId}&page=${page}">举报</a></h2>
+<div align="center"><h3 style="color: #7b8b6f">${accusation}</h3></div>
 <div id="postPage">
 
     <%--主贴--%>
@@ -53,9 +54,8 @@
         <%--发帖人信息--%>
         <h4 class="poster">
             <%--<img src="img/deadpool.jpg" ><br><br>--%>
-            版主：${post.user.username}
+            版主：${post.user.userNickname}<br>
         </h4>
-
         <%--帖子详情    --%>
         <div class="postDetail">
             寻人类型：${post.postType}<br>
@@ -67,9 +67,10 @@
             失踪城市：${post.postCity}<br>
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
-            详情描述：${post.postDescribe}
+            详情描述：${post.postDescribe}<br>
+            <%--图片：<br>${post.postPicture}--%>
             <br><br>
-            <div class="time">失踪时间&nbsp;&nbsp;&nbsp;&nbsp;${post.missingtime}</div>
+            <%--<div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>--%>
             <div class="reply"><a href="#replyPoint">回复</a></div>
         </div>
         <div class="clear"></div>
@@ -79,7 +80,7 @@
         <div class="post">
             <h4 class="poster">
                     <%--<img src="img/deadpool.jpg" ><br><br>--%>
-                用户：${i.user.username}
+                用户：${i.user.userNickname}<br>
             </h4>
             <div class="postDetail">
                     <%--回复${post.user.username}：<br>--%>
@@ -108,6 +109,9 @@
         <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1&page=${page}" method="post" id="comment">
             <input type="hidden" id="postId" name="postId" value="${post.postId}">
             <input type="hidden" id="commentTime" name="commentTime">
+            <input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
+            <input type="hidden" id="count" name="count" value="${count}">
+
 
             <textarea id="comments" name="comments" required="required" placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>

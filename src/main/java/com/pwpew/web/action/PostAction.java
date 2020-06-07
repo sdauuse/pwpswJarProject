@@ -138,9 +138,11 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
         if(page<1){
             page = 1;
-        }
-        if(page>totalPage){
+        }else if(page>totalPage){
             page = page - 1;
+        }
+        if(totalPage < 1){
+            totalPage = (long)1;
         }
         int firstResult = (page-1)*rows;
 
@@ -173,9 +175,10 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
         if(page<1){
             page = 1;
-        }
-        if(page>totalPage){
+        }else if(page>totalPage){
             page = page - 1;
+        }else if(totalPage < 1){
+            totalPage = (long)1;
         }
         int firstResult = (page-1)*rows;
 
@@ -296,6 +299,22 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         request.setAttribute("page",page);
 
         return "searchSuccess";
+    }
+
+    // 举报
+    public String accusation(){
+        postMd.setEffectiveness("0");
+        postMd.setStatue("1");
+        postService.updateStatueAndEff(postMd);
+
+        TPost post = postService.getPostById(postMd.getPostId());
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("accusation","举报成功");
+        request.setAttribute("post",post);
+        request.setAttribute("page", postMd.getPage());
+
+        return "accusation";
     }
 
 }

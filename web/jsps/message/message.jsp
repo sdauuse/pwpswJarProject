@@ -45,6 +45,7 @@
 <div align="center">
     <div class="replyArea" style="width: 80%;">
         <h2 id="replyTitle">留言板</h2>
+        <h3><a href="${pageContext.request.contextPath}/message/messageHistory.action?user.userId=1">查看回复信息</a></h3>
         <h3 style="color: #7b8b6f">${messageLeft}</h3>
         <form action="${pageContext.request.contextPath}/message/leaveMessage.action?user.userId=1" method="post" id="message">
             <input type="hidden" id="msgDate" name="msgDate">
