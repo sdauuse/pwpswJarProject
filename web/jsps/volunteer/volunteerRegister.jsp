@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -103,6 +104,9 @@
                             <input type="submit" name="btn_vol_register" value="注册" id="btn_vol_register" class="btn">
                             <input type="reset" name="btn_register" value="重置" id="btn_reset">
                         </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><s:fielderror /></td>
                     </tr>
                 </table>
             </form>

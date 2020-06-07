@@ -226,6 +226,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     //    用户注册方法
     public String userRegister() throws InvocationTargetException, IllegalAccessException {
         userService.insertUser(userMd);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("msg","注册成功");
         return "userLogin";
     }
 

@@ -57,9 +57,9 @@
 <div id="footer">
     <span id="logo"><img src="${pageContext.request.contextPath}/imgs/index/logo.jpg"></span>
     <ul>
-        <li><a href="#">关于我们</a></li>
-        <li><a href="#">寻亲登记</a></li>
-        <li><a href="#">用户中心</a></li>
+        <li><a href="${pageContext.request.contextPath}/jsps/index/knowUs.jsp">关于我们</a></li>
+        <li><a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp">寻亲登记</a></li>
+        <li><a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp">用户中心</a></li>
         <li><a href="#">联系我们</a></li>
     </ul>
     <p>版权所有&copy;2019-2020  公益寻人网  .All Rights Reserved</p>

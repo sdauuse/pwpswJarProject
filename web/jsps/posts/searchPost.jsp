@@ -81,7 +81,7 @@
 
     <ul>
         <c:forEach items="${list}" var="i">
-            <li><a href="${pageContext.request.contextPath}/notice/noticeMain.action?ntsId=${i.postId}&page=${page}">${i.postName}</a><span class="span1">${i.missingtime}</span></li>
+            <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=${page}&postId=${i.postId}">${i.postName}</a><span class="span1">${i.missingtime}</span></li>
         </c:forEach>
     </ul>
 
@@ -91,12 +91,12 @@
                 <li>
                     <c:choose>
                         <c:when test="${page==1}">
-                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page}&rows=10" aria-label="Previous">
+                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page}&rows=10&keyword=${keyword}" aria-label="Previous">
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         </c:when>
                         <c:otherwise>
-                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page-1}&rows=10" aria-label="Previous">
+                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page-1}&rows=10&keyword=${keyword}" aria-label="Previous">
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         </c:otherwise>
@@ -107,12 +107,12 @@
                         if(i%10==0){
                             pagenum=i/10;
                 %>
-                <li><a href="${pageContext.request.contextPath}/post/searchPost.action?page=<%=pagenum%>&rows=10" name="page"><%=pagenum%></a></li>
+                <li><a href="${pageContext.request.contextPath}/post/searchPost.action?page=<%=pagenum%>&rows=10&keyword=${keyword}" name="page"><%=pagenum%></a></li>
                 <%
                     }
                     if(i ==postCount-1){
                 %>
-                <li><a href="${pageContext.request.contextPath}/post/searchPost.action?page=<%=pagenum+1%>&rows=10" name="page"><%=pagenum+1%></a></li>
+                <li><a href="${pageContext.request.contextPath}/post/searchPost.action?page=<%=pagenum+1%>&rows=10&keyword=${keyword}" name="page"><%=pagenum+1%></a></li>
                 <%
                         }
                     }
@@ -120,12 +120,12 @@
                 <li>
                     <c:choose>
                         <c:when test="${page==maxPage}">
-                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page}&rows=10" aria-label="Next">
+                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page}&rows=10&keyword=${keyword}" aria-label="Next">
                                 <span aria-hidden="true" name="page">&gt;</span>
                             </a>
                         </c:when>
                         <c:otherwise>
-                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page+1}&rows=10" aria-label="Next">
+                            <a href="${pageContext.request.contextPath}/post/searchPost.action?page=${page+1}&rows=10&keyword=${keyword}" aria-label="Next">
                                 <span aria-hidden="true" name="page">&gt;</span>
                             </a>
                         </c:otherwise>
