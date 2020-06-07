@@ -68,11 +68,11 @@
 		<li><a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp">寻亲登记</a>
 			<div class="nav1">
 				<ul>
-					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?post.postType='家寻宝贝'">家寻宝贝</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?post.postType='宝贝寻家'">宝贝寻家</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?post.postType='流浪乞讨'">流浪乞讨</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?post.postType='其他寻人'">其他寻人</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?post.postType='海外寻亲'">海外寻亲</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?postType=家寻宝贝&page=1&rows=10">家寻宝贝</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?postType=宝贝寻家&page=1&rows=10">宝贝寻家</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?postType=流浪乞讨&page=1&rows=10">流浪乞讨</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?postType=其他寻人&page=1&rows=10">其他寻人</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/showPostClass.action?postType=海外寻亲&page=1&rows=10">海外寻亲</a></li>
 				</ul>
 			</div>
 		</li>

@@ -23,6 +23,9 @@
         <property name="missingtime">
             <column name="missingtime" sql-type="datetime" />
         </property>
+        <property name="postTime">
+            <column name="postTime" sql-type="datetime"/>
+        </property>
         <property name="postProvince">
             <column name="postProvince" sql-type="varchar(32)" length="32" />
         </property>

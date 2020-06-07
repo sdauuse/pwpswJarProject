@@ -195,17 +195,17 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
 
     public String showPostOfIndex(){
-        List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 0, 6);
+        List<TPost> postList1 = postService.getPostByPostType("家寻宝贝", 6, 0);
         List<TPost> postList2 = postService.getPostByPostType("家寻宝贝", 6, 6);
-        List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 0, 6);
+        List<TPost> postList3 = postService.getPostByPostType("宝贝寻家", 6, 0);
         List<TPost> postList4 = postService.getPostByPostType("宝贝寻家", 6, 6);
-        List<TPost> postList5 = postService.getPostByPostType("流浪乞丐", 0, 6);
-        List<TPost> postList6 = postService.getPostByPostType("流浪乞丐", 6, 6);
-        List<TPost> postList7 = postService.getPostByPostType("活动报告", 0, 6);
+        List<TPost> postList5 = postService.getPostByPostType("流浪乞讨", 6, 0);
+        List<TPost> postList6 = postService.getPostByPostType("流浪乞讨", 6, 6);
+        List<TPost> postList7 = postService.getPostByPostType("活动报告", 6, 0);
         List<TPost> postList8 = postService.getPostByPostType("活动报告", 6, 6);
-        List<TPost> postList9 = postService.getPostByPostType("打拐政策", 0, 6);
+        List<TPost> postList9 = postService.getPostByPostType("打拐政策", 6, 0);
         List<TPost> postList10 = postService.getPostByPostType("打拐政策", 6, 6);
-        List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 0, 6);
+        List<TPost> postList11 = postService.getPostByPostType("志愿者指南", 6, 0);
         List<TPost> postList12 = postService.getPostByPostType("志愿者指南", 6, 6);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("postList1",postList1);
@@ -228,7 +228,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         List<TPost> informationList1 = postService.getPostByPostType("家寻宝贝", 4, 0);
         List<TPost> informationList2 = postService.getPostByPostType("宝贝寻家", 4, 0);
         List<TPost> informationList3 = postService.getPostByPostType("流浪乞讨", 4, 0);
-        List<TPost> informationList4 = postService.getPostByPostType("海外寻人", 4, 0);
+        List<TPost> informationList4 = postService.getPostByPostType("海外寻亲", 4, 0);
         List<TPost> informationList5 = postService.getPostByPostType("其他寻人", 4, 0);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("informationList1",informationList1);
@@ -268,10 +268,11 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         int rows = postMd.getRows();
         int firestResult = (page-1)*rows;
 
-        List<TPost> postClass=postService.getPostByPostType(postMd.getPostType(),1,1);
+        List<TPost> postClass=postService.getPostByPostType(postMd.getPostType(),rows,firestResult);
         int postCount = Math.toIntExact(postService.findPostCount(postMd));
 
         HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("postType",postMd.getPostType());
         request.setAttribute("showPostClass",postClass);
         request.setAttribute("page",page);
         request.setAttribute("postCount",postCount);

@@ -138,7 +138,7 @@ function checkVolIdCard() {
         flag=true;
     } else {
         //提示错误
-        s_volIdCard.innerHTML = "省份证格式有误";
+        s_volIdCard.innerHTML = "身份证格式有误";
     }
     return flag;
 }

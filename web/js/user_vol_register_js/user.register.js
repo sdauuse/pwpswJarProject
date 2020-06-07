@@ -111,7 +111,7 @@ function checkUsername() {
         s_username.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_username.innerHTML = "昵称长度在1-12";
+        s_username.innerHTML = "用户名长度在4-12";
     }
     return flag;
 }
@@ -129,7 +129,7 @@ function checkUserNickname() {
         s_userNickname.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_userNickname.innerHTML = "用户名格式有误";
+        s_userNickname.innerHTML = "昵称格式有误";
     }
     return flag;
 }
