@@ -225,7 +225,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         List<TPost> informationList1 = postService.getPostByPostType("家寻宝贝", 4, 0);
         List<TPost> informationList2 = postService.getPostByPostType("宝贝寻家", 4, 0);
         List<TPost> informationList3 = postService.getPostByPostType("流浪乞讨", 4, 0);
-        List<TPost> informationList4 = postService.getPostByPostType("海外寻人", 4, 0);
+        List<TPost> informationList4 = postService.getPostByPostType("海外寻亲", 4, 0);
         List<TPost> informationList5 = postService.getPostByPostType("其他寻人", 4, 0);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("informationList1",informationList1);

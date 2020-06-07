@@ -81,7 +81,7 @@
 
     <ul>
         <c:forEach items="${showPostClass}" var="i">
-            <li><a href="${pageContext.request.contextPath}/post/showPostClass.action?page=${page}&postId=${i.postId}">${i.postName}</a><span class="span1">${i.missingtime}</span></li>
+            <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=${page}&postId=${i.postId}">${i.postName}</a><span class="span1">${i.missingtime}</span></li>
         </c:forEach>
     </ul>
 

@@ -27,7 +27,7 @@
         <a id="nav2_1" onmousemove="setTab('nav2_',1,5)" class="selected" href="#">家寻宝贝</a>
         <a id="nav2_2" onmousemove="setTab('nav2_',2,5)" class="selected" href="#">宝贝寻家</a>
         <a id="nav2_3" onmousemove="setTab('nav2_',3,5)" class="selected" href="#">流浪乞讨</a>
-        <a id="nav2_4" onmousemove="setTab('nav2_',4,5)" class="selected" href="#">海外寻人</a>
+        <a id="nav2_4" onmousemove="setTab('nav2_',4,5)" class="selected" href="#">海外寻亲</a>
         <a id="nav2_5" onmousemove="setTab('nav2_',5,5)" class="selected" href="#">其他寻人</a>
     </div>
     <h4>如果你见到他们 请联系我们</h4>
