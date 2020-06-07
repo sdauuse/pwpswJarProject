@@ -222,6 +222,53 @@
             }
         }
 
+        var isIE = /msie/i.test(navigator.userAgent) && !window.opera;
+
+        function fileChange(target, id) {
+            var fileSize = 0;
+            var filetypes = [".jpg", ".png", ".jpeg", ".bmp", ".BMP", ".PNG", ".JPEG"];
+            var filepath = target.value;
+            var filemaxsize = 1024 * 2;//2M
+            if (filepath) {
+                var isnext = false;
+                var fileend = filepath.substring(filepath.indexOf("."));
+                if (filetypes && filetypes.length > 0) {
+                    for (var i = 0; i < filetypes.length; i++) {
+                        if (filetypes[i] == fileend) {
+                            isnext = true;
+                            break;
+                        }
+                    }
+                }
+                if (!isnext) {
+                    alert("不接受此图片类型！");
+                    target.value = "";
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            if (isIE && !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                if (!fileSystem.FileExists(filePath)) {
+                    alert("图片不存在，请重新添加！");
+                    return false;
+                }
+                var file = fileSystem.GetFile(filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+
+            var size = fileSize / 1024;
+            if (size > filemaxsize) {
+                alert("附件大小不能大于" + filemaxsize / 1024 + "M！");
+                target.value = "";
+                return false;
+            }
+        }
+
 
     </script>
 </head>
@@ -259,7 +306,8 @@
                 <table style="margin: auto;border-collapse:separate; border-spacing:0px 11px;">
                     <tr>
                         <td class="td">失联人姓名：</td>
-                        <td class="td"><input class="input" type="text" name="postName" value="${list.postName}" required pattern="[a-zA-Z\u4E00-\u9FA5]{1,20}" title="请输入合法的中文或英文姓名"></td>
+                        <td class="td"><input class="input" type="text" name="postName" value="${list.postName}"
+                                              required pattern="[a-zA-Z\u4E00-\u9FA5]{1,20}" title="请输入合法的中文或英文姓名"></td>
                         <td class="td">性别：</td>
                         <td class="td"><select class="select" name="postGender" required>
 
@@ -272,7 +320,8 @@
                         </select>
                         </td>
                         <td class="td">年龄：</td>
-                        <td class="td"><input class="input" type="text" required name="postAge" value="${list.postAge}" pattern="^(?:[1-9][0-9]?|1[01][0-9]|120)$" title="年龄应在1-120之间"></td>
+                        <td class="td"><input class="input" type="text" required name="postAge" value="${list.postAge}"
+                                              pattern="^(?:[1-9][0-9]?|1[01][0-9]|120)$" title="年龄应在1-120之间"></td>
                     </tr>
 
                     <tr>
@@ -355,7 +404,7 @@
                             <input id="newDate" style="width: 317px;height: 32px" class="easyui-datetimebox"
                                    name="missingtime">
 
-                            <input class="input" id="img" type="file" name="picture">
+                            <input class="input" id="img" type="file" name="picture" onchange="fileChange(this);">
                         </td>
                     </tr>
 
@@ -369,10 +418,10 @@
                             <font color="red">${msg}</font>
                             <input class="btn-default" id="btn_delete" type="button" value="删除"
                                    onclick="del(${list.postId})">
-                            <%--<a onclick="formsubmit()">修改</a>--%>
+                                <%--<a onclick="formsubmit()">修改</a>--%>
                                 <%-- <button  onclick="formsubmit()" value="修改"></button>--%>
                                 <%--<input class="btn-default" id="btn_update" onclick="formsubmit()" type="button" value="修改">--%>
-                                <input class="btn-default" id="btn_update" onclick="formsubmit()" type="submit" value="修改">
+                            <input class="btn-default" id="btn_update" onclick="formsubmit()" type="submit" value="修改">
                         </td>
 
 
@@ -387,12 +436,14 @@
              com="pagination" id="pagination_8554" xdeer-com="com_e7ec62f7b57d613ee4a950b215a25418"
              dom-data-type="pagination" dom-data-version="4" false="pagination" style="">
             <ul class="pagination" style="margin:0px;" data-option="{}">
-                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=1"
+                <li>
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=${page-1}"
                        aria-label="Previous"><span aria-hidden="true" style="font-size: 16px"> 上一页 </span></a>
                     <%-- <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page-1}" aria-label="Previous"><span aria-hidden="true"> 上一页 </span></a>--%>
                 </li>
                 <li class="active"><a herf="#">${page}</a></li>
-                <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=2"
+                <li>
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=${page+1}"
                        aria-label="Next"><span aria-hidden="true" style="font-size: 16px"> 下一页 </span></a></li>
                 <%--<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page+1}" aria-label="Next"><span aria-hidden="true"> 下一页 </span></a></li>--%>
                 <li><span style="font-size: 16px">共有${totalPage}页</span></li>

@@ -287,9 +287,76 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
 
     //    用户注册方法
-    public String userRegister() throws InvocationTargetException, IllegalAccessException {
-        userService.insertUser(userMd);
-        return "userLogin";
+    public String userRegister() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        HttpServletResponse response = ServletActionContext.getResponse();
+
+        String vcode = (String) session.getAttribute("vcode");
+
+
+        if (!userMd.getVerifyCode().equalsIgnoreCase(vcode)) {
+
+            /*String ajaxResult = FastJsonUtil.ajaxResult(false, "验证码错误！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);*/
+            request.setAttribute("msg","验证码错误！");
+            return "userRegister";
+        }
+        try {
+            // 上传成功的图片，文件默认在tomcat的临时目录 中
+            File picture = userMd.getPicture();
+            // 上传文件的原始名称
+            String pictureFileName = userMd.getPictureFileName();
+            // 上传文件的类型
+            String pictureContentType = userMd.getPictureContentType();
+
+            if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
+                // 服务器图片存储路径
+                String filePath = "D:\\develop\\upload\\";
+                // 扩展名，从原始名称中截取
+                String fileName_extension = pictureFileName.substring(pictureFileName.lastIndexOf("."));
+
+                // 为了保证服务器上图片目录中图片名称不重复将每个上传的图片重定义一个名称
+                // 新文件名称
+                String fileNameNew = UUID.randomUUID().toString() + fileName_extension;
+                // 定义一个File
+                File fileNew = new File(filePath + fileNameNew);
+
+                // 将tomcat下临时目录中的文件picture拷贝或移动到fileNew
+                // 使用拷贝，拷贝完成tomcat下临时目录中的文件自动删除了
+                FileUtils.copyFile(picture, fileNew);
+
+                // 在数据库中保存图片路径
+                userMd.setUserPicture(fileNameNew);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+            request.setAttribute("msg","头像上传失败！");
+            return "userRegister";
+        }
+
+        try {
+            userService.insertUser(userMd);
+        } catch (IllegalAccessException e) {
+
+            e.printStackTrace();
+            request.setAttribute("msg","注册失败！用户名已被注册");
+            return "userRegister";
+        }catch (InvocationTargetException e) {
+
+            e.printStackTrace();
+            request.setAttribute("msg","注册失败！");
+            return "userRegister";
+        }catch (RuntimeException e) {
+
+            e.printStackTrace();
+            request.setAttribute("msg","注册失败!用户名已经被注册");
+            return "userRegister";
+        }
+
+        request.setAttribute("msg","恭喜您，注册成功！请登录");
+        return "userRegister";
     }
 
     public String toUpdateAccount() {
@@ -361,8 +428,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             //终止执行
             return;
         }
-
-
 
 
         //验证码正确后，核对用户名和密码

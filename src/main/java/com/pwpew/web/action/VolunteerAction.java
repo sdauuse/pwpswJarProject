@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
@@ -38,10 +40,44 @@ public class VolunteerAction extends ActionSupport implements ModelDriven<Volunt
         return volunteerMd;
     }
 
-    //    用户注册方法
-    public String volunteerRegister() throws InvocationTargetException, IllegalAccessException {
-        volunteerService.insertVolunteer(volunteerMd);
-        return "volRegisterSuccess";
+    //用户注册方法
+    public void volunteerRegister() throws InvocationTargetException, IllegalAccessException {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        String  vcode = (String) session.getAttribute("vcode");
+
+        if(!volunteerMd.getVerifyCode().equalsIgnoreCase(vcode)){
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "验证码错误！");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            return ;
+        }
+
+        try {
+            volunteerService.insertVolunteer(volunteerMd);
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+            // 向客户端返回提示
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "注册失败！必要的参数不能为空");
+            // 输出json
+            FastJsonUtil.write_json(response, ajaxResult);
+            return;
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "注册失败！参数不合法");
+            FastJsonUtil.write_json(response, ajaxResult);
+            return;
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            String ajaxResult = FastJsonUtil.ajaxResult(false, "注册失败！");
+            FastJsonUtil.write_json(response, ajaxResult);
+            return;
+        }
+
+        String ajaxResult = FastJsonUtil.ajaxResult(true, "恭喜您，注册志愿者成功！请申请加入我们的QQ志愿者群！");
+        // 输出json
+        FastJsonUtil.write_json(response, ajaxResult);
     }
 
     public void list() {

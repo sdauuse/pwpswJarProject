@@ -12,7 +12,7 @@
        请求add.action，*匹配了add，{1}表示第一个匹配串
    -->
         <action name="*"  class="volunteerAction" method="{1}">
-             <result name="volRegisterSuccess">/jsps/success.jsp</result>
+             <result name="volRegisterSuccess">/jsps/volunteer/volunteerRegister.jsp</result>
         </action>
     </package>
 

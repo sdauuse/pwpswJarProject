@@ -8,6 +8,7 @@ import com.pwpew.entity.TPost;
 import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.CommentMd;
 import com.pwpew.modeldriven.PostMd;
+import com.pwpew.modeldriven.UserMd;
 import com.pwpew.service.PostService;
 import com.pwpew.service.UserService;
 import com.pwpew.utils.CommonUtil;
@@ -266,7 +267,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         HttpSession session = request.getSession();
 
 
-        if(session.getAttribute("userid")==null){
+        if (session.getAttribute("userid") == null) {
             request.setAttribute("msg", "请先登录");
             return "findPostListByUserIdError";
         }
@@ -284,15 +285,20 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
             Long count = postService.findPostCount(postMd);
             //page<1 就赋值为1
             page = (page < 1) ? 1 : page;
-            request.setAttribute("page", page);
+
+            Long totalPage = count / rows;
+            if (page > totalPage) {
+                page--;
+            }
 
             int firstResult = (page - 1) * rows;
-            Long totalPage = count / rows;
+
+
 
 
             List<TPost> list = postService.findPostByPage(postMd, firstResult, rows);
 
-
+            request.setAttribute("page", page);
             request.setAttribute("list", list);
             request.setAttribute("totalPage", totalPage);
             return "findPostListByUserId";
@@ -314,7 +320,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
             // 上传文件的类型
             String pictureContentType = postMd.getPictureContentType();
 
-            if (picture != null  && pictureFileName != null && !pictureFileName.equals("")) {
+            if (picture != null && pictureFileName != null && !pictureFileName.equals("")) {
                 // 服务器图片存储路径
                 String filePath = "D:\\develop\\upload\\";
                 // 扩展名，从原始名称中截取
@@ -342,13 +348,13 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
             newpost.setEffectiveness(oldPost.getEffectiveness());
             newpost.setUser(oldPost.getUser());
 
-            if(CommonUtil.getWordCount(postMd.getPostDescribe())>512){
+            if (CommonUtil.getWordCount(postMd.getPostDescribe()) > 512) {
 
-                request.setAttribute("msg","修改失败,详细描述应该在256汉字或者512字符以内");
+                request.setAttribute("msg", "修改失败,详细描述应该在256汉字或者512字符以内");
                 return "updatepost";
             }
 
-            if(StringUtils.isEmpty(postMd.getPostPicture())){
+            if (StringUtils.isEmpty(postMd.getPostPicture())) {
                 newpost.setPostPicture(oldPost.getPostPicture());
             }
 
@@ -360,18 +366,18 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
                 newpost.setPostProvince(oldPost.getPostProvince());
             }
 
-            if(newpost.getPostCity().equals("")||newpost.getPostCity().equals("请选择城市")){
+            if (newpost.getPostCity().equals("") || newpost.getPostCity().equals("请选择城市")) {
                 newpost.setPostCity(oldPost.getPostCity());
             }
 
-            if(newpost.getPostCountry().equals("")||newpost.getPostCountry().equals("请选择区县")){
+            if (newpost.getPostCountry().equals("") || newpost.getPostCountry().equals("请选择区县")) {
                 newpost.setPostCountry((oldPost.getPostCountry()));
             }
 
             postService.updatePost(newpost);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("msg","修改失败");
+            request.setAttribute("msg", "修改失败");
             return "updatepost";
         }
 
@@ -380,7 +386,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         postMd.setPostName(null);
         postMd.setPostGender(null);
         findPostListByUserId();
-        request.setAttribute("msg","修改成功");
+        request.setAttribute("msg", "修改成功");
         return "updatepost";
     }
 }

@@ -10,10 +10,13 @@
 <head>
     <title>志愿者注册页面</title>
     <link href="${pageContext.request.contextPath}/css/volunteer_register.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/user_vol_register_js/volunteer.register.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/user_vol_register_js/volunteer.register.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.data.js"></script>
     <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +28,7 @@
 
     <div class="vol_center">
         <div class="vol_form"><%--定义表单--%>
-            <form action="${pageContext.request.contextPath}/volunteer/volunteerRegister.action" method="post" id="form">
+            <form method="post" id="form">
                 <table>
                     <tr>
                         <td class="td_left"><label for="volname"><span class="requirement">*</span>志愿者姓名</label></td>
@@ -51,8 +54,9 @@
                     <tr>
                         <td class="td_left"><label for="man">性别</label></td>
                         <td class="td_right" colspan="3">
-                            <input id="man" type="radio" checked="checked" name="volSex"/><span class="man">男</span><input
-                                id="woman" type="radio" name="volSex"/><span>女</span>
+                            <input id="man" type="radio" value="男" checked="checked" name="volSex"/><span
+                                class="man">男</span><input
+                                id="woman" type="radio" name="volSex" value="女"/><span>女</span>
                         </td>
                     </tr>
                     <tr data-toggle="distpicker">
@@ -62,7 +66,8 @@
                         <td class="td_right"><select id="city1" name="volCity"></select></td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="voldetailAddr"><span class="requirement">*</span>详细地址</label></td>
+                        <td class="td_left"><label for="voldetailAddr"><span class="requirement">*</span>详细地址</label>
+                        </td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="voldetailAddr" id="voldetailAddr" placeholder="请输入详细地址">
                             <span id="s_voldetailAddr" class="error"></span>
@@ -93,14 +98,25 @@
                         <td class="td_left"><label for="check_code"><span class="requirement">*</span>验证码</label></td>
                         <td class="td_right" colspan="4">
                             <div class="code">
-                                <input type="text" value="" placeholder="请输入验证码（不区分大小写）" id="check_code" class="input-val">
-                                <canvas id="canvas" width="100" height="30"></canvas>
+                                <input type="text" name="verifyCode" value="" placeholder="请输入验证码（不区分大小写）"
+                                       id="check_code"
+                                       class="input-val">
+
+                                <a href="#" onclick="changeImage()"><img id="image" style="width: 115px;height: 40px"
+                                                                         src="${pageContext.request.contextPath}/user/vcode.action"></a>
+                                <%--<canvas id="canvas" width="100" height="30"></canvas>--%>
                             </div>
                         </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><font style="margin-left: 29px" color="red">${msg}</font></td>
                     </tr>
                     <tr>
                         <td class="btn_left" align="center" colspan="4">
-                            <input type="submit" name="btn_vol_register" value="注册" id="btn_vol_register" class="btn">
+                            <input type="button" name="btn_vol_register" value="注册" id="btn_vol_register" class="btn"
+                                   onclick="register()">
                             <input type="reset" name="btn_register" value="重置" id="btn_reset">
                         </td>
                     </tr>
@@ -112,9 +128,40 @@
     <%--end中间浮动结束--%>
 
     <div class="vol_right">
-        <p id="have_account">已有账号 <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">立即登录</a></p>
+
+        <p id="have_account"><a href="${pageContext.request.contextPath}/index.jsp">返回主页</a></p>
     </div>
     <%--end右浮动结束--%>
 </div>
+
+<script>
+    function changeImage() {
+        var image = document.getElementById("image");
+        image.src = "${pageContext.request.contextPath}/user/vcode.action?a=" + new Date().getTime();
+    }
+
+    function register() {
+        $.ajax({
+            cache: false,
+            type: "POST",
+            async: false,
+            url: "${pageContext.request.contextPath}/volunteer/volunteerRegister.action", //把表单数据发送到后端
+            data: $('#form').serialize(),
+            //要发送的是ajaxFrm表单中的数据
+            /*  error: function (request) {
+                  alert("发送请求失败！");
+              }*/
+            success: function (data) {
+                //var result = JSON.stringify(data);
+                //提示操作结果
+                alert(data.message);
+
+                if (data.success == true) {
+                    window.location.replace("${pageContext.request.contextPath}/jsps/volunteer/volunteerInfo.jsp");
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

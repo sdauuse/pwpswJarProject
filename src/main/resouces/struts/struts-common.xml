@@ -17,6 +17,7 @@
 
 
     <!-- 上传文件大小最大为4M -->
+
     <constant name="struts.multipart.maxSize" value="4194304"></constant>
 
     <!-- 通用package -->

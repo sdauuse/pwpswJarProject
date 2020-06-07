@@ -13,12 +13,14 @@
    -->
         <action name="*"  class="userAction" method="{1}">
             <result name="userLogin">/jsps/login/login.jsp</result>
+            <result name="userLoginError">/jsps/userRegister.jsp</result>
             <result name="userUpdateSuccess">/jsps/myAccount/accountManager.jsp</result>
             <result name="toUpdateAccount">/jsps/myAccount/accountManager.jsp</result>
             <result name="modifyPasswordByEmail">/jsps/login/forgetPasswordNext.jsp</result>
             <result name="modifyPasswordByEmailError">/jsps/login/forgetPassword.jsp</result>
             <result name="modifyPasswordByEmailNext">/jsps/login/login.jsp</result>
             <!--<result name="ok">welcome.jsp</result>-->
+            <result name="userRegister">/jsps/userRegister.jsp</result>
         </action>
     </package>
 

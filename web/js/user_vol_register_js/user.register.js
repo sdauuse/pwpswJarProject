@@ -26,7 +26,7 @@ window.onload = function () {
             } else if (val == num) {
                 // alert('提交成功！');
                 // $(".input-val").val('');
-
+                /*register();*/
             } else {
                 alert('验证码错误！请重新输入！');
                 $(".input-val").val('');
@@ -34,6 +34,12 @@ window.onload = function () {
             }
         })
     })
+
+
+
+
+
+
 
 //生成并渲染出验证码图形
     function draw(show_num) {
@@ -92,11 +98,12 @@ window.onload = function () {
 }
 
 //获取路径
-var strFullPath=window.document.location.href;
-var strPath=window.document.location.pathname;
-var pos=strFullPath.indexOf(strPath);
-var prePath=strFullPath.substring(0,pos);
-var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
+var strFullPath = window.document.location.href;
+var strPath = window.document.location.pathname;
+var pos = strFullPath.indexOf(strPath);
+var prePath = strFullPath.substring(0, pos);
+var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
+
 //校验用户名
 function checkUsername() {
     var username = document.getElementById("username").value;
@@ -108,13 +115,14 @@ function checkUsername() {
     var s_username = document.getElementById("s_username");
     if (flag) {
         //提示正确
-        s_username.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
+        s_username.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_username.innerHTML = "昵称长度在1-12";
+        s_username.innerHTML = "昵称长度在4-12";
     }
     return flag;
 }
+
 //校验昵称
 function checkUserNickname() {
     var userNickname = document.getElementById("userNickname").value;
@@ -126,7 +134,7 @@ function checkUserNickname() {
     var s_userNickname = document.getElementById("s_userNickname");
     if (flag) {
         //提示正确
-        s_userNickname.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'>";
+        s_userNickname.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
         s_userNickname.innerHTML = "用户名格式有误";
@@ -145,10 +153,10 @@ function checkUserPassword() {
     var s_userPassword = document.getElementById("s_userPassword");
     if (flag) {
         //提示正确
-        s_userPassword.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
+        s_userPassword.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg' />";
     } else {
         //提示错误
-        s_userPassword.innerHTML = "密码格式有误";
+        s_userPassword.innerHTML = "密码应在6-12位";
     }
     return flag;
 }
@@ -164,7 +172,7 @@ function checkUserAge() {
     var s_userAge = document.getElementById("s_userAge");
     if (flag == 1) {
         //提示正确
-        s_userAge.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg'/>";
+        s_userAge.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg'/>";
     } else {
         //提示错误
         s_userAge.innerHTML = "年龄在10-100";
@@ -187,7 +195,7 @@ function checkUserPhone() {
     var s_userPhone = document.getElementById("s_userPhone");
     if (flag) {
         //提示正确
-        s_userPhone.innerHTML = "<img width='35' height='25' src='"+prePath+postPath+"/imgs/user_vol_register_img/right.jpg' />";
+        s_userPhone.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg' />";
     } else {
         //提示错误
         s_userPhone.innerHTML = "电话号码格式有误";
