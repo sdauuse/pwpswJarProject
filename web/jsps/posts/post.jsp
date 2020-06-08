@@ -70,7 +70,7 @@
             详情描述：${post.postDescribe}<br>
             <%--图片：<br>${post.postPicture}--%>
             <br><br>
-            <%--<div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>--%>
+            <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
         </div>
         <div class="clear"></div>
@@ -86,7 +86,7 @@
                     <%--回复${post.user.username}：<br>--%>
                     ${i.comments}
                 <br><br>
-                <div class="time">最后更新时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
+                <div class="time">评论时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>
             </div>
             <div class="clear"></div>
