@@ -4,6 +4,7 @@ import com.pwpew.dao.MessageDao;
 import com.pwpew.entity.TAdministrator;
 import com.pwpew.entity.TMessage;
 import com.pwpew.entity.TNotice;
+import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.MessageMd;
 import com.pwpew.modeldriven.NoticeMd;
 import org.apache.commons.lang3.StringUtils;
@@ -153,4 +154,25 @@ public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
         Long total = (Long) list.get(0);
         return total;
     }
+
+    @Override
+    public List<TMessage> findMessageByUser(int userId, int firstResult, int maxResults){
+
+        //如果在这个方法中得到Hibernate的session，通过session执行hql的查询（不使用HibernateTemplate）
+        session = this.getSessionFactory().getCurrentSession();
+
+        //使用hql查询
+        Query query = session.createQuery("from TMessage t where t.user.userId=?");
+        query.setParameter(0, userId);
+
+        //设置分页参数
+        query.setFirstResult(firstResult);
+        query.setMaxResults(maxResults);
+        //直接使用原始的query对象查询
+        List<TMessage> list = query.list();
+
+        return list;
+
+    }
+
 }
