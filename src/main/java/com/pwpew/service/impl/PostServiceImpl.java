@@ -56,11 +56,11 @@ public class PostServiceImpl implements PostService {
     public List<TPost> findPostByPage(PostMd postMd, int firstResult, int maxResults) {
         List<TPost> list = postDao.findPostByPage(postMd, firstResult, maxResults);
 
-        for (TPost post:list) {
+        for (TPost post : list) {
             post.getUser().setUserPassword(null);
         }
 
-        return  list;
+        return list;
     }
 
     @Override
@@ -76,12 +76,22 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<TPost> getPostByPostType(String postType, int maxResults, int firstResult) {
-        return postDao.getPostByPostType(postType,maxResults,firstResult);
+        return postDao.getPostByPostType(postType, maxResults, firstResult);
     }
 
     @Override
-    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult) {
-        return postDao.findPostByNameOrDescribe(nameOrDescribe,firestResult,maxResult);
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe, int firestResult, int maxResult) {
+        return postDao.findPostByNameOrDescribe(nameOrDescribe, firestResult, maxResult);
+    }
+
+    @Override
+    public List<TPost> findPostListByUserId(int userId, int firestResult, int maxResult) {
+        return postDao.findPostListByUserId(userId, firestResult, maxResult);
+    }
+
+    @Override
+    public Long findPostCountByUserId(int userId) {
+        return postDao.findPostCountByUserId(userId);
     }
 
 }

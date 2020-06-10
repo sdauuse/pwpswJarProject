@@ -368,9 +368,12 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
             //查询没有被封禁的帖子
             postMd.setStatue("1");
+
+
             int page = postMd.getPage();
             int rows = 1;
-            Long count = postService.findPostCount(postMd);
+            //查询userid为当前用户的帖子
+            Long count = postService.findPostCountByUserId(userid);
             //page<1 就赋值为1
             page = (page < 1) ? 1 : page;
 
@@ -383,8 +386,8 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
 
 
-
-            List<TPost> list = postService.findPostByPage(postMd, firstResult, rows);
+            //查询userid为当前用户的帖子
+            List<TPost> list = postService.findPostListByUserId(userid, firstResult, rows);
 
             request.setAttribute("page", page);
             request.setAttribute("list", list);

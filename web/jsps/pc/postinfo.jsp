@@ -437,13 +437,13 @@
              dom-data-type="pagination" dom-data-version="4" false="pagination" style="">
             <ul class="pagination" style="margin:0px;" data-option="{}">
                 <li>
-                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=${page-1}"
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page-1}"
                        aria-label="Previous"><span aria-hidden="true" style="font-size: 16px"> 上一页 </span></a>
                     <%-- <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page-1}" aria-label="Previous"><span aria-hidden="true"> 上一页 </span></a>--%>
                 </li>
                 <li class="active"><a herf="#">${page}</a></li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${userid}&page=${page+1}"
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page+1}"
                        aria-label="Next"><span aria-hidden="true" style="font-size: 16px"> 下一页 </span></a></li>
                 <%--<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page+1}" aria-label="Next"><span aria-hidden="true"> 下一页 </span></a></li>--%>
                 <li><span style="font-size: 16px">共有${totalPage}页</span></li>

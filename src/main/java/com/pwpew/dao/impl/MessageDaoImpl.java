@@ -81,12 +81,12 @@ public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
 
             //留言是否回复
             if (messageMd.getMsgIsRes() == 1) {
-                queryString.append(" and  t.msgMain is not null  ");
+                queryString.append(" and  t.msgResMain is not null  ");
             }
 
             //留言是否回复d
             if (messageMd.getMsgIsRes() == 2) {
-                queryString.append(" and t.msgMain is null");
+                queryString.append(" and t.msgResMain is null");
             }
 
             //起始时间

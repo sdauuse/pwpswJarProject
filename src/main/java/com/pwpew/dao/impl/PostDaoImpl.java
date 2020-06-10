@@ -46,10 +46,10 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     }
 
     //获取特定类型的帖子
-    public List<TPost> getPostByPostType(String postType,int maxResults,int firstResult){
+    public List<TPost> getPostByPostType(String postType, int maxResults, int firstResult) {
         Session session = this.getSessionFactory().getCurrentSession();
         Query query = session.createQuery("from TPost where postType = ? and effectiveness = '1' and statue = '1' order by postId desc");
-        query.setParameter(0,postType);
+        query.setParameter(0, postType);
         query.setMaxResults(maxResults);
         query.setFirstResult(firstResult);
         List<TPost> list = query.list();
@@ -139,11 +139,11 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public void updateStatueAndEff(PostMd postMd) {
 
         TPost post = this.getHibernateTemplate().get(TPost.class, postMd.getPostId());
-        if (post.getEffectiveness()!=null){
+        if (post.getEffectiveness() != null) {
             post.setStatue(postMd.getStatue());
         }
 
-        if(post.getStatue()!=null){
+        if (post.getStatue() != null) {
             post.setEffectiveness(postMd.getEffectiveness());
         }
 
@@ -196,13 +196,13 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
             }
 
             //封禁状态
-            if(StringUtils.isNotEmpty(postMd.getStatue())){
+            if (StringUtils.isNotEmpty(postMd.getStatue())) {
 
                 queryString.append(" and t.statue = ?");
                 params.add(postMd.getStatue());
             }
 
-            if(StringUtils.isEmpty(postMd.getStatue())){
+            if (StringUtils.isEmpty(postMd.getStatue())) {
                 queryString.append(" and t.statue = 1");
             }
 
@@ -215,7 +215,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         // todo
     }
 
-    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult){
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe, int firestResult, int maxResult) {
         Session session = this.getSessionFactory().getCurrentSession();
         Query query = session.createQuery("from TPost where postName like '%" + nameOrDescribe + "%' or postDescribe like '%" + nameOrDescribe + "%' ");
         query.setFirstResult(firestResult);
@@ -223,5 +223,28 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         List<TPost> list = query.list();
         return list;
     }
+
+    @Override
+    public List<TPost> findPostListByUserId(int userId, int firestResult, int maxResult) {
+
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from TPost t where t.user.userId = ?");
+
+        query.setParameter(0,userId);
+        query.setFirstResult(firestResult);
+        query.setMaxResults(maxResult);
+        List<TPost> list = query.list();
+        return list;
+    }
+
+    @Override
+    public Long findPostCountByUserId(int userId) {
+
+        Session session = this.getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("select count(*) from TPost t where t.user.userId=? ");
+        query.setParameter(0, userId);
+        return (Long) query.list().get(0);
+    }
+
 
 }

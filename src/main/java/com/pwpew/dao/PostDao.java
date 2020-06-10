@@ -29,5 +29,6 @@ public interface PostDao {
     //根据姓名或描述搜索帖子
     public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult);
 
-
+    public  List<TPost> findPostListByUserId(int userId,int firestResult,int maxResult);
+    public Long findPostCountByUserId(int userId);
 }

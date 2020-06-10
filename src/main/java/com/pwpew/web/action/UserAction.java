@@ -298,9 +298,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             /*String ajaxResult = FastJsonUtil.ajaxResult(false, "验证码错误！");
             // 输出json
             FastJsonUtil.write_json(response, ajaxResult);*/
-            request.setAttribute("msg","验证码错误！");
+            request.setAttribute("msg", "验证码错误！");
             return "userRegister";
         }
+
+
         try {
             // 上传成功的图片，文件默认在tomcat的临时目录 中
             File picture = userMd.getPicture();
@@ -328,10 +330,25 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 // 在数据库中保存图片路径
                 userMd.setUserPicture(fileNameNew);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-            request.setAttribute("msg","头像上传失败！");
+            request.setAttribute("msg", "头像上传失败！");
             return "userRegister";
+        }
+
+        //用于校验邮箱是否重复
+        List<TUser> userList = userService.findUser();
+        if (userMd.getEmail() != null) {
+            for (TUser user : userList) {
+
+                //先判断数据库中的用户邮箱是否为空，为空就判断下一个用户，不为空再校验
+                if (user.getEmail() != null) {
+                    if (user.getEmail().equals(userMd.getEmail())) {
+                        request.setAttribute("msg", "邮箱已经被注册！");
+                        return "userRegister";
+                    }
+                }
+            }
         }
 
         try {
@@ -339,21 +356,21 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         } catch (IllegalAccessException e) {
 
             e.printStackTrace();
-            request.setAttribute("msg","注册失败！用户名已被注册");
+            request.setAttribute("msg", "注册失败！用户名已被注册");
             return "userRegister";
-        }catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
 
             e.printStackTrace();
-            request.setAttribute("msg","注册失败！");
+            request.setAttribute("msg", "注册失败！");
             return "userRegister";
-        }catch (RuntimeException e) {
+        } catch (RuntimeException e) {
 
             e.printStackTrace();
-            request.setAttribute("msg","注册失败!用户名已经被注册");
+            request.setAttribute("msg", "注册失败!用户名已经被注册");
             return "userRegister";
         }
 
-        request.setAttribute("msg","恭喜您，注册成功！请登录");
+        request.setAttribute("msg", "恭喜您，注册成功！请登录");
         return "userRegister";
     }
 
@@ -557,7 +574,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return "modifyPasswordByEmailNext";
     }
 
-    public String logout(){
+    public String logout() {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.invalidate();
         return "logoutSuccess";
