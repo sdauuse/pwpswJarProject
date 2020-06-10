@@ -15,6 +15,7 @@
             <!-- <result name.="success">/jsp/success.jsp</result>-->
             <result name="leaveMessage">/jsps/message/message.jsp</result>
             <result name="messageHistory">/jsps/message/messageHistory.jsp</result>
+            <result name="msgError">/jsps/message/message.jsp</result>
         </action>
     </package>
 </struts>

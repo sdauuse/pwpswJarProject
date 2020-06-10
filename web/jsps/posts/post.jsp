@@ -46,14 +46,15 @@
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
 <h2 style="color: #965454;"><a href="${pageContext.request.contextPath}/post/accusation.action?postId=${post.postId}&page=${page}">举报</a></h2>
-<div align="center"><h3 style="color: #7b8b6f">${accusation}</h3></div>
+
+<div align="center"><h3 style="color: #7b8b6f">${accusation}<br>${error}</h3></div>
 <div id="postPage">
 
     <%--主贴--%>
     <div class="post">
         <%--发帖人信息--%>
-        <h4 class="poster">
-            <%--<img src="img/deadpool.jpg" ><br><br>--%>
+        <h4 class="poster" style="color:#965454;">
+            <img src=" /upload/${post.user.userPicture}" ><br><br>
             版主：${post.user.userNickname}<br>
         </h4>
         <%--帖子详情    --%>
@@ -68,7 +69,7 @@
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
             详情描述：${post.postDescribe}<br>
-            <%--图片：<br>${post.postPicture}--%>
+            图片：<br>${post.postPicture}
             <br><br>
             <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
@@ -78,8 +79,8 @@
 
     <c:forEach items="${comments}" var="i">
         <div class="post">
-            <h4 class="poster">
-                    <%--<img src="img/deadpool.jpg" ><br><br>--%>
+            <h4 class="poster"  style="color: #7b8b6f;">
+                <img src=" /upload/${i.user.userPicture}" ><br><br>
                 用户：${i.user.userNickname}<br>
             </h4>
             <div class="postDetail">
@@ -112,8 +113,7 @@
             <input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
             <input type="hidden" id="count" name="count" value="${count}">
 
-
-            <textarea id="comments" name="comments" required="required" placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
+            <textarea id="comments" name="comments" required="required"  placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
 
             <div id="postSubmit">

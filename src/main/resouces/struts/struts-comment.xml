@@ -11,6 +11,7 @@
          -->
         <action name="*" class="commentAction" method="{1}">
             <result name="insertComment" >/jsps/posts/post.jsp</result>
+            <result name="insertError">/jsps/posts/post.jsp</result>
         </action>
     </package>
 </struts>
