@@ -77,4 +77,10 @@ public class MessageServiceImpl implements MessageService {
     public Long findMessageCount(MessageMd messageMd) {
         return messageDao.findMessageCount(messageMd);
     }
+
+    @Override
+    public List<TMessage> findMessageByUser(int userId, int firstResult, int maxResults){
+        List<TMessage> list = messageDao.findMessageByUser(userId, firstResult, maxResults);
+        return list;
+    }
 }

@@ -18,6 +18,7 @@
             <result name="posting">/jsps/posts/postList.jsp</result>
             <result name="showPostClass">/jsps/posts/postClass.jsp</result>
             <result name="searchSuccess">/jsps/posts/searchPost.jsp</result>
+            <result name="accusation">/jsps/posts/post.jsp</result>
         </action>
     </package>
 </struts>

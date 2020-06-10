@@ -133,7 +133,22 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
         messageService.insertMessage(message);
 
         HttpServletRequest request = ServletActionContext.getRequest();
-
+        request.setAttribute("messageLeft", "留言成功");
         return "leaveMessage";
+    }
+
+    public String messageHistory(){
+
+        int page = messageMd.getPage();
+        int rows = 10;
+
+        int firstResult = (page-1)*rows;
+
+        List<TMessage> list = messageService.findMessageByUser(messageMd.getUser().getUserId(), firstResult, rows);
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("messageList", list);
+
+        return "messageHistory";
     }
 }

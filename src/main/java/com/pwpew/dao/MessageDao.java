@@ -25,4 +25,6 @@ public interface MessageDao {
     public List<TMessage> findMessageByPage(MessageMd messageMd, int firstResult, int maxResults);
     //查询用户留言，用于分页
     public Long findMessageCount(MessageMd messageMd);
+    // 查询特定用户的留言
+    public List<TMessage> findMessageByUser(int userId, int firstResult, int maxResults);
 }

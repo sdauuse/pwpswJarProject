@@ -55,11 +55,19 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
         TPost post = postService.getPostById(commentMd.getPostId());
         commentService.insertComment(comment);
 
+        int count = commentMd.getCount();
+        int totalPage = commentMd.getTotalPage();
+        if(count%5 == 0){
+            totalPage++;
+        }
+        count++;
+
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("post",post);
         request.setAttribute("comments", post.getComments());
-
-
+        request.setAttribute("page", commentMd.getPage());
+        request.setAttribute("count", count);
+        request.setAttribute("totalPage", totalPage);
         return "insertComment";
     }
 
