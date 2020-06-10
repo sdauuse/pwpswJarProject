@@ -37,8 +37,20 @@ table {
     text-align: right;
     height: 60px;
 }
+.td_left1{
+    width: 10px;
+    text-align: left;
+    height: 60px;
+}
 .td_right {
     padding-left: 30px;
+    border-radius: 5px;
+    padding-right: 0px;
+    margin-right: 0px;
+    column-span: 3;
+}
+.td_right1{
+    padding-left: 0px;
     border-radius: 5px;
     padding-right: 0px;
     margin-right: 0px;
