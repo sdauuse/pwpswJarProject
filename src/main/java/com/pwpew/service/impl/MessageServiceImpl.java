@@ -57,7 +57,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public void insertMessage(TMessage message) {
-
+        messageDao.insertMessage(message);
     }
 
     @Override
@@ -76,5 +76,11 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Long findMessageCount(MessageMd messageMd) {
         return messageDao.findMessageCount(messageMd);
+    }
+
+    @Override
+    public List<TMessage> findMessageByUser(int userId, int firstResult, int maxResults){
+        List<TMessage> list = messageDao.findMessageByUser(userId, firstResult, maxResults);
+        return list;
     }
 }

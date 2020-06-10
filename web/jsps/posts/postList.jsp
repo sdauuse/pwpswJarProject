@@ -47,7 +47,7 @@
                 </div>
                 <div class="poster">版主：
                     <a href="#">
-                        ${i.user.username}
+                        ${i.user.userNickname}
                     </a>
                 </div>
                 <div class="time">失踪时间&nbsp;&nbsp;&nbsp;&nbsp;${i.missingtime} </div>

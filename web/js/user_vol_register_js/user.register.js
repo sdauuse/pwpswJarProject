@@ -26,7 +26,7 @@ window.onload = function () {
             } else if (val == num) {
                 // alert('提交成功！');
                 // $(".input-val").val('');
-                /*register();*/
+
             } else {
                 alert('验证码错误！请重新输入！');
                 $(".input-val").val('');
@@ -34,12 +34,6 @@ window.onload = function () {
             }
         })
     })
-
-
-
-
-
-
 
 //生成并渲染出验证码图形
     function draw(show_num) {
@@ -137,7 +131,7 @@ function checkUserNickname() {
         s_userNickname.innerHTML = "<img width='35' height='25' src='" + prePath + postPath + "/imgs/user_vol_register_img/right.jpg'>";
     } else {
         //提示错误
-        s_userNickname.innerHTML = "用户名格式有误";
+        s_userNickname.innerHTML = "昵称格式有误";
     }
     return flag;
 }

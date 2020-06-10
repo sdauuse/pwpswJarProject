@@ -17,6 +17,7 @@ public class PostMd extends TPost {
     private int page;
     private int rows;
 
+
     //扩展的查询条件，起始时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Timestamp postDate;
@@ -32,7 +33,26 @@ public class PostMd extends TPost {
     //获取原始文件类型，命名规则：页面上file的名称+ContentType
     private String pictureContentType;
 
+    private CommentMd commentMd;
 
+    public CommentMd getCommentMd() {
+        return commentMd;
+    }
+
+    public void setCommentMd(CommentMd commentMd) {
+        this.commentMd = commentMd;
+    }
+
+
+    private String keyword;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
     public File getPicture() {
         return picture;
     }

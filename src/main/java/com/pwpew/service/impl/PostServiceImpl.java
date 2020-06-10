@@ -78,4 +78,10 @@ public class PostServiceImpl implements PostService {
     public List<TPost> getPostByPostType(String postType, int maxResults, int firstResult) {
         return postDao.getPostByPostType(postType,maxResults,firstResult);
     }
+
+    @Override
+    public List<TPost> findPostByNameOrDescribe(String nameOrDescribe,int firestResult,int maxResult) {
+        return postDao.findPostByNameOrDescribe(nameOrDescribe,firestResult,maxResult);
+    }
+
 }

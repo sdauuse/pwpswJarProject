@@ -165,6 +165,8 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
                 //将用户名id和用户名放入session域中
                 session.setAttribute("username", tUser.getUsername());
                 session.setAttribute("userid", tUser.getUserId());
+                session.setAttribute("usernickname", tUser.getUserNickname());
+                session.setAttribute("userpicture", tUser.getUserPicture());
                 //终止执行
                 return;
             }
@@ -224,6 +226,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
 
+    //修改用户信息
     public String submitpicture() {
 
         try {
@@ -256,11 +259,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             } else {
                 userMd.setUserPicture(userMd.getUserPicture());
             }
-
             TUser user = new TUser();
-            // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
-            /*BeanUtils.copyProperties(noticeMd, notice);*/
-
             user.setUserId(userMd.getUserId());
             user.setUsername(userMd.getUsername());
             user.setUserNickname(userMd.getUserNickname());
@@ -277,7 +276,6 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             } else {
                 ServletActionContext.getRequest().setAttribute("msg", "保存失败");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -557,5 +555,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
         request.setAttribute("msg", "恭喜您，成功修改密码！");
         return "modifyPasswordByEmailNext";
+    }
+
+    public String logout(){
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        session.invalidate();
+        return "logoutSuccess";
     }
 }

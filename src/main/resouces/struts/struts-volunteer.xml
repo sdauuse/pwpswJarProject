@@ -11,8 +11,9 @@
        采用 struts2 和spring整合方案1，action由spring来管理，在class上指定spring容器中action的bean id
        请求add.action，*匹配了add，{1}表示第一个匹配串
    -->
+
         <action name="*"  class="volunteerAction" method="{1}">
-             <result name="volRegisterSuccess">/jsps/volunteer/volunteerRegister.jsp</result>
+            <result name="volRegisterSuccess">/jsps/volunteer/volunteerRegister.jsp</result>
         </action>
     </package>
 

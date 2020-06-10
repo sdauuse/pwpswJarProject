@@ -23,6 +23,10 @@ public class TPost {
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Timestamp missingtime;
 
+    //发帖时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Timestamp postTime;
+
     private String postProvince;
     private String postCity;
     private String postCountry;
@@ -167,28 +171,60 @@ public class TPost {
         this.postPicture = postPicture;
     }
 
+    public Timestamp getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Timestamp postTime) {
+        this.postTime = postTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         TPost tPost = (TPost) o;
-        return postId == tPost.postId &&
-                effectiveness == tPost.effectiveness &&
-                Objects.equals(postType, tPost.postType) &&
-                Objects.equals(postName, tPost.postName) &&
-                Objects.equals(postGender, tPost.postGender) &&
-                Objects.equals(postAge, tPost.postAge) &&
-                Objects.equals(missingtime, tPost.missingtime) &&
-                Objects.equals(postProvince, tPost.postProvince) &&
-                Objects.equals(postCity, tPost.postCity) &&
-                Objects.equals(postCountry, tPost.postCountry) &&
-                Objects.equals(postStreet, tPost.postStreet) &&
-                Objects.equals(postDescribe, tPost.postDescribe) &&
-                Objects.equals(statue, tPost.statue);
+
+        if (postId != tPost.postId) return false;
+        if (postType != null ? !postType.equals(tPost.postType) : tPost.postType != null) return false;
+        if (postName != null ? !postName.equals(tPost.postName) : tPost.postName != null) return false;
+        if (postGender != null ? !postGender.equals(tPost.postGender) : tPost.postGender != null) return false;
+        if (postAge != null ? !postAge.equals(tPost.postAge) : tPost.postAge != null) return false;
+        if (missingtime != null ? !missingtime.equals(tPost.missingtime) : tPost.missingtime != null) return false;
+        if (postTime != null ? !postTime.equals(tPost.postTime) : tPost.postTime != null) return false;
+        if (postProvince != null ? !postProvince.equals(tPost.postProvince) : tPost.postProvince != null) return false;
+        if (postCity != null ? !postCity.equals(tPost.postCity) : tPost.postCity != null) return false;
+        if (postCountry != null ? !postCountry.equals(tPost.postCountry) : tPost.postCountry != null) return false;
+        if (postStreet != null ? !postStreet.equals(tPost.postStreet) : tPost.postStreet != null) return false;
+        if (postDescribe != null ? !postDescribe.equals(tPost.postDescribe) : tPost.postDescribe != null) return false;
+        if (effectiveness != null ? !effectiveness.equals(tPost.effectiveness) : tPost.effectiveness != null)
+            return false;
+        if (statue != null ? !statue.equals(tPost.statue) : tPost.statue != null) return false;
+        if (postPicture != null ? !postPicture.equals(tPost.postPicture) : tPost.postPicture != null) return false;
+        if (user != null ? !user.equals(tPost.user) : tPost.user != null) return false;
+        return comments != null ? comments.equals(tPost.comments) : tPost.comments == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, postType, postName, postGender, postAge, missingtime, postProvince, postCity, postCountry, postStreet, postDescribe, effectiveness, statue);
+        int result = postId;
+        result = 31 * result + (postType != null ? postType.hashCode() : 0);
+        result = 31 * result + (postName != null ? postName.hashCode() : 0);
+        result = 31 * result + (postGender != null ? postGender.hashCode() : 0);
+        result = 31 * result + (postAge != null ? postAge.hashCode() : 0);
+        result = 31 * result + (missingtime != null ? missingtime.hashCode() : 0);
+        result = 31 * result + (postTime != null ? postTime.hashCode() : 0);
+        result = 31 * result + (postProvince != null ? postProvince.hashCode() : 0);
+        result = 31 * result + (postCity != null ? postCity.hashCode() : 0);
+        result = 31 * result + (postCountry != null ? postCountry.hashCode() : 0);
+        result = 31 * result + (postStreet != null ? postStreet.hashCode() : 0);
+        result = 31 * result + (postDescribe != null ? postDescribe.hashCode() : 0);
+        result = 31 * result + (effectiveness != null ? effectiveness.hashCode() : 0);
+        result = 31 * result + (statue != null ? statue.hashCode() : 0);
+        result = 31 * result + (postPicture != null ? postPicture.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
+        return result;
     }
 }

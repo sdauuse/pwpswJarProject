@@ -51,6 +51,7 @@
     <div id="accountFunction">
         <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action">我的帖子</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="${pageContext.request.contextPath}/jsps/myAccount/accountManager.jsp">个人信息修改</a>
+        <a href="${pageContext.request.contextPath}/jsps/message/message.jsp">留言板</a>
     </div>
 </div>
 </body>

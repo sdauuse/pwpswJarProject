@@ -38,6 +38,11 @@
             margin-left: 60px;
         }
     </style>
+    <script>
+        function updateSuccess() {
+            alert("保存成功");
+        }
+    </script>
 </head>
 <body>
 
@@ -137,7 +142,13 @@
                         <td colspan="4" rolspan="2">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td colspan="4" rolspan="2"><center>${msg}</center></td>
+                        <td colspan="4" rolspan="2">
+                            <c:if test="${not empty msg}">
+                                <script>
+                                    updateSuccess();
+                                </script>
+                            </c:if>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="hidden" name="userId" value="${user.userId}"></td>

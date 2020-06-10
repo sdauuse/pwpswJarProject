@@ -12,6 +12,24 @@ public class CommentMd extends TComment {
     // easyUi分页参数
     private int page;
     private int rows;
+    private int totalPage;
+    private int count;
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public int getPage() {
         return page;

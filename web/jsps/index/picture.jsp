@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -46,6 +47,11 @@
             margin: 0px;
             padding: 0px;
         }
+        #login_register img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -56,8 +62,16 @@
     </div>
 
     <div id="login_register">
-        <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>
+        <c:choose>
+            <c:when test="${empty userid}">
+                <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>
+            </c:when>
+            <c:otherwise>
+                你好！${usernickname}&nbsp;&nbsp;&nbsp;<img src="/upload/${userpicture}">&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/logout.action">注销</a>
+            </c:otherwise>
+        </c:choose>
+
     </div>
 </div>
 </body>
