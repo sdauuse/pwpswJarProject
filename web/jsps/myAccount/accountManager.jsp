@@ -34,10 +34,18 @@
             padding-bottom: 15px;
             text-align: center;
         }
+        .td2{
+            padding-left: -10px;
+            padding-bottom: 15px;
+            text-align: left;
+        }
         img{
             width: 60px;
             height: 60px;
             margin-left: 60px;
+        }
+        .rg_form table tr td{
+            width: 250px;
         }
     </style>
     <script>
@@ -63,10 +71,10 @@
             <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
                 <table>
                     <tr>
-                        <td colspan="1" class="td1">
+                        <td colspan="2" class="td1">
                             <img src="/upload/${user.userPicture}"/>
                         </td>
-                        <td class="td1" colspan="3">
+                        <td class="td2" colspan="2">
                             <div align="center">
                                 <span class="btn btn-success fileinput-button">
                                     <span>选择新头像</span>
@@ -117,8 +125,8 @@
                     <tr data-toggle="distpicker">
                         <td class="td_left"><label>省份</label></td>
                         <td class="td_right "><select id="province1" name="userProvince"></select></td>
-                        <td class="td_left"><label>城市</label></td>
-                        <td class="td_right"><select id="city1" name="userCity"></select></td>
+                        <td class="td_left1"><label>城市</label></td>
+                        <td class="td_right1"><select id="city1" name="userCity"></select></td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userPhone">电话号码</label></td>
