@@ -282,9 +282,6 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         request.setAttribute("showPostClass",postClass);
         request.setAttribute("page",page);
         request.setAttribute("postCount",postCount);
-        System.out.println("****************************");
-        System.out.println(postClass);
-        System.out.println("****************************");
         return "showPostClass";
     }
 
