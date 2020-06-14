@@ -30,28 +30,34 @@
                 <table>
                     <tr>
                         <td class="td_left"><label for="username"><span class="requirement">*</span>用户名</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="username" id="username" placeholder="请输入用户名">
+                        </td>
+                        <td>
                             <span id="s_username" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userNickname"><span class="requirement">*</span>昵称</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userNickname" id="userNickname" placeholder="请输入昵称">
+                        </td>
+                        <td>
                             <span id="s_userNickname" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userPassword"><span class="requirement">*</span>密码</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="password" name="userPassword" id="userPassword" placeholder="密码长度大于等于6位">
+                        </td>
+                        <td>
                             <span id="s_userPassword" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="man">性别</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input id="man" type="radio" checked="checked" name="userGender" value="男"/><span
                                 class="man">男</span><input
                                 id="woman" type="radio" name="userGender" value="女"/><span>女</span>
@@ -59,8 +65,10 @@
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userAge"><span class="requirement">*</span>年龄</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userAge" id="userAge" placeholder="请输入年龄">
+                        </td>
+                        <td>
                             <span id="s_userAge" class="error"></span>
                         </td>
                     </tr>
@@ -72,15 +80,19 @@
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userPhone"><span class="requirement">*</span>电话号码</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userPhone" id="userPhone" placeholder="请输入电话号码">
+                        </td>
+                        <td>
                             <span id="s_userPhone" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="email">Email</label></td>
-                        <td class="td_right" colspan="3">
-                            <input type="text" name="email" id="email" placeholder="请输入省份">
+                        <td class="td_right" colspan="2">
+                            <input type="text" name="email" id="email" placeholder="请输入email">
+                        </td>
+                        <td>
                             <span id="s_email" class="error"></span>
                         </td>
                     </tr>
