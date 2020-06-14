@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>个人信息修改页面</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 
@@ -28,11 +28,6 @@
             /*设置边框圆角*/
             border-radius: 5px;
             padding-left: 10px;
-        }
-        .td1{
-            padding-left: 15px;
-            padding-bottom: 15px;
-            text-align: center;
         }
         .td2{
             padding-left: -10px;
@@ -71,7 +66,7 @@
             <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
                 <table>
                     <tr>
-                        <td colspan="2" class="td1">
+                        <td colspan="1" class="td_left">
                             <img src="/upload/${user.userPicture}"/>
                         </td>
                         <td class="td2" colspan="2">
@@ -85,16 +80,21 @@
                     </tr>
                     <tr>
                         <td class="td_left"><label for="username">用户名</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="username" id="username" value="${user.username}">
+                        </td>
+                        <td>
                             <span id="s_username" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userNickname">昵称</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userNickname" id="userNickname" value="${user.userNickname}">
-                            <span id="s_userNickname" class="error"></span>
+<%--                            <span id="s_userNickname" class="error" style="width: 50px;"></span>--%>
+                        </td>
+                        <td>
+                            <span id="s_userNickname" class="error" style="width: 50px;"></span>
                         </td>
                     </tr>
                     <tr>
@@ -117,28 +117,34 @@
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userAge">年龄</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userAge" id="userAge" value="${user.userAge}">
+                        </td>
+                        <td>
                             <span id="s_userAge" class="error"></span>
                         </td>
                     </tr>
                     <tr data-toggle="distpicker">
                         <td class="td_left"><label>省份</label></td>
                         <td class="td_right "><select id="province1" name="userProvince"></select></td>
-                        <td class="td_left1"><label>城市</label></td>
-                        <td class="td_right1"><select id="city1" name="userCity"></select></td>
+                        <td class="td_left" style="width: 80px"><label>城市</label></td>
+                        <td class="td_right"><select id="city1" name="userCity"></select></td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="userPhone">电话号码</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="userPhone" id="userPhone" value="${user.userPhone}">
+                        </td>
+                        <td>
                             <span id="s_userPhone" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="email">Email</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="email" id="email" value="${user.email}">
+                        </td>
+                        <td>
                             <span id="s_email" class="error"></span>
                         </td>
                     </tr>
