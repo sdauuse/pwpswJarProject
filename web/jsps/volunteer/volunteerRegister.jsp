@@ -30,28 +30,34 @@
                 <table>
                     <tr>
                         <td class="td_left"><label for="volname"><span class="requirement">*</span>志愿者姓名</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volname" id="volname" placeholder="请输入姓名">
+                        </td>
+                        <td>
                             <span id="s_volname" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="volIdCard"><span class="requirement">*</span>身份证号码</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volIdCard" id="volIdCard" placeholder="请输入身份证号">
+                        </td>
+                        <td>
                             <span id="s_volIdCard" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="volPhone"><span class="requirement">*</span>手机号码</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volPhone" id="volPhone" placeholder="请输入手机号码">
+                        </td>
+                        <td>
                             <span id="s_volPhone" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="man">性别</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input id="man" type="radio" checked="checked" name="volSex"/><span class="man">男</span><input
                                 id="woman" type="radio" name="volSex"/><span>女</span>
                         </td>
@@ -64,29 +70,37 @@
                     </tr>
                     <tr>
                         <td class="td_left"><label for="voldetailAddr"><span class="requirement">*</span>详细地址</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="voldetailAddr" id="voldetailAddr" placeholder="请输入详细地址">
+                        </td>
+                        <td>
                             <span id="s_voldetailAddr" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="volProfession">职业</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volProfession" id="volProfession" placeholder="请输职业">
+                        </td>
+                        <td>
                             <span id="s_volProfession" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="volEmail"><span class="requirement">*</span>电子邮件</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volEmail" id="volEmail" placeholder="请输入电子邮件">
+                        </td>
+                        <td>
                             <span id="s_volEmail" class="error"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="td_left"><label for="volQQ"><span class="requirement">*</span>QQ号</label></td>
-                        <td class="td_right" colspan="3">
+                        <td class="td_right" colspan="2">
                             <input type="text" name="volQq" id="volQQ" placeholder="请输入QQ号">
+                        </td>
+                        <td>
                             <span id="s_volQQ" class="error"></span>
                         </td>
                     </tr>
