@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 96989
@@ -86,15 +87,15 @@
                                 <option value="家寻宝贝">家寻宝贝</option>
                                 <option value="宝贝寻家">宝贝寻家</option>
                                 <option value="流浪乞讨">流浪乞讨</option>
-                                <option value="海外寻人">海外寻人</option>
+                                <option value="海外寻亲">海外寻亲</option>
                                 <option value="其他寻人">其他寻人</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="postName"><span class="requirement">*</span>帖子标题</label></td>
+                        <td class="td_left"><label for="postName"><span class="requirement">*</span>姓名</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="postName" id="postName" placeholder="请输入帖子标题">
+                            <input type="text" name="postName" id="postName" placeholder="请输入姓名">
                             <span id="s_postName" class="error"></span>
                         </td>
                     </tr>
@@ -171,6 +172,9 @@
                             <input type="submit" name="btn_posting" value="提交" id="btn_posting" class="btn">
                             <input type="submit" name="btn_posting" value="重置" id="btn_reset">
                         </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><s:fielderror/></td>
                     </tr>
                 </table>
             </form>

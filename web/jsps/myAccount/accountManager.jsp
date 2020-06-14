@@ -152,6 +152,9 @@
                         <td colspan="4" rolspan="2">&nbsp;</td>
                     </tr>
                     <tr>
+                        <td colspan="4"><s:fielderror/></td>
+                    </tr>
+                    <tr>
                         <td colspan="4" rolspan="2">
                             <c:if test="${not empty msg}">
                                 <script>
