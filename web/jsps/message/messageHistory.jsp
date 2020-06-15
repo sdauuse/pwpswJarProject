@@ -12,6 +12,11 @@
 <html>
 <head>
     <title>Title</title>
+    <style type="text/css">
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body style="padding: 0;">
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
@@ -24,7 +29,7 @@
                 时间：${i.msgDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${i.user.userNickname}留言：${i.msgMain}<br>
             </c:if>
             <c:if test="${not empty i.msgResMain}">
-                时间：${i.msgResTime}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员回复：${i.msgResMain}<br>
+                时间：${i.msgResTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员回复：${i.msgResMain}<br>
             </c:if>
         </c:forEach>
     </div>

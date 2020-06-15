@@ -48,27 +48,37 @@ public class CommentAction extends ActionSupport implements ModelDriven<TComment
     public String insertComment() throws ParseException {
 
         TComment comment = new TComment();
-
         // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
         BeanUtils.copyProperties(commentMd, comment);
 
         TPost post = postService.getPostById(commentMd.getPostId());
-        commentService.insertComment(comment);
-
         int count = commentMd.getCount();
         int totalPage = commentMd.getTotalPage();
-        if(count%5 == 0){
-            totalPage++;
-        }
-        count++;
-
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setAttribute("post",post);
-        request.setAttribute("comments", post.getComments());
-        request.setAttribute("page", commentMd.getPage());
-        request.setAttribute("count", count);
-        request.setAttribute("totalPage", totalPage);
-        return "insertComment";
+
+        if((commentMd.getComments().equals(null)) || (commentMd.getComments().equals(""))){
+            request.setAttribute("error", "评论内容不能为空");
+            request.setAttribute("post",post);
+            request.setAttribute("comments", post.getComments());
+            request.setAttribute("page", commentMd.getPage());
+            request.setAttribute("count", count);
+            request.setAttribute("totalPage", totalPage);
+            return "insertError";
+        }else{
+            commentService.insertComment(comment);
+            if(count%5 == 0){
+                totalPage++;
+            }
+            count++;
+            request.setAttribute("post",post);
+            request.setAttribute("comments", post.getComments());
+            request.setAttribute("page", commentMd.getPage());
+            request.setAttribute("count", count);
+            request.setAttribute("totalPage", totalPage);
+            return "insertComment";
+        }
+
+
     }
 
 }

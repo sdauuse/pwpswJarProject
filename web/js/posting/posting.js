@@ -95,7 +95,7 @@ var pos=strFullPath.indexOf(strPath);
 var prePath=strFullPath.substring(0,pos);
 var postPath=strPath.substring(0,strPath.substr(1).indexOf('/')+1);
 
-//校验帖子名
+//校验姓名
 function checkPostName() {
     var postName = document.getElementById("postName").value;
     //定义正则表达式

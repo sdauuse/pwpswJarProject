@@ -45,10 +45,8 @@
                     ${i.postDescribe}
                     &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
-                <div class="poster">版主：
-                    <a href="#">
-                        ${i.user.userNickname}
-                    </a>
+                <div class="poster">
+                    版主：${i.user.userNickname}
                 </div>
                 <div class="time">失踪时间&nbsp;&nbsp;&nbsp;&nbsp;${i.missingtime} </div>
                 <hr>

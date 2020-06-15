@@ -9,6 +9,11 @@
 <html>
 <head>
     <title>Title</title>
+    <style type="text/css">
+        a{
+            text-decoration: none;
+        }
+    </style>
     <script>
         function CurrentTime() {
             var now = new Date();
@@ -46,7 +51,7 @@
     <div class="replyArea" style="width: 60%;">
         <h2 id="replyTitle">留言板</h2>
         <h3><a href="${pageContext.request.contextPath}/message/messageHistory.action?user.userId=1">查看管理员回复</a></h3>
-        <h3 style="color: #7b8b6f">${messageLeft}</h3>
+        <h3 style="color: #7b8b6f">${messageLeft}${error}</h3>
         <form action="${pageContext.request.contextPath}/message/leaveMessage.action?user.userId=1" method="post" id="message">
             <input type="hidden" id="msgDate" name="msgDate">
             <textarea id="msgMain" name="msgMain" required="required" placeholder="请在此处输入留言 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>

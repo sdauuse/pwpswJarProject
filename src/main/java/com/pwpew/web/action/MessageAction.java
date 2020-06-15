@@ -132,16 +132,20 @@ public class MessageAction extends ActionSupport implements ModelDriven<MessageM
     }
 
     public String leaveMessage(){
-        TMessage message = new TMessage();
 
+        TMessage message = new TMessage();
         // 第一个为源对象，第二个为目标对象，将源对象中属性值拷贝到目标对象中，源和目标对象不能为空，属性名称一样方可拷贝
         BeanUtils.copyProperties(messageMd, message);
-
-        messageService.insertMessage(message);
-
         HttpServletRequest request = ServletActionContext.getRequest();
-        request.setAttribute("messageLeft", "留言成功");
-        return "leaveMessage";
+
+        if((messageMd.getMsgMain().equals(null)) || (messageMd.getMsgMain().equals(""))){
+            request.setAttribute("error", "留言内容不能为空");
+            return "msgError";
+        }else{
+            messageService.insertMessage(message);
+            request.setAttribute("messageLeft", "留言成功");
+            return "leaveMessage";
+        }
     }
 
     public String messageHistory(){
