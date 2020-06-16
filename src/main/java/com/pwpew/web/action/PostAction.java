@@ -275,7 +275,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         int firestResult = (page-1)*rows;
 
         List<TPost> postClass=postService.getPostByPostType(postMd.getPostType(),rows,firestResult);
-        int postCount = Math.toIntExact(postService.findPostCount(postMd));
+        int postCount = postClass.size();
 
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("postType",postMd.getPostType());
@@ -295,7 +295,7 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
 
         List<TPost> list = postService.findPostByNameOrDescribe(keyword,firestResult,rows);
 
-        int postCount = Math.toIntExact(postService.findPostCount(postMd));
+        int postCount = list.size();
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("keyword",keyword);
         request.setAttribute("list",list);

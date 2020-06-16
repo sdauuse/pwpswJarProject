@@ -3,6 +3,7 @@ package com.pwpew.service;
 import com.pwpew.entity.TNotice;
 import com.pwpew.modeldriven.NoticeMd;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public interface NoticeService {
     //查询最新发布的通告
     public TNotice findLatestNotice(NoticeMd noticeMd);
     //查询上一条通告
-    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId);
+    public TNotice findLastNotice(NoticeMd noticeMd,Timestamp ntsDate);
     //查询下一条通告
-    public TNotice findNextNotice(NoticeMd noticeMd,int ntsId);
+    public TNotice findNextNotice(NoticeMd noticeMd,Timestamp ntsDate);
 }

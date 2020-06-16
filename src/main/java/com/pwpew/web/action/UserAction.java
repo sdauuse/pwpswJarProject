@@ -272,9 +272,9 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             user.setEmail(userMd.getEmail());
             int i = userService.updateUserOfAccount(user);
             if (i > 0) {
-                ServletActionContext.getRequest().setAttribute("msg", "保存成功");
+                ServletActionContext.getRequest().setAttribute("message", "保存成功");
             } else {
-                ServletActionContext.getRequest().setAttribute("msg", "保存失败");
+                ServletActionContext.getRequest().setAttribute("message", "保存失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -375,7 +375,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
     }
 
     public String toUpdateAccount() {
-        int userid = (int) ServletActionContext.getRequest().getAttribute("userid");
+        int userid = (int) ServletActionContext.getRequest().getSession().getAttribute("userid");
         TUser user = userService.getUserById(userid);
         ServletActionContext.getRequest().setAttribute("user", user);
         return "toUpdateAccount";
@@ -578,5 +578,9 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         HttpSession session = ServletActionContext.getRequest().getSession();
         session.invalidate();
         return "logoutSuccess";
+    }
+
+    public String accountManager(){
+        return "accountManager";
     }
 }
