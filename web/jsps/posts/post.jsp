@@ -74,8 +74,8 @@
             失踪城市：${post.postCity}<br>
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
-            详情描述：${post.postDescribe}<br>   /upload/${post.postPicture}
-            图片：<br><img src="/upload/${post.postPicture}">
+            详情描述：${post.postDescribe}<br>
+            <%--图片：<br><img src="/upload/${post.postPicture}">--%>
             <br><br>
             <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
@@ -97,7 +97,7 @@
             </h4>
             <div class="postDetail">
                     ${i.comments}
-                <br><br>
+                <br><br><br>
                 <div class="time">评论时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>
             </div>
