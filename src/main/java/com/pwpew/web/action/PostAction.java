@@ -318,6 +318,10 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         request.setAttribute("post",post);
         request.setAttribute("page", postMd.getPage());
 
+        request.setAttribute("totalPage", postMd.getTotalPage());
+        request.setAttribute("count", postMd.getCount());
+        request.setAttribute("comments", post.getComments());
+
         return "accusation";
     }
 

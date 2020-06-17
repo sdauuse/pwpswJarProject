@@ -16,7 +16,24 @@ public class PostMd extends TPost {
     // easyUi分页参数
     private int page;
     private int rows;
+    private int totalPage;
+    private int count;
 
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     //扩展的查询条件，起始时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
