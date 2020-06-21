@@ -75,7 +75,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
     /*获取上一条通告内容并跳转到通告内容界面*/
     public String Lastnotice(){
         int page = noticeMd.getPage();
-        if(noticeService.findLastNotice(noticeMd,noticeMd.getNtsId())==null){
+        if(noticeService.findLastNotice(noticeMd,noticeMd.getNtsDate())==null){
             TNotice notice1 = noticeService.getNotice(noticeMd.getNtsId());
             HttpServletRequest request = ServletActionContext.getRequest();
             request.setAttribute("notice",notice1);
@@ -83,7 +83,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
             return "Lastnotice";
 
         }
-        TNotice notice = noticeService.findLastNotice(noticeMd,noticeMd.getNtsId());
+        TNotice notice = noticeService.findLastNotice(noticeMd,noticeMd.getNtsDate());
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("notice",notice);
         request.setAttribute("page",page);
@@ -93,7 +93,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
     /*获取下一条通告内容并跳转到通告内容界面*/
     public String Nextnotice(){
         int page = noticeMd.getPage();
-        if(noticeService.findNextNotice(noticeMd,noticeMd.getNtsId())==null){
+        if(noticeService.findNextNotice(noticeMd,noticeMd.getNtsDate())==null){
             TNotice notice1 = noticeService.getNotice(noticeMd.getNtsId());
             HttpServletRequest request = ServletActionContext.getRequest();
             request.setAttribute("notice",notice1);
@@ -101,7 +101,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<NoticeMd>
             return "Nextnotice";
 
         }
-        TNotice notice = noticeService.findNextNotice(noticeMd,noticeMd.getNtsId());
+        TNotice notice = noticeService.findNextNotice(noticeMd,noticeMd.getNtsDate());
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("notice",notice);
         request.setAttribute("page",page);

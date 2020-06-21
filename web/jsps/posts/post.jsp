@@ -45,7 +45,7 @@
 </head>
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/><%--顶部图片和导航栏集合--%>
-<h2 style="color: #965454;"><a href="${pageContext.request.contextPath}/post/accusation.action?postId=${post.postId}&page=${page}">举报</a></h2>
+<h2 style="color: #965454;"><a href="${pageContext.request.contextPath}/post/accusation.action?postId=${post.postId}&page=${page}&totalPage=${totalPage}&count=${count}">举报</a></h2>
 
 <div align="center"><h3 style="color: #7b8b6f">${accusation}<br>${error}</h3></div>
 <div id="postPage">
@@ -54,7 +54,13 @@
     <div class="post">
         <%--发帖人信息--%>
         <h4 class="poster" style="color:#965454;">
-            <img src=" /upload/${post.user.userPicture}" ><br><br>
+            <c:if test="${not empty post.user.userPicture}">
+                <img src=" /upload/${post.user.userPicture}" >
+            </c:if>
+            <c:if test="${post.user.userPicture==''}">
+                <img src="${pageContext.request.contextPath}/imgs/login/userInPost.png"/>
+            </c:if>
+            <br><br>
             版主：${post.user.userNickname}<br>
         </h4>
         <%--帖子详情    --%>
@@ -69,7 +75,7 @@
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
             详情描述：${post.postDescribe}<br>
-            图片：<br>${post.postPicture}
+            <%--图片：<br><img src="/upload/${post.postPicture}">--%>
             <br><br>
             <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
@@ -80,13 +86,18 @@
     <c:forEach items="${comments}" var="i">
         <div class="post">
             <h4 class="poster"  style="color: #7b8b6f;">
-                <img src=" /upload/${i.user.userPicture}" ><br><br>
+                <c:if test="${not empty i.user.userPicture}">
+                    <img src=" /upload/${i.user.userPicture}" >
+                </c:if>
+                <c:if test="${i.user.userPicture==''}">
+                    <img src="${pageContext.request.contextPath}/imgs/login/userInPost.png"/>
+                </c:if>
+                <br><br>
                 用户：${i.user.userNickname}<br>
             </h4>
             <div class="postDetail">
-                    <%--回复${post.user.username}：<br>--%>
                     ${i.comments}
-                <br><br>
+                <br><br><br>
                 <div class="time">评论时间&nbsp;&nbsp;&nbsp;&nbsp;${i.commentTime}</div>
                 <div class="reply"><a href="#replyPoint">回复</a></div>
             </div>
@@ -94,20 +105,20 @@
         </div>
     </c:forEach>
 
-        <br><br><br>
-        <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page-1}&postId=${post.postId}"><span>上一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>第${page}页</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page+1}&postId=${post.postId}"><span>下一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <br><br><br>
+    <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page-1}&postId=${post.postId}"><span>上一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span>第${page}页</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/post/showPost.action?page=${page+1}&postId=${post.postId}"><span>下一页</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <span>总计${count}条评论</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>共${totalPage}页</span>
-        <br><br><br>
+    <span>总计${count}条评论</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span>共${totalPage}页</span>
+    <br><br><br>
 
     <%--回复区域--%>
     <div class="replyArea">
         <a name="replyPoint"></a>
         <h2 id="replyTitle">回复</h2>
-        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=1&page=${page}" method="post" id="comment">
+        <form action="${pageContext.request.contextPath}/comment/insertComment.action?user.userId=${userid}&page=${page}" method="post" id="comment">
             <input type="hidden" id="postId" name="postId" value="${post.postId}">
             <input type="hidden" id="commentTime" name="commentTime">
             <input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">

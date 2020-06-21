@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -92,12 +93,12 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId) {
-        return noticeDao.findLastNotice(noticeMd,ntsId);
+    public TNotice findLastNotice(NoticeMd noticeMd,Timestamp ntsDate) {
+        return noticeDao.findLastNotice(noticeMd,ntsDate);
     }
 
     @Override
-    public TNotice findNextNotice(NoticeMd noticeMd, int ntsId) {
-        return noticeDao.findNextNotice(noticeMd,ntsId);
+    public TNotice findNextNotice(NoticeMd noticeMd, Timestamp ntsDate) {
+        return noticeDao.findNextNotice(noticeMd,ntsDate);
     }
 }

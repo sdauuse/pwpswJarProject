@@ -81,9 +81,9 @@
             </tr>
                 <tr>
                     <div id="notice_index">
-                        <td class="td2">上一篇:<a href="${pageContext.request.contextPath}/notice/Lastnotice.action?ntsId=${notice.ntsId}&page=${page}" class="a1">上一条通告</a><br><br/>
+                        <td class="td2">上一篇:<a href="${pageContext.request.contextPath}/notice/Lastnotice.action?ntsId=${notice.ntsId}&ntsDate=${notice.ntsDate}&page=${page}" class="a1">上一条通告</a><br><br/>
 
-                        下一篇:<a href="${pageContext.request.contextPath}/notice/Nextnotice.action?ntsId=${notice.ntsId}&page=${page}" class="a1">下一条通告</a><br><br/>
+                        下一篇:<a href="${pageContext.request.contextPath}/notice/Nextnotice.action?ntsId=${notice.ntsId}&ntsDate=${notice.ntsDate}&page=${page}" class="a1">下一条通告</a><br><br/>
 
                         <a href="${pageContext.request.contextPath}/notice/noticeList.action?page=${page}&rows=10" class="a1">返回通告列表</a></td>
                     </div>

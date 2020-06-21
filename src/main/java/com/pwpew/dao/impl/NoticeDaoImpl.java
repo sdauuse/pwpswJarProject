@@ -183,11 +183,11 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 
     //查询上一条通告
     @Override
-    public TNotice findLastNotice(NoticeMd noticeMd,int ntsId) {
+    public TNotice findLastNotice(NoticeMd noticeMd,Timestamp ntsDate) {
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
-        queryString.append("from TNotice t where t.ntsId > ?  order by ntsId");
-        List list = this.getHibernateTemplate().find(queryString.toString(), ntsId);
+        queryString.append("from TNotice t where t.ntsDate > ?  order by ntsDate");
+        List list = this.getHibernateTemplate().find(queryString.toString(), ntsDate);
         if(list.size()==0){
             return null;
         }
@@ -197,11 +197,11 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 
     //查询下一条通告
     @Override
-    public TNotice findNextNotice(NoticeMd noticeMd,int ntsId) {
+    public TNotice findNextNotice(NoticeMd noticeMd,Timestamp ntsDate) {
         //使用hql查询
         StringBuffer queryString = new StringBuffer();
-        queryString.append("from TNotice t where t.ntsId < ?  order by ntsDate desc");
-        List list = this.getHibernateTemplate().find(queryString.toString(), ntsId);
+        queryString.append("from TNotice t where t.ntsDate < ?  order by ntsDate desc");
+        List list = this.getHibernateTemplate().find(queryString.toString(), ntsDate);
         if(list.size()==0){
             return null;
         }

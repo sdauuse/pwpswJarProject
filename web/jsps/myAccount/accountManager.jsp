@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,9 +51,8 @@
 </head>
 <body>
 
-<s:action name="toUpdateAccount" namespace="/user"/>
-
 <jsp:include page="/jsps/index/picture_nav.jsp"/>
+
 
 <div class="rg_layout">
     <div class="rg_left">
@@ -160,7 +161,7 @@
                     </tr>
                     <tr>
                         <td colspan="4" rolspan="2">
-                            <c:if test="${not empty msg}">
+                            <c:if test="${message eq '保存成功'}">
                                 <script>
                                     updateSuccess();
                                 </script>
