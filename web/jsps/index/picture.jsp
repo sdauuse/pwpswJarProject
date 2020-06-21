@@ -72,22 +72,44 @@
     </div>
 
     <div id="login_register">
-        <c:choose>
+        <%--<c:choose>
             <c:when test="${empty userid}">
                 <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <%--<a href="${pageContext.request.contextPath}/jsps/login/login.jsp"><img
-                        src="${pageContext.request.contextPath}/imgs/defaultUser.png"></a>--%>
+                &lt;%&ndash;<a href="${pageContext.request.contextPath}/jsps/login/login.jsp"><img
+                        src="${pageContext.request.contextPath}/imgs/defaultUser.png"></a>&ndash;%&gt;
             </c:when>
 
             <c:otherwise>
                 你好！${usernickname}&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp"><img src="/upload/${userpicture}"></a>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/logout.action">注销</a>
             </c:otherwise>
+        </c:choose>--%>
+
+        <c:choose>
+            <c:when test="${empty userid}">
+                <a href="${pageContext.request.contextPath}/jsps/login/login.jsp">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="${pageContext.request.contextPath}/jsps/userRegister.jsp">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:when>
         </c:choose>
-        <c:if test="${empty userpicture}">
-            <a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp"><img src="${pageContext.request.contextPath}/imgs/defaultUser.png">
-            </a>
-        </c:if>
+
+        <c:choose>
+            <c:when test="${not empty userpicture}">
+                你好！${usernickname}&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp"><img src="/upload/${userpicture}"></a>&nbsp;&nbsp;&nbsp;
+            </c:when>
+
+            <c:otherwise>
+                你好！${usernickname}&nbsp;<a href="${pageContext.request.contextPath}/jsps/myAccount/myAccount.jsp"><img
+                src="${pageContext.request.contextPath}/imgs/defaultUser.png">
+                </a>
+            </c:otherwise>
+        </c:choose>
+
+        <c:choose>
+            <c:when test="${not empty userid}">
+                <a href="${pageContext.request.contextPath}/user/logout.action">注销</a>
+            </c:when>
+        </c:choose>
+
     </div>
 </div>
 </body>

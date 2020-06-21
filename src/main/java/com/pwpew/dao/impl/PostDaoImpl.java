@@ -4,10 +4,8 @@ import com.pwpew.dao.PostDao;
 import com.pwpew.entity.TPost;
 import com.pwpew.modeldriven.PostMd;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.struts2.components.Bean;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -20,7 +18,6 @@ import java.util.List;
 public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 
     private Session session = null;
-
     //注入父类的模板对象
     @Autowired
     public void setHT(HibernateTemplate hibernateTemplate) {
@@ -39,9 +36,9 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
 
     // 获取帖子
     public TPost getPostById(int postId) {
-        TPost post = new TPost();
+        this.getHibernateTemplate().clear();
         session = this.getSessionFactory().getCurrentSession();
-        post = (TPost) session.get(TPost.class, postId);
+        TPost post =  session.get(TPost.class, postId);
         return post;
     }
 

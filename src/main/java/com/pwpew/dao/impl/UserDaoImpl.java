@@ -4,7 +4,6 @@ import com.pwpew.dao.UserDao;
 import com.pwpew.entity.TPost;
 import com.pwpew.entity.TUser;
 import com.pwpew.modeldriven.UserMd;
-import com.pwpew.modeldriven.VolunteerMd;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;

@@ -150,9 +150,9 @@
                     dataType: 'json',//预期服务端返回json
                     success: function (result) {//形参result内容是deleteNotice.action响应的结果，是json对象
                         //提示操作结果
-                        var result = eval('(' + data + ')');  // change the JSON string to javascript object
+                        //var result = eval('(' + data + ')');  // change the JSON string to javascript object
                         //提示操作结果
-                        $.messager.alert('提示', result.message);
+                        //$.messager.alert('提示', result.message);
                         alert(result.message);
                         //如果删除成功刷新 列表
 

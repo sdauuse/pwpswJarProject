@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="tips clearfix">
-                    <a onclick="changeImage()" id="change" style="cursor:pointer;">看不清,换一张图片</a>
+                    <a href="${pageContext.request.contextPath}" id="change" style="cursor:pointer;">返回首页</a>
                     <a id="areg" href="${pageContext.request.contextPath}/jsps/userRegister.jsp" class="">立即注册</a>
                     <a id="afor" href="${pageContext.request.contextPath}/jsps/login/forgetPassword.jsp"
                        class="">忘记密码？</a>
