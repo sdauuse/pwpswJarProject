@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="tips clearfix">
-                    <a href="${pageContext.request.contextPath}" id="change" style="cursor:pointer;">返回首页</a>
+                    <a href="${pageContext.request.contextPath}/index.jsp" id="change" style="cursor:pointer;">返回首页</a>
                     <a id="areg" href="${pageContext.request.contextPath}/jsps/userRegister.jsp" class="">立即注册</a>
                     <a id="afor" href="${pageContext.request.contextPath}/jsps/login/forgetPassword.jsp"
                        class="">忘记密码？</a>
@@ -83,11 +83,13 @@
     </div>
     <div class="lg-poster"></div>
 </div>
+
+
 <div class="login-ft">
     <div class="about-us">
-        <a href="javascript:">关于我们</a>
-        <a href="javascript:">法律声明</a>
-        <a href="javascript:">服务条款</a>
+        <a href="${pageContext.request.contextPath}/jsps/index/knowUs.jsp">关于我们</a>
+        <a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp">寻亲登记</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">回到首页</a>
         <a href="javascript:">联系方式</a>
     </div>
     <div class="address">地址：广东省珠海市唐家湾金凤路6号&nbsp;邮编：519088&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2020&nbsp;</div>
