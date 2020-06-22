@@ -193,6 +193,7 @@
         }
 
 
+        //次方法并未使用
         function edit() {
             var r = confirm("确认要修改吗？")
             if (r == true) {
@@ -391,8 +392,8 @@
                         <td class="td">图片：</td>
                         <td class="td">
                             <img
-                                    <c:if test="${list.postPicture == null}">src="/upload/1ad395bf-9468-4b46-bf72-8c39bb763591.png"</c:if>
-                                    <c:if test="${list.postPicture != null}">src="/upload/${list.postPicture}"</c:if>
+                                    <c:if test="${empty list.postPicture }">src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg"</c:if>
+                                    <c:if test="${not empty list.postPicture}">src="/upload/${list.postPicture}"</c:if>
                                     width="317px" height="230px">
                         </td>
 
@@ -437,14 +438,14 @@
              dom-data-type="pagination" dom-data-version="4" false="pagination" style="">
             <ul class="pagination" style="margin:0px;" data-option="{}">
                 <li>
-                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page-1}"
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page-1}" id="before"
                        aria-label="Previous"><span aria-hidden="true" style="font-size: 16px"> 上一页 </span></a>
                     <%-- <li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page-1}" aria-label="Previous"><span aria-hidden="true"> 上一页 </span></a>--%>
                 </li>
                 <li class="active"><a herf="#">${page}</a></li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page+1}"
-                       aria-label="Next"><span aria-hidden="true" style="font-size: 16px"> 下一页 </span></a></li>
+                    <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?page=${page+1}" aria-label="Next" id="next"><span aria-hidden="true" style="font-size: 16px" > 下一页 </span></a>
+                </li>
                 <%--<li><a href="${pageContext.request.contextPath}/post/findPostListByUserId.action?user.userId=${id}&page=${page+1}" aria-label="Next"><span aria-hidden="true"> 下一页 </span></a></li>--%>
                 <li><span style="font-size: 16px">共有${totalPage}页</span></li>
             </ul>

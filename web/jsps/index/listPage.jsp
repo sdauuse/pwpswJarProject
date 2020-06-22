@@ -33,11 +33,16 @@
     <h4>如果你见到他们 请联系我们</h4>
     <div class="course_container">
         <!-- 家寻宝贝内容 -->
-        <div  id="con_nav2_1" class="nav_list">
+        <div id="con_nav2_1" class="nav_list">
             <c:forEach items="${informationList1}" var="i">
                 <div class="course">
-                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">
+                        <c:if test="${empty i.postPicture}"><img
+                                src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></c:if>
+                        <c:if test="${not empty i.postPicture}"><img src="/upload/${i.postPicture}" alt="HTML"></c:if>
+                    </a>
+                    <span class="course_title"><a
+                            href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince} ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -47,8 +52,13 @@
         <div id="con_nav2_2" style="display: none" class="nav_list">
             <c:forEach items="${informationList2}" var="i">
                 <div class="course">
-                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">
+                        <c:if test="${empty i.postPicture}"><img
+                                src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></c:if>
+                        <c:if test="${not empty i.postPicture}"><img src="/upload/${i.postPicture}" alt="HTML"></c:if>
+                    </a>
+                    <span class="course_title"><a
+                            href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince} ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -58,8 +68,13 @@
         <div id="con_nav2_3" style="display: none" class="nav_list">
             <c:forEach items="${informationList3}" var="i">
                 <div class="course">
-                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="/upload/${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">
+                        <c:if test="${empty i.postPicture}"><img
+                                src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></c:if>
+                        <c:if test="${not empty i.postPicture}"><img src="/upload/${i.postPicture}" alt="HTML"></c:if>
+                    </a>
+                    <span class="course_title"><a
+                            href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince} ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -69,8 +84,13 @@
         <div id="con_nav2_4" style="display: none" class="nav_list">
             <c:forEach items="${informationList4}" var="i">
                 <div class="course">
-                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">
+                        <c:if test="${empty i.postPicture}"><img
+                                src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></c:if>
+                        <c:if test="${not empty i.postPicture}"><img src="/upload/${i.postPicture}" alt="HTML"></c:if>
+                    </a>
+                    <span class="course_title"><a
+                            href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince} ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>
@@ -80,8 +100,12 @@
         <div id="con_nav2_5" style="display: none" class="nav_list">
             <c:forEach items="${informationList5}" var="i">
                 <div class="course">
-                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}"><img src="${pageContext.request.contextPath}${i.postPicture}" alt="HTML"></a>
-                    <span class="course_title"><a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince}           ${i.postCity}</a></span>
+                    <a href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">
+                        <c:if test="${empty i.postPicture}"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" alt="HTML"></c:if>
+                        <c:if test="${not empty i.postPicture}"><img src="/upload/${i.postPicture}" alt="HTML"></c:if>
+                    </a>
+                    <span class="course_title"><a
+                            href="${pageContext.request.contextPath}/post/showDetailedInformation.action?postId=${i.postId}">${i.postProvince} ${i.postCity}</a></span>
                     <img class="person" src="${pageContext.request.contextPath}/imgs/index/person.png" alt="person">
                     <span class="number">323</span>
                 </div>

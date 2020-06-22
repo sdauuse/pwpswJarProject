@@ -113,7 +113,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList1}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -121,7 +121,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList2}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -133,7 +133,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList3}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -141,7 +141,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList4}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -153,7 +153,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList5}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -161,7 +161,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList6}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -173,7 +173,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList7}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -181,7 +181,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList8}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -193,7 +193,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList9}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -201,7 +201,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList10}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -213,7 +213,7 @@
         <div class="content-left">
             <ul>
                 <c:forEach items="${postList11}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>
@@ -221,7 +221,7 @@
         <div class="content-right">
             <ul>
                 <c:forEach items="${postList12}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?page=1&postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
+                    <li><a href="${pageContext.request.contextPath}/post/showPost.action?postId=${i.postId}">寻找${i.postAge}岁${i.postProvince}${i.postCity}失踪的${i.postGender}性 ${i.postName}</a>&nbsp;<span class="li_right">${i.missingtime}</span></li>
                 </c:forEach>
             </ul>
         </div>

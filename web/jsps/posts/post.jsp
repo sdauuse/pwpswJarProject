@@ -55,9 +55,10 @@
         <%--发帖人信息--%>
         <h4 class="poster" style="color:#965454;">
             <c:if test="${not empty post.user.userPicture}">
-                <img src=" /upload/${post.user.userPicture}" >
+                <img src="/upload/${post.user.userPicture}" >
             </c:if>
-            <c:if test="${post.user.userPicture==''}">
+
+            <c:if test="${empty post.user.userPicture}">
                 <img src="${pageContext.request.contextPath}/imgs/login/userInPost.png"/>
             </c:if>
             <br><br>
@@ -89,7 +90,7 @@
                 <c:if test="${not empty i.user.userPicture}">
                     <img src=" /upload/${i.user.userPicture}" >
                 </c:if>
-                <c:if test="${i.user.userPicture==''}">
+                <c:if test="${empty i.user.userPicture}">
                     <img src="${pageContext.request.contextPath}/imgs/login/userInPost.png"/>
                 </c:if>
                 <br><br>

@@ -338,11 +338,11 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
 
         //用于校验邮箱是否重复
         List<TUser> userList = userService.findUser();
-        if (userMd.getEmail() != null) {
+        if (StringUtils.isNotEmpty(userMd.getEmail())) {
             for (TUser user : userList) {
 
                 //先判断数据库中的用户邮箱是否为空，为空就判断下一个用户，不为空再校验
-                if (user.getEmail() != null) {
+                if (StringUtils.isNotEmpty(user.getEmail())) {
                     if (user.getEmail().equals(userMd.getEmail())) {
                         request.setAttribute("msg", "邮箱已经被注册！");
                         return "userRegister";
@@ -580,7 +580,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
         return "logoutSuccess";
     }
 
-    public String accountManager(){
+    public String accountManager() {
         return "accountManager";
     }
 }

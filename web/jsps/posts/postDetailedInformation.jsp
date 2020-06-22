@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,21 +13,25 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <style type="text/css">
-        #detailedInformation img{
+        #detailedInformation img {
             width: 200px;
             height: 200px;
         }
-        #detailedInformation table{
+
+        #detailedInformation table {
             margin: 0px auto;
         }
-        #detailedInformation{
+
+        #detailedInformation {
             margin-top: 60px;
             margin-bottom: 140px;
         }
-        #detailedInformation table tr td{
+
+        #detailedInformation table tr td {
             padding-top: 10px;
         }
-        #detailedInformation .td1{
+
+        #detailedInformation .td1 {
             text-align: center;
         }
     </style>
@@ -36,7 +41,10 @@
 <div id="detailedInformation">
     <table>
         <tr>
-            <td class="td1"><img src="/upload/${post.postPicture}"/></td>
+            <td class="td1">
+                <c:if test="${empty post.postPicture}"> <img src="${pageContext.request.contextPath}/imgs/index/loss_people4.jpg"/> </c:if>
+                <c:if test="${not empty post.postPicture}"> <img src="/upload/${post.postPicture}"/></c:if>
+            </td>
         </tr>
         <tr>
             <td>寻亲编号:&nbsp;&nbsp;${post.postId}</td>
@@ -66,7 +74,9 @@
             <td>联系人手机：&nbsp;&nbsp;${user.userPhone}</td>
         </tr>
         <tr>
-            <td class="td1"><a href="${pageContext.request.contextPath}/index.jsp"><input type="button" value="返回主页" class="btn btn-primary"></a> </td>
+            <td class="td1"><a href="${pageContext.request.contextPath}/index.jsp"><input type="button" value="返回主页"
+                                                                                          class="btn btn-primary"></a>
+            </td>
         </tr>
     </table>
 </div>
