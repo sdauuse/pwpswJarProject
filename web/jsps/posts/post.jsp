@@ -76,7 +76,7 @@
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
             详情描述：${post.postDescribe}<br>
-            <%--图片：<br><img src="/upload/${post.postPicture}">--%>
+            图片：<br><img src="/upload/${post.postPicture}" width="400" height="400">
             <br><br>
             <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
