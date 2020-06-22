@@ -481,4 +481,9 @@ public class PostAction extends ActionSupport implements ModelDriven<PostMd> {
         request.setAttribute("msg", "修改成功");
         return "updatepost";
     }
+
+    public String Posting(){
+
+        return "posting";
+    }
 }
