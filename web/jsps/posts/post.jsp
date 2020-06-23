@@ -76,7 +76,9 @@
             失踪乡镇：${post.postCountry}<br>
             失踪街道：${post.postStreet}<br>
             详情描述：${post.postDescribe}<br>
-            图片：<br><img src="/upload/${post.postPicture}" width="400" height="400">
+
+            <c:if test="${not empty post.postPicture }">图片：<br><img src="/upload/${post.postPicture}" width="400" height="400"></c:if>
+            <%--<c:if test="${empty post.postPicture }"><img src="${pageContext.request.contextPath}/imgs/index/loss_people1.jpg" width="400" height="400"></c:if>--%>
             <br><br>
             <div class="time">发帖时间&nbsp;&nbsp;&nbsp;&nbsp;${post.postTime}</div>
             <div class="reply"><a href="#replyPoint">回复</a></div>
@@ -125,7 +127,7 @@
             <input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
             <input type="hidden" id="count" name="count" value="${count}">
 
-            <textarea id="comments" name="comments" required="required"  placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
+            <textarea id="comments" maxlength="90" name="comments" required="required"  placeholder="请在这儿输入回复吧 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
             <%--上传图片<input type="file" id="imageFile" name="imageFile" accept="image/gif, image/jpeg, image/png, image/jpg">--%>
 
             <div id="postSubmit">

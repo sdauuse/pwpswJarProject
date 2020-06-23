@@ -54,7 +54,7 @@
         <h3 style="color: #7b8b6f">${messageLeft}${error}</h3>
         <form action="${pageContext.request.contextPath}/message/leaveMessage.action?user.userId=${userid}" method="post" id="message">
             <input type="hidden" id="msgDate" name="msgDate">
-            <textarea id="msgMain" name="msgMain" required="required" placeholder="请在此处输入留言 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
+            <textarea id="msgMain" maxlength="60" name="msgMain" required="required" placeholder="请在此处输入留言 =_=" style="height: 200px; width:100%;font-size: 15px;font-weight: 400;line-height: 2em;padding: 6px;"></textarea>
             <div id="Submit" align="right">
                 <input type="button" onclick="CurrentTime()" value="提交"/>
             </div>

@@ -22,7 +22,7 @@
 
     <span class="selectArea">
         <div style="padding: 4px; margin: 10px auto;">
-            <a href="${pageContext.request.contextPath}/jsps/posts/posting.jsp" style="display:inline-block;font-family: helvetica;font-weight: 700;line-height: 22px;font-size: 18px;color: rgba(0, 0, 0, 0.56);font-family: helvetica;">发&nbsp;&nbsp;帖</a>
+            <a href="${pageContext.request.contextPath}/post/Posting.action" style="display:inline-block;font-family: helvetica;font-weight: 700;line-height: 22px;font-size: 18px;color: rgba(0, 0, 0, 0.56);font-family: helvetica;">发&nbsp;&nbsp;帖</a>
         </div>
     </span>
 
