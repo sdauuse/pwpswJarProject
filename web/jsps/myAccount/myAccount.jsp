@@ -19,7 +19,7 @@
             background-color: #337ab7;
         }
         #myAccount #accountFunction{
-            width: 400px;
+            width: 500px;
             margin: 50px auto;
             font-size: 23px;
         }
@@ -49,8 +49,9 @@
         <div id="div1">我的账号</div>
     </div>
     <div id="accountFunction">
-        <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action">我的帖子</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/user/toUpdateAccount.action">个人信息修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/post/Posting.action">发布帖子</a>&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/post/findPostListByUserId.action">我的帖子</a>&nbsp;&nbsp;&nbsp;
+        <a href="${pageContext.request.contextPath}/user/toUpdateAccount.action">个人信息修改</a>&nbsp;&nbsp;&nbsp;
         <a href="${pageContext.request.contextPath}/jsps/message/message.jsp">留言板</a>
     </div>
 </div>

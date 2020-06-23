@@ -82,7 +82,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_left"><label for="volEmail"><span class="requirement">*</span>电子邮件</label></td>
+                        <td class="td_left"><label for="volEmail">电子邮件</label></td>
                         <td class="td_right" colspan="3">
                             <input type="text" name="volEmail" id="volEmail" placeholder="请输入电子邮件">
                             <span id="s_volEmail" class="error"></span>

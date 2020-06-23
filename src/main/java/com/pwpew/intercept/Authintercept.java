@@ -49,7 +49,11 @@ public class Authintercept extends AbstractInterceptor {
         } else if ("verifyAdmin".equals(name)) {
             return arg0.invoke();
         } else if ("showPostList".equals(name)) {
-            return  arg0.invoke();
+            return arg0.invoke();
+        } else if ("modifyPasswordByEmail".equals(name)) {
+            return arg0.invoke();
+        } else if ("modifyPasswordByEmailNext".equals(name)) {
+            return arg0.invoke();
         } else {
             String username = (String) session.getAttribute("username");
             String adminName = (String) session.getAttribute("adminName");

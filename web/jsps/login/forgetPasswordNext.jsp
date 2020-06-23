@@ -53,7 +53,7 @@
 <jsp:include page="/jsps/index/picture_nav.jsp"/>
 
 <div class="col-12"
-     style="height: 70px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
+     style="height: 100px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
      candrop="ecp-flex-vertical" id="ecpflexvertical_2271"
      xdeer-flex-vertical="ecp-flex-vertical_f8018871c625a6daecd0654e78af5b8f"
      data-option="{'id':'ecpflexvertical_2271','height':'200px','paddingLeft':'0px','paddingRight':'0px','paddingTop':'0px','paddingBottom':'0px','marginleft':'0px','marginRight':'0px','marginBottom':'0px','marginTop':'0px','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','border-bottom-width':'0px'}"
@@ -102,7 +102,7 @@
 
 
 <div class="col-12"
-     style="height: 200px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
+     style="height: 264px; display: flex; flex-flow: column nowrap; border-width: 0px; position: relative;"
      candrop="ecp-flex-vertical" id="ecpflexvertical_2271"
      xdeer-flex-vertical="ecp-flex-vertical_f8018871c625a6daecd0654e78af5b8f"
      data-option="{'id':'ecpflexvertical_2271','height':'200px','paddingLeft':'0px','paddingRight':'0px','paddingTop':'0px','paddingBottom':'0px','marginleft':'0px','marginRight':'0px','marginBottom':'0px','marginTop':'0px','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','border-bottom-width':'0px'}"

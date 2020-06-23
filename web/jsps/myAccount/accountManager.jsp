@@ -14,14 +14,17 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
-    <link href="${pageContext.request.contextPath}/css/accountManager/accountManager.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/accountManager/accountManager.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>
+    <link href="${pageContext.request.contextPath}/css/accountManager/accountManager.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/accountManager/accountManager.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/user_vol_register_js/jquery-3.4.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.data.js"></script>
     <script src="${pageContext.request.contextPath}/js/user_vol_register_js/distpicker.js"></script>
 
     <style type="text/css">
-        #userNickname{
+        #userNickname {
             width: 300px;
             height: 50px;
             border: 1px solid gray;
@@ -29,17 +32,20 @@
             border-radius: 5px;
             padding-left: 10px;
         }
-        .td2{
+
+        .td2 {
             padding-left: -10px;
             padding-bottom: 15px;
             text-align: left;
         }
-        img{
+
+        img {
             width: 60px;
             height: 60px;
             margin-left: 60px;
         }
-        .rg_form table tr td{
+
+        .rg_form table tr td {
             width: 250px;
         }
     </style>
@@ -62,11 +68,13 @@
 
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/user/submitpicture.action" method="post" id="form"
+                  enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td colspan="1" class="td_left">
-                            <img src="/upload/${user.userPicture}"/>
+                            <c:if test="${empty user.userPicture}"><img src="${pageContext.request.contextPath}/imgs/defaultUser.png" alt=""></c:if>
+                            <c:if test="${not empty user.userPicture}"><img src="/upload/${user.userPicture}"/></c:if>
                         </td>
                         <td class="td2" colspan="2">
                             <div align="center">
@@ -90,7 +98,7 @@
                         <td class="td_left"><label for="userNickname">昵称</label></td>
                         <td class="td_right" colspan="2">
                             <input type="text" name="userNickname" id="userNickname" value="${user.userNickname}">
-<%--                            <span id="s_userNickname" class="error" style="width: 50px;"></span>--%>
+                            <%--                            <span id="s_userNickname" class="error" style="width: 50px;"></span>--%>
                         </td>
                         <td>
                             <span id="s_userNickname" class="error" style="width: 50px;"></span>
@@ -106,9 +114,10 @@
                                         id="woman" type="radio" name="userGender" value="女"/><span>女</span>
                                 </c:when>
                                 <c:otherwise>
-                                    <input id="man" type="radio"name="userGender" value="男"/><span
+                                    <input id="man" type="radio" name="userGender" value="男"/><span
                                         class="man">男</span><input
-                                        id="woman" type="radio" checked="checked"  name="userGender" value="女"/><span>女</span>
+                                        id="woman" type="radio" checked="checked" name="userGender"
+                                        value="女"/><span>女</span>
                                 </c:otherwise>
                             </c:choose>
 

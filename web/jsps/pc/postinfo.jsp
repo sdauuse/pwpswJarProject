@@ -271,6 +271,22 @@
         }
 
 
+
+        /*//时间日期限制
+        function checkYears(posi){
+            $("#"+posi).datetimebox('calendar').calendar({
+                validator: function(date){
+                    var now = new Date();
+                    var d1=newDate(now.getFullYear()-1,now.getMonth(),now.getDate());
+                    return d1<date;
+                }
+            });
+        }
+
+        $(function(){
+            //调用日期限制录入方法，设置日期控件可选范围
+            checkYears('newDate');
+        });*/
     </script>
 </head>
 
@@ -403,7 +419,7 @@
                         </td>
                         <td class="td">
                             <input id="newDate" style="width: 317px;height: 32px" class="easyui-datetimebox"
-                                   name="missingtime">
+                                   name="missingtime" >
 
                             <input class="input" id="img" type="file" name="picture" onchange="fileChange(this);">
                         </td>
