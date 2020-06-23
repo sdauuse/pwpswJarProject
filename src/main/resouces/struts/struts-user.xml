@@ -26,7 +26,7 @@
         <action name="*"  class="userAction" method="{1}">
             <result name="userLogin">/jsps/login/login.jsp</result>
             <result name="userLoginError">/jsps/userRegister.jsp</result>
-            <result name="userUpdateSuccess">/jsps/myAccount/accountManager.jsp</result>
+            <result name="userUpdateSuccess">/jsps/myAccount/myAccount.jsp</result>
             <result name="toUpdateAccount">/jsps/myAccount/accountManager.jsp</result>
             <result name="modifyPasswordByEmail">/jsps/login/forgetPasswordNext.jsp</result>
             <result name="modifyPasswordByEmailError">/jsps/login/forgetPassword.jsp</result>
