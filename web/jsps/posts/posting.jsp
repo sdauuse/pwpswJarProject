@@ -1,3 +1,5 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
@@ -20,55 +22,11 @@
 <body>
 <jsp:include page="/jsps/index/picture_nav.jsp"/>
 <%--顶部图片和导航栏集合--%>
-
-
-<%--<div id="postListPage">--%>
-<%--    <div class="postList">--%>
-<%--        <form action="${pageContext.request.contextPath}/post/posting.action" method="post">--%>
-<%--            <table align="center">--%>
-<%--                <tr>--%>
-<%--                    <td>寻亲类型：</td>--%>
-<%--                    <td><select name="postType">--%>
-<%--                        <option value="家寻宝贝">家寻宝贝</option>--%>
-<%--                        <option value="宝贝寻家">宝贝寻家</option>--%>
-<%--                        <option value="流浪乞讨">流浪乞讨</option>--%>
-<%--                        <option value="海外寻人">海外寻人</option>--%>
-<%--                        <option value="其他寻人">其他寻人</option>--%>
-<%--                    </select></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>失踪者姓名：</td>--%>
-<%--                    <td><input type="text" name="postName" required="required"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>性别：</td>--%>
-<%--                    <td>男<input name="postGender" type="radio" value="男" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;女<input name="postGender" type="radio" value="女"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>年龄：</td>--%>
-<%--                    <td><input type="number" name="postAge" required="required" min="0" max="150"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>失踪时间：</td>--%>
-<%--                    <td><input type="date" name="missingtime" required="required"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>失踪所在省或直辖市：</td>--%>
-<%--                    <td><input type="text" required="required"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>详细描述：</td>--%>
-<%--                    <td><textarea name="postDescribe" cols="30" rows="10"></textarea></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td></td>--%>
-<%--                    <td><input type="submit" value="提交"></td>--%>
-<%--                </tr>--%>
-<%--            </table>--%>
-
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<%--获取当前时间--%>
+<%
+    SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+    String now=df.format(new Date());
+%>
 
 <%--start Yani的jsp--%>
 <div class="rg_layout">
@@ -78,8 +36,10 @@
     <%--end左浮动结束--%>
     <div class="rg_center">
         <div class="rg_form"><%--定义表单--%>
-            <form action="${pageContext.request.contextPath}/post/posting.action?user.userId=1" method="post" id="form">
+            <form action="${pageContext.request.contextPath}/post/posting.action?user.userId=${userid}" method="post" id="form">
                 <table>
+
+                    <span><input type="date" id="postTime" name="postTime" value="<%= now%>" style="display:none"></span>
                     <tr>
                         <td class="td_left"><label for="postType"><span class="requirement">*</span>寻亲类型</label></td>
                         <td class="td_right" colspan="3">
@@ -117,7 +77,7 @@
                     <tr>
                         <td class="td_left"><label for="missingtime"><span class="requirement">*</span>失踪时间</label></td>
                         <td class="td_right" colspan="3">
-                            <input type="text" name="missingtime" id="missingtime" placeholder="yyyy-MM-dd">
+                            <input type="date" name="missingtime" id="missingtime" value max="<%=new java.sql.Timestamp(System.currentTimeMillis()).toString().substring(0,10) %>">
                             <span id="s_missingtime" class="error"></span>
                         </td>
                     </tr>
@@ -167,6 +127,7 @@
                             </div>
                         </td>
                     </tr>
+
                     <tr>
                         <td class="btn_left" align="center" colspan="4">
                             <input type="submit" name="btn_posting" value="提交" id="btn_posting" class="btn">
