@@ -302,6 +302,9 @@ public class UserAction extends ActionSupport implements ModelDriven<UserMd> {
             return "userRegister";
         }
 
+        if(StringUtils.isEmpty(userMd.getEmail())){
+            userMd.setEmail(null);
+        }
 
         try {
             // 上传成功的图片，文件默认在tomcat的临时目录 中
