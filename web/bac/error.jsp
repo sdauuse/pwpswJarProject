@@ -11,7 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<h2>错误页面</h2>
-<img src="${pageContext.request.contextPath}/imgs/error.jpg" style="height: auto;height: auto">
+    <h2>错误页面</h2>
+    <img src="${pageContext.request.contextPath}/imgs/error.jpg" style="height: auto;height: auto">
 </body>
 </html>
+d
