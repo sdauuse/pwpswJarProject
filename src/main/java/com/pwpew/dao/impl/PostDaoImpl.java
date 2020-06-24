@@ -213,8 +213,10 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     }
 
     public List<TPost> findPostByNameOrDescribe(String nameOrDescribe, int firestResult, int maxResult) {
+        nameOrDescribe = nameOrDescribe.replace(" ", "");
         Session session = this.getSessionFactory().getCurrentSession();
-        Query query = session.createQuery("from TPost where postName like '%" + nameOrDescribe + "%' or postDescribe like '%" + nameOrDescribe + "%' ");
+        String hql="from TPost where postName like '%" + nameOrDescribe + "%' or postDescribe like '%" +nameOrDescribe +"%' or postGender = '" + nameOrDescribe+"' or postProvince like '%" +nameOrDescribe+"%' or postCity like '%"+nameOrDescribe+"%'";
+        Query query = session.createQuery(hql);
         query.setFirstResult(firestResult);
         query.setMaxResults(maxResult);
         List<TPost> list = query.list();
